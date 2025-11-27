@@ -1,0 +1,13 @@
+---
+export interface Props {
+	className?: string;
+}
+const { className = '' }: Props = Astro.props;
+
+// Class base for badge
+const classBase = 'flex items-center gap-2 rounded-full px-3 py-1 text-xs';
+---
+
+<span class={`${classBase} ${className}`}>
+	<slot />
+</span>

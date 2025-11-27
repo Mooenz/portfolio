@@ -1,0 +1,11 @@
+---
+import Button from '@/components/Button.astro';
+import IconDownload from '@/assets/icons/IconDownload.astro';
+---
+
+<nav class="absolute lg:relative top-3 right-3 flex gap-4 items-center justify-end">
+	<Button href="#projects" variants="accent" size="md" attr={{ title: 'Enlace para descargar el curriculum' }}>
+		<IconDownload width={16} height={16} />
+		<span>Curriculum</span>
+	</Button>
+</nav>

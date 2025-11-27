@@ -1,0 +1,120 @@
+---
+import Button from '@/components/Button.astro';
+import personal from '@/constants/personal-info';
+import experience from '@/constants/experience.ts';
+import Image from 'astro/components/Image.astro';
+import avatar from '@/assets/images/jose-manuel-montaño-saenz.webp';
+import LogoLinkedIn from '@/assets/icons/LogoLinkedIn.astro';
+import LogoGithub from '@/assets/icons/LogoGitHub.astro';
+---
+
+<aside class="flex flex-col aside w-full h-full overflow-x-auto lg:max-w-108 sm:p-6 p-3 lg:py-8 pb-8 bg-secondary">
+	<!-- Personal information -->
+	<div class="mb-4 sm:mb-7">
+		<figure class="ripple-container relative w-12 lg:w-20 mb-6 aspect-square bg-tertiary rounded-full group">
+			<Image src={avatar} alt="Avatar" width="127" height="127" title={`Avatar de ${personal.name}`} class="rounded-full w-30" />
+
+			<div class="ripple absolute z-100 top-[70%] left-[calc(100%-14px)] flex items-center bg-green-400 text-[10px] font-medium leading-[1em] whitespace-nowrap px-2 rounded-full h-[15px] w-[15px] group-hover:w-[142px] transition-all duration-300 ease-in-out group-hover:bg-green-400/10 group-hover:left-[calc(100%-7px)]">
+				<span class="opacity-0 text-green-400 group-hover:opacity-100 font-semibold group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out group-hover:delay-300">Disponible para trabajar</span>
+			</div>
+		</figure>
+		<h1 class="text-2xl font-bold">{personal.name}</h1>
+		<p class="text-lg mb-1 text-text-secondary">{personal.role}</p>
+	</div>
+
+	<!-- How i am? -->
+	<p>{personal.expertise}</p>
+
+	<!-- Contact -->
+	<div class="flex flex-wrap gap-5 mt-7 order-1">
+		<Button variants="normal" href={personal.github} size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir a mi perfil de Github' }}>
+			<LogoGithub width={18} height={18} />
+			<span>Github</span>
+		</Button>
+
+		<Button variants="normal" href={personal.linkedIn} size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir a mi perfil de LinkedIn' }}>
+			<LogoLinkedIn width={18} height={18} />
+			<span>LinkedIn</span>
+		</Button>
+	</div>
+
+	<!-- Experience -->
+	<div class="order-2">
+		<h2 class="text-2xl line-clamp-1 font-semibold mt-7 lg:mt-14 mb-4 lg:mb-7">Experiencia laboral</h2>
+		<ul class="list-inside space-y-4 lg:space-y-6">
+			{
+				experience.map(({ position, description, period, company }) => (
+					<li class="line">
+						<h3 class="mb-3 line-clamp-1 text-lg font-medium">{position}</h3>
+
+						<p>
+							<span class="line-circle text-text-secondary">
+								{company} {period}
+							</span>
+							<br />
+							{description}
+						</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</aside>
+
+<style>
+	.line {
+		padding-left: 24px;
+		border-left: 1px solid var(--color-text-secondary);
+	}
+
+	.line-circle {
+		position: relative;
+	}
+
+	.line-circle::before {
+		content: '';
+		position: absolute;
+		left: -30px;
+		top: 50%;
+		width: 12px;
+		height: 12px;
+		background-color: var(--color-accent);
+		border-radius: 50%;
+		border: 2px solid var(--color-secondary);
+		transform: translateY(-50%);
+	}
+
+	.ripple-container:hover .ripple::after {
+		display: none;
+		animation-play-state: paused;
+	}
+
+	.ripple::after {
+		content: '';
+		position: absolute;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background-color: var(--color-green-400);
+		border-radius: 15px;
+		animation: ripple 6.5s infinite ease-in-out;
+		top: 0;
+		left: 0;
+	}
+
+	@keyframes ripple {
+		0% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		23% {
+			transform: scale(2);
+			opacity: 0;
+		}
+		23%,
+		100% {
+			transform: scale(2);
+			opacity: 0;
+		}
+	}
+</style>

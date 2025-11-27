@@ -1,0 +1,40 @@
+---
+export interface Props {
+	variants?: 'normal' | 'accent' | 'transparent';
+	href?: string;
+	size?: 'sm' | 'md';
+	attr?: Record<string, string>;
+	className?: string;
+}
+
+const { variants = 'normal', href = '#', size = 'md', attr, className = '' }: Props = Astro.props;
+
+// Class base for button
+const classBase = 'relative rounded-full flex items-center justify-center active:scale-95 transition-all ease-in-out duration-300';
+
+// Variants for button
+const variantsButton = {
+	normal: {
+		class: 'bg-tertiary text-text-secondary hover:bg-white hover:text-primary',
+	},
+	accent: {
+		class: 'bg-accent hover:bg-accent-hover hover:text-white',
+	},
+	transparent: {
+		class: 'bg-transparent text-text-secondary hover:bg-white hover:text-primary',
+	},
+};
+
+// Sizes for button
+const sizesObject = {
+	sm: 'pl-4 pr-5 text-base py-[10px] gap-3',
+	md: 'pl-5 pr-8 py-3 gap-4',
+};
+
+// Combine classes
+const classFinal = `${sizesObject[size]} ${variantsButton[variants].class} ${className}`;
+---
+
+<a href={href} class={`${classBase}  ${classFinal}`} {...attr}>
+	<slot />
+</a>

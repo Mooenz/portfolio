@@ -1,5 +1,7 @@
 ---
-import '@styles/global.css';
+import '@/styles/global.css';
+import seo from '@/constants/seo.ts';
+const { title, description, keywords, canonical, og } = seo;
 ---
 
 <!doctype html>
@@ -7,12 +9,45 @@ import '@styles/global.css';
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="" />
+		<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+		<link rel="canonical" href={canonical} />
+		<meta name="msapplication-TileColor" content="#f53b57" />
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="description" content={description} />
+		<meta name="keywords" content={keywords} />
 		<meta name="generator" content="" />
-		<title></title>
+		<meta name="author" content="Jose Manuel Montaño Saenz" />
+		<meta name="copyright" content="Mooenz" />
+		<meta name="robots" content="index,follow" />
+		<meta http-equiv="expires" content="43200" />
+		<link rel="manifest" href="/site.webmanifest" />
+		<title>{title}</title>
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content={og.type} />
+		<meta property="og:url" content={og.url} />
+		<meta property="og:image" content={og.image} />
+		<meta property="og:locale" content={og.locale} />
+
+		<!-- Twitter  -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={og.image} />
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:site" content="@MooenzDev" />
+
+		<!-- Google search console  -->
+		<meta name="google-site-verification" content="qAWFc7fQ6Gcr1d5vlc-TKfYgqz3_Yl7wGAT_NDUUdBA" />
+
+		<!-- Google tag (gtag.js) -->
+		<script defer async src={`https://www.googletagmanager.com/gtag/js?id=G-MNYDCMVBPH`}></script>
 	</head>
 	<body>
-		<slot />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
-
