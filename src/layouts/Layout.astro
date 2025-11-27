@@ -54,3 +54,20 @@ const { title, description, keywords, canonical, og } = seo;
 		</main>
 	</body>
 </html>
+
+<script>
+	// import init3DButton from '@/utilities/button3D.ts';
+	// import scrollItems from '@/utilities/scrollItems.ts';
+	// import animateLetters from '@/utilities/titleMain.ts';
+	// import fadeInSections from '@/utilities/fadeInGeneral.ts';
+
+	import { init3DButton, scrollItems, animateLetters, fadeInSections } from '@/utilities/animations.ts';
+
+	// Inicializar cuando el DOM esté listo
+	document.addEventListener('DOMContentLoaded', () => {
+		init3DButton('#btn-principal');
+		scrollItems('.project');
+		animateLetters('.title');
+		fadeInSections('.section', '.element');
+	});
+</script>
