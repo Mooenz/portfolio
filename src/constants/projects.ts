@@ -1,0 +1,41 @@
+import type { ImageMetadata } from 'astro';
+
+//Import images
+import imgIngesoftNet from '@/assets/images/web-ingeSoftNet.webp';
+
+interface Project {
+	readonly id: number;
+	readonly name: string;
+	readonly description: string;
+	readonly technologies: { name: string; icon: string; styles: string }[];
+	readonly repository: string;
+	readonly demo: string;
+	readonly image: ImageMetadata;
+}
+
+const projects: Project[] = [
+	{
+		id: 0,
+		name: 'Página web IngeSoftNet',
+		description: 'Desarrollo de una página web para una empresa de servicios de instalación, mantenimiento, soporte y venta de licencias del software Syscafé, utilizando Astro y Javascript para crear una experiencia de usuario moderna y receptiva.',
+		technologies: [
+			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
+			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/10' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/10' },
+		],
+		repository: 'https://github.com/Mooenz/IngeSoftNet',
+		demo: 'https://ingesoftnet.com/',
+		image: imgIngesoftNet,
+	},
+	// {
+	// 	id: 1,
+	// 	name: 'Ranking de países',
+	// 	description: 'El desafío consistía en desarrollar una aplicación para listar todos los países, con funcionalidades de filtrado, búsqueda, y visualización detallada de la información de cada país.',
+	// 	technologies: ['React', 'TypeScript', 'CSS'],
+	// 	repository: '',
+	// 	demo: '',
+	// 	image: '',
+	// },
+];
+
+export default projects;
