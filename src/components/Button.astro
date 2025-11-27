@@ -10,18 +10,18 @@ export interface Props {
 const { variants = 'normal', href = '#', size = 'md', attr, className = '' }: Props = Astro.props;
 
 // Class base for button
-const classBase = 'relative rounded-full flex items-center justify-center active:scale-95 transition-all ease-in-out duration-300';
+const classBase = 'relative rounded-full flex items-center justify-center active:scale-95';
 
 // Variants for button
 const variantsButton = {
 	normal: {
-		class: 'bg-tertiary text-text-secondary hover:bg-white hover:text-primary',
+		class: 'bg-tertiary text-text-secondary hover:bg-white hover:text-primary transition-all ease-in-out duration-300',
 	},
 	accent: {
-		class: 'bg-accent hover:bg-accent-hover hover:text-white',
+		class: 'bg-accent',
 	},
 	transparent: {
-		class: 'bg-transparent text-text-secondary hover:bg-white hover:text-primary',
+		class: 'bg-transparent text-text-secondary hover:bg-white hover:text-primary transition-all ease-in-out duration-300',
 	},
 };
 
@@ -32,9 +32,22 @@ const sizesObject = {
 };
 
 // Combine classes
-const classFinal = `${sizesObject[size]} ${variantsButton[variants].class} ${className}`;
+const classFinal = `btn-especial ${sizesObject[size]} ${variantsButton[variants].class} ${className}`;
 ---
 
 <a href={href} class={`${classBase}  ${classFinal}`} {...attr}>
 	<slot />
 </a>
+
+<style is:global>
+
+	.btn-especial svg {
+		transition:
+			transform 0.3s ease-in-out,
+			color 0.3s ease-in-out;
+	}
+
+	.btn-especial:hover svg {
+		transform: scale(1.5);
+	}
+</style>
