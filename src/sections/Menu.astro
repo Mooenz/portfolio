@@ -1,11 +1,39 @@
 ---
 import Button from '@/components/Button.astro';
 import IconDownload from '@/assets/icons/IconDownload.astro';
+import IconMoon from '@/assets/icons/iconMoon.astro';
+import IconSun from '@/assets/icons/iconSun.astro';
 ---
 
 <nav class="absolute lg:relative top-3 right-3 flex gap-4 items-center justify-end">
-	<Button href="#projects" variants="accent" size="md" attr={{ title: 'Enlace para descargar el curriculum' }}>
+	<button class="cursor-pointer active:scale-90 w-12 h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-tertiary" id="btn-toggle-theme" aria-label="Botón para cambiar el tema de la página">
+		<IconMoon width={20} height={20} class="icon text-text-secondary icon-moon" />
+		<IconSun width={20} height={20} class="icon text-text-secondary icon-sun" />
+	</button>
+
+	<Button href="/documents/Cv-José-M-Montaño.pdf" variants="accent" size="md" attr={{ title: 'Enlace para descargar el curriculum', id: 'btn-principal', download: '' }}>
 		<IconDownload width={16} height={16} />
 		<span>Curriculum</span>
 	</Button>
 </nav>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const btnToggleTheme = document.getElementById('btn-toggle-theme') as HTMLButtonElement;
+		const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+		const currentTheme = localStorage.getItem('theme');
+
+		if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
+			document.documentElement.classList.add('dark');
+		}
+
+		btnToggleTheme.addEventListener('click', () => {
+			document.documentElement.classList.toggle('dark');
+			if (document.documentElement.classList.contains('dark')) {
+				localStorage.setItem('theme', 'dark');
+			} else {
+				localStorage.setItem('theme', 'light');
+			}
+		});
+	});
+</script>

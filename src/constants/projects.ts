@@ -20,8 +20,8 @@ const projects: Project[] = [
 		description: 'Desarrollo de una página web para una empresa de servicios de instalación, mantenimiento, soporte y venta de licencias del software Syscafé, utilizando Astro y Javascript para crear una experiencia de usuario moderna y receptiva.',
 		technologies: [
 			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
-			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/10' },
-			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/10' },
+			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/20' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/20' },
 		],
 		repository: 'https://github.com/Mooenz/IngeSoftNet',
 		demo: 'https://ingesoftnet.com/',
@@ -31,10 +31,14 @@ const projects: Project[] = [
 	// 	id: 1,
 	// 	name: 'Ranking de países',
 	// 	description: 'El desafío consistía en desarrollar una aplicación para listar todos los países, con funcionalidades de filtrado, búsqueda, y visualización detallada de la información de cada país.',
-	// 	technologies: ['React', 'TypeScript', 'CSS'],
+	// 	technologies: [
+	// 		{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
+	// 		{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/10' },
+	// 		{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/10' },
+	// 	],
 	// 	repository: '',
 	// 	demo: '',
-	// 	image: '',
+	// 	image: imgIngesoftNet,
 	// },
 ];
 

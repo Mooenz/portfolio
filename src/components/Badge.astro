@@ -8,6 +8,6 @@ const { className = '' }: Props = Astro.props;
 const classBase = 'flex items-center gap-2 rounded-full px-3 py-1 text-xs';
 ---
 
-<span class={`${classBase} ${className}`}>
+<span class={`${classBase} ${className} badge`}>
 	<slot />
 </span>

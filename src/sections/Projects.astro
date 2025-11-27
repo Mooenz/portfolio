@@ -21,11 +21,11 @@ const iconMap: Record<string, AstroComponentFactory> = {
 ---
 
 <section class="lg:mt-9">
-	<h2 class="text-2xl font-bold mb-6">Proyectos</h2>
+	<h2 class="title text-2xl font-bold mb-6">Proyectos personales</h2>
 	<ul class="flex flex-col gap-6 lg:mt-15">
 		{
 			projects.map(({ name, description, technologies, repository, demo, image }) => (
-				<li class="flex flex-col md:flex-row lg:flex-col xl:flex-row xl:items-center gap-8 group">
+				<li class="project flex flex-col md:flex-row lg:flex-col xl:flex-row xl:items-center gap-8 group">
 					<figure class="relative z-10 line-gradient w-full md:min-w-80 md:max-w-80 lg:min-w-150 lg:max-w-150 xl:min-w-80 xl:max-w-80 h-[210px] overflow-hidden pl-8 pt-8 rounded-xl">
 						<Image src={image} alt={name} width={image.width} height={image.height} title={`Imagen ${name}`} loading="eager" class="w-full h-auto object-contain rounded-tl-xl group-hover:scale-105 transition-transform duration-300 ease-in-out" />
 					</figure>
@@ -37,7 +37,7 @@ const iconMap: Record<string, AstroComponentFactory> = {
 									const IconComponent = iconMap[icon];
 									return (
 										<Badge className={`user-select-none ${styles}`}>
-											{IconComponent && <IconComponent width={12} height={12} class="inline-block" />}
+											{IconComponent && <IconComponent width={12} height={12} class="inline-flex" />}
 											{name}
 										</Badge>
 									);
