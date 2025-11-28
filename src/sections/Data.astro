@@ -8,13 +8,13 @@ import LogoLinkedIn from '@/assets/icons/LogoLinkedIn.astro';
 import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 ---
 
-<aside class="flex flex-col aside w-full overflow-x-auto lg:max-w-108 sm:p-6 sm-pt-6 pt-22 p-3 lg:py-8 pb-8 lg:bg-secondary items-stretch group">
+<aside class="flex flex-col aside w-full overflow-x-auto lg:max-w-108 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 lg:bg-secondary items-stretch group">
 	<!-- Personal information -->
 	<div class="section">
 		<figure class="ripple-container relative w-12 lg:w-20 mb-6 aspect-square bg-tertiary rounded-full">
 			<Image src={avatar} alt="Avatar" width="127" height="127" title={`Avatar de ${personal.name}`} class="rounded-full w-30" />
 
-			<div class="ripple pointer-events-none absolute z-100 top-[70%] left-[calc(100%-7px)] lg:left-[calc(100%-14px)] flex items-center bg-green-400/10 lg:bg-green-400 text-[10px] leading-[1em] whitespace-nowrap px-2 rounded-full h-[15px] lg:w-[15px] lg:group-hover:w-[142px] transition-all duration-300 ease-in-out group-hover:bg-green-400/10 group-hover:left-[calc(100%-7px)]">
+			<div class="ripple pointer-events-none absolute z-100 -translate-y-1/2 top-1/2 left-[calc(100%+12px)] lg:top-[70%] lg:translate-0 lg:left-[calc(100%-14px)] flex items-center bg-green-400/10 lg:bg-green-400 text-[10px] leading-[1em] whitespace-nowrap px-2 rounded-full h-[15px] lg:w-[15px] lg:group-hover:w-[142px] transition-all duration-300 ease-in-out group-hover:bg-green-400/10 lg:group-hover:left-[calc(100%-7px)]">
 				<span class="lg:opacity-0 text-green-400 group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out group-hover:delay-300">Disponible para trabajar</span>
 			</div>
 		</figure>
