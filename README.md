@@ -59,7 +59,7 @@ npm run build
 ---
 
 ## 📂 Estructura del Proyecto
-
+```md
 /
 ├── public/
 ├── src/
@@ -73,6 +73,7 @@ npm run build
 ├── package.json
 ├── astro.config.mjs
 └── tsconfig.json
+```
 
 - `public/`: Archivos estáticos como imágenes y fuentes.
 - `src/components/`: Componentes reutilizables de la interfaz.
