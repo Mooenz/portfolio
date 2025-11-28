@@ -15,13 +15,13 @@ const classBase = 'relative rounded-full flex items-center justify-center active
 // Variants for button
 const variantsButton = {
 	normal: {
-		class: 'bg-tertiary text-text-secondary hover:bg-white hover:text-primary transition-all ease-in-out duration-300',
+		class: 'bg-tertiary text-text-secondary hover:bg-text hover:text-primary transition-all ease-in-out duration-300',
 	},
 	accent: {
 		class: 'bg-accent text-white',
 	},
 	transparent: {
-		class: 'bg-transparent text-text-secondary hover:bg-white hover:text-primary transition-all ease-in-out duration-300',
+		class: 'bg-transparent text-text-secondary hover:bg-text hover:text-primary transition-all ease-in-out duration-300',
 	},
 };
 
@@ -42,8 +42,8 @@ const classFinal = `btn-especial ${sizesObject[size]} ${variantsButton[variants]
 <style is:global>
 	.btn-especial svg {
 		transition:
-			transform 0.3s ease-in-out,
-			color 0.3s ease-in-out;
+			transform 0.5s ease-in-out,
+			color 0.5s ease-in-out;
 	}
 
 	.btn-especial:hover svg {
