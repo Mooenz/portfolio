@@ -1,7 +1,7 @@
 import type { ImageMetadata } from 'astro';
 
 //Import images
-import imgIngesoftNet from '@/assets/images/web-ingeSoftNet.webp';
+import imgIngeSoftNet from '@/assets/images/web-ingeSoftNet.webp';
 
 interface Project {
 	readonly id: number;
@@ -17,7 +17,7 @@ const projects: Project[] = [
 	{
 		id: 0,
 		name: 'Página web IngeSoftNet',
-		description: 'Desarrollo de una página web para una empresa de servicios de instalación, mantenimiento, soporte y venta de licencias del software Syscafé, utilizando Astro y Javascript para crear una experiencia de usuario moderna y receptiva.',
+		description: 'Desarrollé la web de IngeSoftNet que ofrece servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé, utilizando Astro, Tailwind CSS y Javascript para crear una experiencia de usuario moderna y receptiva.',
 		technologies: [
 			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
 			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/20' },
@@ -25,7 +25,7 @@ const projects: Project[] = [
 		],
 		repository: 'https://github.com/Mooenz/IngeSoftNet',
 		demo: 'https://ingesoftnet.com/',
-		image: imgIngesoftNet,
+		image: imgIngeSoftNet,
 	},
 	// {
 	// 	id: 1,
