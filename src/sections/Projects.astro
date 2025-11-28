@@ -1,89 +1,11 @@
 ---
-import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import projects from '@/constants/projects.ts';
-import Button from '@/components/Button.astro';
-import Badge from '@/components/Badge.astro';
-import Image from 'astro/components/Image.astro';
-import Vector from '@/assets/icons/Vector.astro';
-import LogoGitHub from '@/assets/icons/LogoGitHub.astro';
-
-// Import icons
-import IconAstro from '@/assets/icons/IconAstro.astro';
-import IconJavascript from '@/assets/icons/IconJavascript.astro';
-import IconTailwind from '@/assets/icons/IconTailwindcss.astro';
-
-// Crea un mapa de iconos
-const iconMap: Record<string, AstroComponentFactory> = {
-	astro: IconAstro,
-	javascript: IconJavascript,
-	tailwind: IconTailwind,
-};
+import Project from '@/components/Project.astro';
 ---
 
 <section class="lg:mt-9">
 	<h2 class="title text-2xl font-bold mb-6">Proyectos personales</h2>
 	<ul class="flex flex-col gap-6 lg:mt-15">
-		{
-			projects.map(({ name, description, technologies, repository, demo, image }) => (
-				<li class="project flex flex-col md:flex-row lg:flex-col xl:flex-row xl:items-center gap-8 group">
-					<figure class="relative z-10 line-gradient w-full md:min-w-80 md:max-w-80 lg:min-w-150 lg:max-w-150 xl:min-w-80 xl:max-w-80 h-[210px] overflow-hidden pl-8 pt-8 rounded-xl">
-						<Image src={image} alt={name} width={image.width} height={image.height} title={`Imagen ${name}`} loading="eager" class="w-full h-auto object-contain rounded-tl-xl group-hover:scale-105 transition-transform duration-300 ease-in-out" />
-					</figure>
-					<div>
-						<h3 class="text-xl font-medium">{name}</h3>
-						{technologies && (
-							<div class="flex flex-wrap items-center gap-2 mt-4 mb-5">
-								{technologies.map(({ name, icon, styles }) => {
-									const IconComponent = iconMap[icon];
-									return (
-										<Badge className={`user-select-none ${styles}`}>
-											{IconComponent && <IconComponent width={12} height={12} class="inline-flex" />}
-											{name}
-										</Badge>
-									);
-								})}
-							</div>
-						)}
-
-						<p class="mt-2 mb-6">{description}</p>
-						<div class="flex flex-wrap gap-2 lg:gap-4">
-							<Button href={repository} variants="transparent" size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir al repositorio del proyecto' }}>
-								<LogoGitHub width={16} height={16} />
-								<span>Repositorio</span>
-							</Button>
-							<Button href={demo} variants="normal" size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ver la vista previa del proyecto' }}>
-								<Vector width={16} height={16} />
-								<span>Vista previa</span>
-							</Button>
-						</div>
-					</div>
-				</li>
-			))
-		}
+		{projects.map(({ name, description, technologies, repository, demo, image }) => <Project image={image} name={name} description={description} technologies={technologies} repository={repository} demo={demo} />)}
 	</ul>
 </section>
-
-<style>
-	.line-gradient::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		filter: blur(10px);
-		z-index: -1;
-		background-color: #bbb;
-		/* background: linear-gradient(0deg, #fdedee 0%, #fbd1d4 20%, rgba(248, 164, 170, 1) 60%, rgba(246, 118, 131, 1) 80%, rgba(245, 59, 87, 1) 100%); */
-		/* animation: girar 10s linear infinite; */
-	}
-
-	/* @keyframes girar {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	} */
-</style>

@@ -6,7 +6,7 @@
 	--color-tertiary: #e0e0e0;
 	--color-accent: #f53b57;
 	--color-accent-hover: #9e182f;
-	--color-dark: #181919;
+	--color-text: #181919;
 	--color-tailwindcss: #06b6d4;
 	--color-javascript: #f7df1e;
 	--color-astro: #bc52ee;
@@ -30,7 +30,7 @@ body {
 	font-size-adjust: 0.56;
 	background-color: var(--color-primary);
 	color: var(--color-text);
-	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 p,
@@ -42,7 +42,7 @@ textarea,
 select,
 label,
 aside {
-	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
@@ -125,6 +125,25 @@ aside {
 	position: absolute;
 	opacity: 0;
 	transform: scale(0);
+}
+
+/* Hover project */
+.project .patter {
+	animation: diagonalSlide 3s linear infinite;
+	animation-play-state: paused;
+}
+
+.project:hover .patter {
+	animation-play-state: running;
+}
+
+@keyframes diagonalSlide {
+	0% {
+		transform: translate(0, 0);
+	}
+	100% {
+		transform: translate(-24px, -24px);
+	}
 }
 
 /* Scrollbar styles */
