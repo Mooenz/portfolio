@@ -2,6 +2,10 @@
 import '@/styles/global.css';
 import seo from '@/constants/seo.ts';
 const { title, description, keywords, canonical, og } = seo;
+
+// En la parte del script de Astro, genera las fechas
+const currentYear = new Date().getFullYear();
+const currentDate = new Date().toISOString();
 ---
 
 <!doctype html>
@@ -31,14 +35,14 @@ const { title, description, keywords, canonical, og } = seo;
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content={og.type} />
 		<meta property="og:url" content={og.url} />
-		<meta property="og:image" content={og.image} />
+		<meta property="og:image" content="/images/og-image.webp" />
 		<meta property="og:locale" content={og.locale} />
 
 		<!-- Twitter  -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={og.image} />
+		<meta name="twitter:image" content="/images/og-image.webp" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@MooenzDev" />
 
@@ -49,75 +53,101 @@ const { title, description, keywords, canonical, og } = seo;
 		<script defer async src={`https://www.googletagmanager.com/gtag/js?id=G-MNYDCMVBPH`}></script>
 
 		<!-- Datos estructurados del sitio -->
-		<script type="application/ld+json">
-				{JSON.stringify({
-						"@context": "https://schema.org",
-						"@type": "Person",
-						"name": "José Manuel Montaño Saenz",
-						"alternateName": "Mooenz",
-						"url": "https://mooenz.me/",
-						"image": `${og.image}`,
-						"description": description,
-						"jobTitle": "Desarrollador Full Stack",
-						"worksFor": {
-								"@type": "Organization",
-								"name": "Freelance"
-						},
-						"address": {
-								"@type": "PostalAddress",
-								"addressLocality": "Ibagué",
-								"addressRegion": "Tolima",
-								"addressCountry": "CO"
-						},
-						"sameAs": [
-								"https://twitter.com/MooenzDev",
-								"https://github.com/mooenz",
-								"https://www.linkedin.com/in/mooenz/"
-						],
-						"knowsAbout": [
-								"Desarrollo Web",
-								"JavaScript",
-								"TypeScript",
-								"React",
-								"Node.js",
-								"Astro"
-						]
-				})}
-		</script>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'Person',
+				name: 'José Manuel Montaño Saenz',
+				alternateName: 'Mooenz',
+				url: 'https://mooenz.me/',
+				image: {
+					'@type': 'ImageObject',
+					url: 'https://mooenz.me/images/og-image.webp',
+					width: 1200,
+					height: 630,
+				},
+				description: description,
+				jobTitle: 'Desarrollador Frontend',
+				worksFor: {
+					'@type': 'Organization',
+					name: 'Freelance',
+				},
+				address: {
+					'@type': 'PostalAddress',
+					addressLocality: 'Ibagué',
+					addressRegion: 'Tolima',
+					addressCountry: 'CO',
+				},
+				sameAs: ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'],
+				knowsAbout: ['Desarrollo Web', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'Astro'],
+			})}
+		/>
 
 		<!-- Datos estructurados WebSite -->
-		<script type="application/ld+json">
-				{JSON.stringify({
-						"@context": "https://schema.org",
-						"@type": "WebSite",
-						"name": "José Manuel Montaño Saenz - Portfolio",
-						"url": "https://mooenz.me/",
-						"description": description,
-						"author": {
-								"@type": "Person",
-								"name": "José Manuel Montaño Saenz"
-						},
-						"potentialAction": {
-								"@type": "SearchAction",
-								"target": "https://mooenz.me/?s={search_term_string}",
-								"query-input": "required name=search_term_string"
-						}
-				})}
-		</script>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'WebSite',
+				name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
+				alternateName: 'Mooenz Portfolio',
+				url: 'https://mooenz.me/',
+				description: description,
+				inLanguage: 'es-CO',
+				author: {
+					'@type': 'Person',
+					name: 'José Manuel Montaño Saenz',
+					url: 'https://mooenz.me/',
+				},
+				copyrightYear: currentYear,
+				potentialAction: {
+					'@type': 'SearchAction',
+					target: {
+						'@type': 'EntryPoint',
+						urlTemplate: 'https://mooenz.me/?s={search_term_string}',
+					},
+					'query-input': 'required name=search_term_string',
+				},
+			})}
+		/>
 
 		<!-- Breadcrumb -->
-		<script type="application/ld+json">
-				{JSON.stringify({
-						"@context": "https://schema.org",
-						"@type": "BreadcrumbList",
-						"itemListElement": [{
-								"@type": "ListItem",
-								"position": 1,
-								"name": "Inicio",
-								"item": "https://mooenz.me/"
-						}]
-				})}
-		</script>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{
+						'@type': 'ListItem',
+						position: 1,
+						name: 'Inicio',
+						item: {
+							'@type': 'WebPage',
+							'@id': 'https://mooenz.me/',
+							url: 'https://mooenz.me/',
+						},
+					},
+				],
+			})}
+		/>
+
+		<!-- Datos estructurados ProfilePage -->
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify({
+				'@context': 'https://schema.org',
+				'@type': 'ProfilePage',
+				mainEntity: {
+					'@type': 'Person',
+					name: 'José Manuel Montaño Saenz',
+					alternateName: 'Mooenz',
+				},
+				dateCreated: '2024-01-01T00:00:00Z',
+				dateModified: currentDate,
+			})}
+		/>
 
 		<!-- Script inline ANTES de cargar los estilos -->
 		<script is:inline>
