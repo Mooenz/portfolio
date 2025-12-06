@@ -27,12 +27,14 @@ const { image, name, description, technologies, repository, demo } = Astro.props
 import IconAstro from '@/assets/icons/IconAstro.astro';
 import IconJavascript from '@/assets/icons/IconJavascript.astro';
 import IconTailwind from '@/assets/icons/IconTailwindcss.astro';
+import IconTypescript from '@/assets/icons/IconTypescript.astro';
 
 // Crea un mapa de iconos
 const iconMap: Record<string, AstroComponentFactory> = {
 	astro: IconAstro,
 	javascript: IconJavascript,
 	tailwind: IconTailwind,
+	typescript: IconTypescript,
 };
 ---
 
