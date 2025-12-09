@@ -20,20 +20,14 @@ import IconSun from '@/assets/icons/iconSun.astro';
 <script>
 	document.addEventListener('DOMContentLoaded', () => {
 		const btnToggleTheme = document.getElementById('btn-toggle-theme') as HTMLButtonElement;
-		const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-		const currentTheme = localStorage.getItem('theme');
 
-		if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
-			document.documentElement.classList.add('dark');
+		if (btnToggleTheme) {
+			btnToggleTheme.addEventListener('click', () => {
+				document.documentElement.classList.toggle('dark');
+
+				const isDark = document.documentElement.classList.contains('dark');
+				localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			});
 		}
-
-		btnToggleTheme.addEventListener('click', () => {
-			document.documentElement.classList.toggle('dark');
-			if (document.documentElement.classList.contains('dark')) {
-				localStorage.setItem('theme', 'dark');
-			} else {
-				localStorage.setItem('theme', 'light');
-			}
-		});
 	});
 </script>

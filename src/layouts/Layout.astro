@@ -153,14 +153,12 @@ const currentDate = new Date().toISOString();
 
 		<!-- Script inline ANTES de cargar los estilos -->
 		<script is:inline>
-			(function () {
-				const theme = localStorage.getItem('theme');
-				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+			const currentTheme = localStorage.getItem('theme');
 
-				if (theme === 'dark' || (!theme && prefersDark)) {
-					document.documentElement.classList.add('dark');
-				}
-			})();
+			if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
+				document.documentElement.classList.add('dark');
+			}
 		</script>
 	</head>
 	<body>
