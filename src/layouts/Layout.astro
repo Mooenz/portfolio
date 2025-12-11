@@ -153,13 +153,62 @@ const currentDate = new Date().toISOString();
 
 		<!-- Script inline ANTES de cargar los estilos -->
 		<script is:inline>
+			// Prevenir transiciones en la carga inicial
+			document.documentElement.classList.add('no-transition');
+
 			const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 			const currentTheme = localStorage.getItem('theme');
 
 			if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
 				document.documentElement.classList.add('dark');
 			}
+
+			// Habilitar transiciones después del primer render
+			window.addEventListener('load', () => {
+				// Usar requestAnimationFrame para asegurar que los estilos se aplicaron
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						document.documentElement.classList.remove('no-transition');
+					});
+				});
+			});
 		</script>
+
+		<!-- Estilos críticos para prevenir FOUC -->
+		<style is:inline>
+			/* Ocultar elementos animados hasta que GSAP los prepare */
+			.title,
+			.project,
+			.section .element {
+				visibility: hidden;
+			}
+
+			/* Mostrar cuando GSAP esté listo */
+			.gsap-ready .title,
+			.gsap-ready .project,
+			.gsap-ready .section .element {
+				visibility: visible;
+			}
+
+			/* Desactivar transiciones durante carga inicial */
+			.no-transition,
+			.no-transition *,
+			.no-transition *::before,
+			.no-transition *::after {
+				transition: none !important;
+			}
+		</style>
+
+		<!-- Fallback para usuarios sin JavaScript -->
+		<noscript>
+			<style>
+				.title,
+				.project,
+				.section .element {
+					visibility: visible !important;
+				}
+			</style>
+		</noscript>
 	</head>
 	<body>
 		<main>
@@ -173,9 +222,15 @@ const currentDate = new Date().toISOString();
 
 	// Inicializar cuando el DOM esté listo
 	document.addEventListener('DOMContentLoaded', () => {
+		// Inicializar animaciones
 		init3DButton('#btn-principal');
 		scrollItems('.project');
 		animateLetters('.title');
 		fadeInSections('.section', '.element');
+
+		// Marcar que GSAP está listo para mostrar los elementos
+		requestAnimationFrame(() => {
+			document.documentElement.classList.add('gsap-ready');
+		});
 	});
 </script>

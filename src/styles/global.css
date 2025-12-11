@@ -11,7 +11,7 @@
 	--color-javascript: #f7df1e;
 	--color-astro: #bc52ee;
 	--color-typescript: #3178c6;
-	
+
 	--color-line-lateral: #b6b6b6;
 	--color-text-secondary: #2b2e2e;
 }
@@ -32,18 +32,23 @@ body {
 	font-size-adjust: 0.56;
 	background-color: var(--color-primary);
 	color: var(--color-text);
+}
+
+/* Transiciones solo después de la carga inicial */
+html:not(.no-transition) body,
+html:not(.no-transition) {
 	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-p,
-a,
-li,
-button,
-input,
-textarea,
-select,
-label,
-aside {
+html:not(.no-transition) p,
+html:not(.no-transition) a,
+html:not(.no-transition) li,
+html:not(.no-transition) button,
+html:not(.no-transition) input,
+html:not(.no-transition) textarea,
+html:not(.no-transition) select,
+html:not(.no-transition) label,
+html:not(.no-transition) aside {
 	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
