@@ -1,0 +1,61 @@
+cv:
+  name: 'Jose Manuel Montaño Saenz'
+  title: 'Desarrollador Frontend'
+  location: 'Colombia'
+  email: 'joss92821@hotmail.com'
+  website: 'https://www.mooenz.me'
+  social_networks:
+    - network: 'LinkedIn'
+      username: 'mooenz'
+    - network: 'GitHub'
+      username: 'Mooenz'
+  sections:
+    perfil_profesional:
+      - 'Desarrollador Frontend con experiencia en la creación de sitios web modernos y optimizados usando Astro, Tailwind CSS y JavaScript/TypeScript. Enfocado en rendimiento, SEO técnico y buenas prácticas de maquetación. Experiencia trabajando con equipos de diseño y proyectos para clientes reales.'
+    education:
+      - institution: Universidad Cooperativa de Colombia
+        area: Ingeniería de sistemas
+        degree: Ing.
+        grade: Ingeniero de sistemas
+        date: 2017
+        start_date: 2010-01
+        end_date: 2014-12
+        location: Ibagué, Tolima, Colombia
+    experiencia:
+      - company: 'Estrategia Segura'
+        position: 'Desarrollador Web'
+        date: 'Julio 2022 - Octubre 2025'
+        start_date: '2022-07'
+        end_date: '2025-10'
+        summary: 'Desarrollo y maquetación de sitios web en HTML, CSS y JavaScript, con énfasis en rendimiento y compatibilidad entre navegadores. Coordinación con diseñadores, uso de librerías basadas en jQuery y maquetación de correos electrónicos.'
+        highlights:
+          - 'Maquetación de sitios optimizados para SEO y dispositivos móviles'
+          - 'Trabajo colaborativo con equipos de diseño'
+          - 'Implementación de funcionalidades dinámicas'
+    proyectos:
+      - name: 'Página web IngeSoftNet'
+        summary: 'Desarrollo del sitio web corporativo de IngeSoftNet para la promoción de servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé.'
+        stack:
+          - 'Astro'
+          - 'Tailwind CSS'
+          - 'JavaScript'
+        repository: 'https://github.com/Mooenz/IngeSoftNet'
+        demo: 'https://ingesoftnet.com/'
+      - name: 'Patio La Boca Restaurant - Carta Digital'
+        summary: 'Carta digital bilingüe (ES/EN) optimizada para móviles, desarrollada con Astro, Tailwind CSS y TypeScript. Incluye animaciones con GSAP y estructura de datos por categorías.'
+        stack:
+          - 'Astro'
+          - 'Tailwind CSS'
+          - 'TypeScript'
+          - 'GSAP'
+        repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant'
+        demo: 'https://patio-la-boca.vercel.app/'
+    habilidades_tecnicas:
+      - label: Lenguajes
+        details: HTML, CSS, JavaScript y TypeScript
+      - label: frameworks y librerias
+        details: Astro, Tailwind CSS, GSAP, jQuery, React.js y Astro.js
+      - label: herramientas
+        details: Git, GitHub, Lighthouse, Figma y Illustrator
+      - label: buenas practicas
+        details: SEO técnico, Responsive design, Optimización de performanc y Accesibilidad básica
