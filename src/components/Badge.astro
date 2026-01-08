@@ -11,3 +11,11 @@ const classBase = 'flex items-center gap-2 rounded-full px-3 py-1 text-xs';
 <span class={`${classBase} ${className} badge`}>
 	<slot />
 </span>
+
+<style>
+	.badge {
+		transition:
+			background-color 0.3s ease-in-out,
+			color 0.3s ease-in-out;
+	}
+</style>

@@ -8,7 +8,7 @@ interface Project {
 	readonly id: number;
 	readonly name: string;
 	readonly description: string;
-	readonly technologies: { name: string; icon: string; styles: string }[];
+	readonly technologies: { name: string; icon: string; styles: string; }[];
 	readonly repository: string;
 	readonly demo: string;
 	readonly image: ImageMetadata;
@@ -21,8 +21,8 @@ const projects: Project[] = [
 		description: 'Desarrollé la web de IngeSoftNet que ofrece servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé, utilizando Astro, Tailwind CSS y Javascript para crear una experiencia de usuario moderna y receptiva.',
 		technologies: [
 			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
-			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/20' },
-			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/20' },
+			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/20 dark:text-javascript' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/10' },
 		],
 		repository: '',
 		demo: 'https://ingesoftnet.com/',
@@ -34,8 +34,8 @@ const projects: Project[] = [
 		description: 'Carta digital bilingüe (es/en) para Patio La Boca Restaurant, creada con Astro, Tailwind CSS y TypeScript, con animaciones GSAP y datos estructurados por categorías para un menú interactivo y responsivo.',
 		technologies: [
 			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
-			{ name: 'TypeScript', icon: 'typescript', styles: 'text-typescript bg-typescript/15' },
-			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/20' },
+			{ name: 'TypeScript', icon: 'typescript', styles: 'text-typescript bg-typescript/10' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/10' },
 		],
 		repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant',
 		demo: 'https://patio-la-boca.vercel.app/',

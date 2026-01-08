@@ -8,13 +8,14 @@
 	--color-accent-hover: #9e182f;
 	--color-text: #181919;
 	--color-tailwindcss: #06b6d4;
-	--color-javascript: #f7df1e;
+	--color-javascript: #ffc107;
 	--color-astro: #bc52ee;
 	--color-typescript: #3178c6;
-
 	--color-line-lateral: #b6b6b6;
 	--color-text-secondary: #2b2e2e;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 .dark {
 	--color-primary: #1a1c1c;
@@ -22,6 +23,7 @@
 	--color-tertiary: #2b2e2e;
 	--color-text: #fff;
 	--color-text-secondary: #b6b6b6;
+	--color-javascript: #f7df1e;
 }
 
 html,
@@ -36,10 +38,7 @@ body {
 
 /* Transiciones solo después de la carga inicial */
 html:not(.no-transition) body,
-html:not(.no-transition) {
-	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-}
-
+html:not(.no-transition),
 html:not(.no-transition) p,
 html:not(.no-transition) a,
 html:not(.no-transition) li,
@@ -49,7 +48,7 @@ html:not(.no-transition) textarea,
 html:not(.no-transition) select,
 html:not(.no-transition) label,
 html:not(.no-transition) aside {
-	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, scale 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
