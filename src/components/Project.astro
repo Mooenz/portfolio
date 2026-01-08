@@ -38,7 +38,7 @@ const iconMap: Record<string, AstroComponentFactory> = {
 };
 ---
 
-<li class="project flex flex-col md:flex-row lg:flex-col xl:flex-row xl:items-center gap-8 group">
+<article class="project flex flex-col md:flex-row lg:flex-col xl:flex-row xl:items-center gap-8 group">
 	<figure class="relative z-10 line-gradient w-full md:min-w-80 md:max-w-80 lg:min-w-150 lg:max-w-150 xl:min-w-80 xl:max-w-80 h-[210px] overflow-hidden pl-6 sm:pl-8 pt-8 rounded-xl">
 		<Image src={image} alt={name} width={image.width} height={image.height} title={`Imagen ${name}`} loading="eager" class="w-full h-auto object-contain rounded-tl-xl group-hover:scale-105 transition-transform duration-300 ease-in-out" />
 
@@ -64,17 +64,21 @@ const iconMap: Record<string, AstroComponentFactory> = {
 
 		<p class="mt-2 mb-6">{description}</p>
 		<div class="flex flex-wrap gap-2 lg:gap-4">
-			<Button href={repository} variants="transparent" size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir al repositorio del proyecto' }}>
-				<LogoGitHub width={16} height={16} />
-				<span>Repositorio</span>
-			</Button>
+			{
+				repository ? (
+					<Button href={repository} variants="transparent" size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir al repositorio del proyecto' }}>
+						<LogoGitHub width={16} height={16} />
+						<span>Repositorio</span>
+					</Button>
+				) : null
+			}
 			<Button href={demo} variants="normal" size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ver la vista previa del proyecto' }}>
 				<Vector width={16} height={16} />
 				<span>Vista previa</span>
 			</Button>
 		</div>
 	</div>
-</li>
+</article>
 
 <style>
 	.line-gradient::before {

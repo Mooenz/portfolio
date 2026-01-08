@@ -24,7 +24,7 @@ const projects: Project[] = [
 			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/20' },
 			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/20' },
 		],
-		repository: 'https://github.com/Mooenz/IngeSoftNet',
+		repository: '',
 		demo: 'https://ingesoftnet.com/',
 		image: imgIngeSoftNet,
 	},
