@@ -8,9 +8,9 @@ import LogoLinkedIn from '@/assets/icons/LogoLinkedIn.astro';
 import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 ---
 
-<aside class="ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-108 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 lg:bg-secondary items-stretch group overflow-hidden">
+<aside class="section ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-108 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 lg:bg-secondary items-stretch group overflow-hidden">
 	<!-- Personal information -->
-	<div class="section">
+	<div class="">
 		<figure class="relative w-12 lg:w-20 mb-6 aspect-square bg-tertiary rounded-full">
 			<Image src={avatar} alt="Avatar" width="127" height="127" title={`Avatar de ${personal.name}`} class="rounded-full w-30" />
 
@@ -40,8 +40,8 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 
 	<!-- Experience -->
 	<div class="order-2">
-		<h2 class="title text-2xl line-clamp-1 font-semibold mt-7 lg:mt-14 mb-4 lg:mb-7">Experiencia laboral</h2>
-		<ul class="section line list-inside space-y-8">
+		<h2 class="element text-2xl line-clamp-1 font-semibold mt-7 lg:mt-14 mb-4 lg:mb-7">Experiencia laboral</h2>
+		<ul class="line list-inside space-y-8">
 			{
 				experience.map(({ position, description, period, company }) => (
 					<li class="element">
