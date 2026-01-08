@@ -17,7 +17,7 @@ interface Project {
 const projects: Project[] = [
 	{
 		id: 0,
-		name: 'Página web IngeSoftNet',
+		name: 'Página web de IngeSoftNet',
 		description: 'Desarrollé la web de IngeSoftNet que ofrece servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé, utilizando Astro, Tailwind CSS y Javascript para crear una experiencia de usuario moderna y receptiva.',
 		technologies: [
 			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
@@ -30,7 +30,7 @@ const projects: Project[] = [
 	},
 	{
 		id: 1,
-		name: 'Patio La Boca Restaurant - Carta Digital',
+		name: 'Carta digital de Patio La Boca Restaurant',
 		description: 'Carta digital bilingüe (es/en) para Patio La Boca Restaurant, creada con Astro, Tailwind CSS y TypeScript, con animaciones GSAP y datos estructurados por categorías para un menú interactivo y responsivo.',
 		technologies: [
 			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
