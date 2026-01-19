@@ -15,8 +15,6 @@
 	--color-text-secondary: #2b2e2e;
 }
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 .dark {
 	--color-primary: #1a1c1c;
 	--color-secondary: #202222;
@@ -25,6 +23,8 @@
 	--color-text-secondary: #b6b6b6;
 	--color-javascript: #f7df1e;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 html,
 body {

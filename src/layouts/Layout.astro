@@ -87,6 +87,21 @@ const profilePageSchema = {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- FOUC prevention: apply theme class BEFORE any CSS loads -->
+		<script is:inline>
+			(function () {
+				var d = document.documentElement;
+				d.classList.add('no-transition');
+				var theme = localStorage.getItem('theme');
+				var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+				if (theme === 'dark' || (!theme && prefersDark)) {
+					d.classList.add('dark');
+				} else {
+					d.classList.remove('dark');
+				}
+			})();
+		</script>
 		<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
 		<link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
 		<link rel="shortcut icon" href="images/favicon.ico" />
@@ -127,7 +142,7 @@ const profilePageSchema = {
 		<meta name="twitter:site" content="@MooenzDev" />
 
 		<!-- Inline CSS to reduce flash (match background to user's OS preference quickly) -->
-		<style>
+		<!-- <style>
 			:root {
 				color-scheme: light dark;
 				--color-primary: #ffffff;
@@ -160,24 +175,20 @@ const profilePageSchema = {
 				}
 			}
 
-			.no-theme-transitions * {
+			/* .dark variables inline so toggling the class updates immediately */
+			.dark {
+				--color-primary: #1a1c1c;
+				--color-secondary: #202222;
+				--color-tertiary: #2b2e2e;
+				--color-text: #ffffff;
+				--color-text-secondary: #b6b6b6;
+				--color-javascript: #f7df1e;
+			}
+
+			.no-transition * {
 				transition: none !important;
 			}
-		</style>
-
-		<script is:inline>
-			(function () {
-				try {
-					document.documentElement.classList.add('no-theme-transitions');
-					const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-					const currentTheme = localStorage.getItem('theme');
-
-					if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
-						document.documentElement.classList.add('dark');
-					}
-				} catch (e) {}
-			})();
-		</script>
+		</style> -->
 
 		<!-- Google search console  -->
 		<meta name="google-site-verification" content="qAWFc7fQ6Gcr1d5vlc-TKfYgqz3_Yl7wGAT_NDUUdBA" />
@@ -203,7 +214,7 @@ const profilePageSchema = {
 		// Marcar que GSAP está listo para mostrar los elementos
 		requestAnimationFrame(() => {
 			document.documentElement.classList.add('gsap-ready');
-			document.documentElement.classList.remove('no-theme-transitions');
+			document.documentElement.classList.remove('no-transition');
 		});
 	});
 </script>
