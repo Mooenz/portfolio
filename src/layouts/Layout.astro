@@ -87,14 +87,32 @@ const profilePageSchema = {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script is:inline>
-			const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-			const currentTheme = localStorage.getItem('theme');
 
-			if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
-				document.documentElement.classList.add('dark');
-			}
+		<!-- Color scheme hint -->
+		<meta name="color-scheme" content="light dark" />
+
+		<script is:inline>
+			(function () {
+				const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				const currentTheme = localStorage.getItem('theme');
+				const theme = currentTheme || (userPrefersDark ? 'dark' : 'light');
+
+				document.documentElement.classList.add(theme);
+			})();
 		</script>
+
+		<!-- CSS inline para prevenir flash -->
+		<style is:inline>
+			html {
+				background-color: #ffffff;
+				color: #1a1c1c;
+			}
+
+			html.dark {
+				background-color: #1a1c1c;
+				color: #ffffff;
+			}
+		</style>
 
 		<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
 		<link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
@@ -134,55 +152,6 @@ const profilePageSchema = {
 		<meta name="twitter:image" content="/images/og-image.webp" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@MooenzDev" />
-
-		<!-- Inline CSS to reduce flash (match background to user's OS preference quickly) -->
-		<!-- <style>
-			:root {
-				color-scheme: light dark;
-				--color-primary: #ffffff;
-				--color-secondary: #f0f0f0;
-				--color-tertiary: #e0e0e0;
-				--color-accent: #f53b57;
-				--color-accent-hover: #9e182f;
-				--color-text: #181919;
-				--color-tailwindcss: #06b6d4;
-				--color-javascript: #ffc107;
-				--color-astro: #bc52ee;
-				--color-typescript: #3178c6;
-				--color-line-lateral: #b6b6b6;
-				--color-text-secondary: #2b2e2e;
-			}
-
-			html {
-				background-color: var(--color-primary);
-				color: var(--color-text);
-			}
-
-			@media (prefers-color-scheme: dark) {
-				:root {
-					--color-primary: #1a1c1c;
-					--color-secondary: #202222;
-					--color-tertiary: #2b2e2e;
-					--color-text: #ffffff;
-					--color-text-secondary: #b6b6b6;
-					--color-javascript: #f7df1e;
-				}
-			}
-
-			/* .dark variables inline so toggling the class updates immediately */
-			.dark {
-				--color-primary: #1a1c1c;
-				--color-secondary: #202222;
-				--color-tertiary: #2b2e2e;
-				--color-text: #ffffff;
-				--color-text-secondary: #b6b6b6;
-				--color-javascript: #f7df1e;
-			}
-
-			.no-transition * {
-				transition: none !important;
-			}
-		</style> -->
 
 		<!-- Google search console  -->
 		<meta name="google-site-verification" content="qAWFc7fQ6Gcr1d5vlc-TKfYgqz3_Yl7wGAT_NDUUdBA" />

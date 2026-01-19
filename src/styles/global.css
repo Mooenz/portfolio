@@ -13,8 +13,8 @@
 	--color-typescript: #3178c6;
 	--color-line-lateral: #b6b6b6;
 	--color-text-secondary: #2b2e2e;
+
 	/* Colors dark */
-	--color-secondary-dark: #202222;
 	--color-text-dark: #fff;
 	--color-text-secondary-dark: #b6b6b6;
 	--color-primary-dark: #1a1c1c;
@@ -22,9 +22,6 @@
 	--color-tertiary-dark: #2b2e2e;
 	--color-javascript-dark: #f7df1e;
 }
-
-/* .dark {
-} */
 
 @custom-variant dark (&:where(.dark, .dark *));
 
