@@ -8,6 +8,78 @@ const { title, description, keywords, canonical, og } = seo;
 // En la parte del script de Astro, genera las fechas
 const currentYear = new Date().getFullYear();
 const currentDate = new Date().toISOString();
+
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	'@id': 'https://mooenz.me/#person',
+	name: 'José Manuel Montaño Saenz',
+	alternateName: 'Mooenz',
+	url: 'https://mooenz.me/',
+	image: {
+		'@type': 'ImageObject',
+		url: 'https://mooenz.me/images/og-image.webp',
+		width: 1200,
+		height: 630,
+	},
+	description,
+	jobTitle: 'Desarrollador Frontend',
+	worksFor: {
+		'@type': 'Organization',
+		name: 'Freelance',
+	},
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Ibagué',
+		addressRegion: 'Tolima',
+		addressCountry: 'CO',
+	},
+	sameAs: ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'],
+	knowsAbout: ['Desarrollo Web', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'Astro'],
+};
+
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	'@id': 'https://mooenz.me/#website',
+	url: 'https://mooenz.me/',
+	name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
+	alternateName: 'Mooenz Portfolio',
+	description,
+	inLanguage: 'es-CO',
+	author: {
+		'@id': 'https://mooenz.me/#person',
+	},
+	copyrightYear: currentYear,
+};
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Inicio',
+			item: {
+				'@type': 'WebPage',
+				'@id': 'https://mooenz.me/',
+				url: 'https://mooenz.me/',
+			},
+		},
+	],
+};
+
+const profilePageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfilePage',
+	'@id': 'https://mooenz.me/#profile',
+	mainEntity: {
+		'@id': 'https://mooenz.me/#person',
+	},
+	dateCreated: '2026-01-01T00:00:00Z',
+	dateModified: currentDate,
+};
 ---
 
 <!doctype html>
@@ -54,17 +126,38 @@ const currentDate = new Date().toISOString();
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="@MooenzDev" />
 
-		<!-- Script inline ANTES de cargar los estilos -->
-		<script is:inline>
-			// Prevenir transiciones en la carga inicial
-			// document.documentElement.classList.add('no-transition');
-
-			const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-			const currentTheme = localStorage.getItem('theme');
-
-			if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
-				document.documentElement.classList.add('dark');
+		<!-- Inline CSS to reduce flash (match background to user's OS preference quickly) -->
+		<style>
+			:root {
+				color-scheme: light dark;
 			}
+			html {
+				background-color: #ffffff;
+				color: #0b1220;
+			}
+			@media (prefers-color-scheme: dark) {
+				html {
+					background-color: #0b1220;
+					color: #e6eef8;
+				}
+			}
+			.no-theme-transitions * {
+				transition: none !important;
+			}
+		</style>
+
+		<script is:inline>
+			(function () {
+				try {
+					document.documentElement.classList.add('no-theme-transitions');
+					const userPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+					const currentTheme = localStorage.getItem('theme');
+
+					if (currentTheme === 'dark' || (!currentTheme && userPrefersDark)) {
+						document.documentElement.classList.add('dark');
+					}
+				} catch (e) {}
+			})();
 		</script>
 
 		<!-- Google search console  -->
@@ -74,101 +167,10 @@ const currentDate = new Date().toISOString();
 		<script defer async src={`https://www.googletagmanager.com/gtag/js?id=G-MNYDCMVBPH`}></script>
 
 		<!-- Datos estructurados del sitio -->
-		<script
-			type="application/ld+json"
-			set:html={JSON.stringify({
-				'@context': 'https://schema.org',
-				'@type': 'Person',
-				name: 'José Manuel Montaño Saenz',
-				alternateName: 'Mooenz',
-				url: 'https://mooenz.me/',
-				image: {
-					'@type': 'ImageObject',
-					url: 'https://mooenz.me/images/og-image.webp',
-					width: 1200,
-					height: 630,
-				},
-				description: description,
-				jobTitle: 'Desarrollador Frontend',
-				worksFor: {
-					'@type': 'Organization',
-					name: 'Freelance',
-				},
-				address: {
-					'@type': 'PostalAddress',
-					addressLocality: 'Ibagué',
-					addressRegion: 'Tolima',
-					addressCountry: 'CO',
-				},
-				sameAs: ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'],
-				knowsAbout: ['Desarrollo Web', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'Astro'],
-			})}
-		/>
-
-		<!-- Datos estructurados WebSite -->
-		<script
-			type="application/ld+json"
-			set:html={JSON.stringify({
-				'@context': 'https://schema.org',
-				'@type': 'WebSite',
-				name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
-				alternateName: 'Mooenz Portfolio',
-				url: 'https://mooenz.me/',
-				description: description,
-				inLanguage: 'es-CO',
-				author: {
-					'@type': 'Person',
-					name: 'José Manuel Montaño Saenz',
-					url: 'https://mooenz.me/',
-				},
-				copyrightYear: currentYear,
-				potentialAction: {
-					'@type': 'SearchAction',
-					target: {
-						'@type': 'EntryPoint',
-						urlTemplate: 'https://mooenz.me/?s={search_term_string}',
-					},
-					'query-input': 'required name=search_term_string',
-				},
-			})}
-		/>
-
-		<!-- Breadcrumb -->
-		<script
-			type="application/ld+json"
-			set:html={JSON.stringify({
-				'@context': 'https://schema.org',
-				'@type': 'BreadcrumbList',
-				itemListElement: [
-					{
-						'@type': 'ListItem',
-						position: 1,
-						name: 'Inicio',
-						item: {
-							'@type': 'WebPage',
-							'@id': 'https://mooenz.me/',
-							url: 'https://mooenz.me/',
-						},
-					},
-				],
-			})}
-		/>
-
-		<!-- Datos estructurados ProfilePage -->
-		<script
-			type="application/ld+json"
-			set:html={JSON.stringify({
-				'@context': 'https://schema.org',
-				'@type': 'ProfilePage',
-				mainEntity: {
-					'@type': 'Person',
-					name: 'José Manuel Montaño Saenz',
-					alternateName: 'Mooenz',
-				},
-				dateCreated: '2024-01-01T00:00:00Z',
-				dateModified: currentDate,
-			})}
-		/>
+		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+		<script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
 	</head>
 	<body>
 		<main>
@@ -182,6 +184,7 @@ const currentDate = new Date().toISOString();
 		// Marcar que GSAP está listo para mostrar los elementos
 		requestAnimationFrame(() => {
 			document.documentElement.classList.add('gsap-ready');
+			document.documentElement.classList.remove('no-theme-transitions');
 		});
 	});
 </script>
