@@ -130,25 +130,36 @@ const profilePageSchema = {
 		<style>
 			:root {
 				color-scheme: light dark;
-			}
-			html {
 				--color-primary: #ffffff;
-				--color-secondary: #f5f5f5;
+				--color-secondary: #f0f0f0;
 				--color-tertiary: #e0e0e0;
-				--color-text: #1a1c1c;
-				--color-text-secondary: #2b2e2e;
+				--color-accent: #f53b57;
+				--color-accent-hover: #9e182f;
+				--color-text: #181919;
+				--color-tailwindcss: #06b6d4;
 				--color-javascript: #ffc107;
+				--color-astro: #bc52ee;
+				--color-typescript: #3178c6;
+				--color-line-lateral: #b6b6b6;
+				--color-text-secondary: #2b2e2e;
 			}
+
+			html {
+				background-color: var(--color-primary);
+				color: var(--color-text);
+			}
+
 			@media (prefers-color-scheme: dark) {
-				.dark {
+				:root {
 					--color-primary: #1a1c1c;
 					--color-secondary: #202222;
 					--color-tertiary: #2b2e2e;
-					--color-text: #fff;
+					--color-text: #ffffff;
 					--color-text-secondary: #b6b6b6;
 					--color-javascript: #f7df1e;
 				}
 			}
+
 			.no-theme-transitions * {
 				transition: none !important;
 			}
