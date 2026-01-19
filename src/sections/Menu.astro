@@ -18,6 +18,8 @@ import IconSun from '@/assets/icons/iconSun.astro';
 </nav>
 
 <script>
+	import { init3DButton } from '@/utilities/animations.ts';
+	
 	document.addEventListener('DOMContentLoaded', () => {
 		const btnToggleTheme = document.getElementById('btn-toggle-theme') as HTMLButtonElement;
 
@@ -29,5 +31,14 @@ import IconSun from '@/assets/icons/iconSun.astro';
 				localStorage.setItem('theme', isDark ? 'dark' : 'light');
 			});
 		}
+		
+		// Inicializar cuando el DOM esté listo
+		document.addEventListener('DOMContentLoaded', () => {
+			// Inicializar animaciones
+			init3DButton('#btn-principal');
+		});
 	});
+</script>
+
+<script>
 </script>

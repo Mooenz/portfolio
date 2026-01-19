@@ -173,42 +173,6 @@ const currentDate = new Date().toISOString();
 				dateModified: currentDate,
 			})}
 		/>
-
-		<!-- Estilos críticos para prevenir FOUC -->
-		<style is:inline>
-			/* Ocultar elementos animados hasta que GSAP los prepare */
-			.title,
-			.project,
-			.section .element {
-				visibility: hidden;
-			}
-
-			/* Mostrar cuando GSAP esté listo */
-			.gsap-ready .title,
-			.gsap-ready .project,
-			.gsap-ready .section .element {
-				visibility: visible;
-			}
-
-			/* Desactivar transiciones durante carga inicial */
-			.no-transition,
-			.no-transition *,
-			.no-transition *::before,
-			.no-transition *::after {
-				transition: none !important;
-			}
-		</style>
-
-		<!-- Fallback para usuarios sin JavaScript -->
-		<noscript>
-			<style>
-				.title,
-				.project,
-				.section .element {
-					visibility: visible !important;
-				}
-			</style>
-		</noscript>
 	</head>
 	<body>
 		<main>
@@ -218,15 +182,7 @@ const currentDate = new Date().toISOString();
 </html>
 
 <script>
-	import { init3DButton, scrollItems, animateLetters } from '@/utilities/animations.ts';
-
-	// Inicializar cuando el DOM esté listo
 	document.addEventListener('DOMContentLoaded', () => {
-		// Inicializar animaciones
-		init3DButton('#btn-principal');
-		scrollItems('.project');
-		animateLetters('.title');
-
 		// Marcar que GSAP está listo para mostrar los elementos
 		requestAnimationFrame(() => {
 			document.documentElement.classList.add('gsap-ready');

@@ -61,6 +61,16 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 	</div>
 </aside>
 
+<script>
+	import { animateLetters } from '@/utilities/animations.ts';
+
+	// Inicializar cuando el DOM esté listo
+	document.addEventListener('DOMContentLoaded', () => {
+		// Inicializar animaciones
+		animateLetters('.title');
+	});
+</script>
+
 <style>
 	/*  */
 	.element > p span {
