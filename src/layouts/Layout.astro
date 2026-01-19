@@ -132,13 +132,21 @@ const profilePageSchema = {
 				color-scheme: light dark;
 			}
 			html {
-				background-color: #ffffff;
-				color: #0b1220;
+				--color-primary: #ffffff;
+				--color-secondary: #f5f5f5;
+				--color-tertiary: #e0e0e0;
+				--color-text: #1a1c1c;
+				--color-text-secondary: #2b2e2e;
+				--color-javascript: #ffc107;
 			}
 			@media (prefers-color-scheme: dark) {
 				html {
-					background-color: #0b1220;
-					color: #e6eef8;
+					--color-primary: #1a1c1c;
+					--color-secondary: #202222;
+					--color-tertiary: #2b2e2e;
+					--color-text: #fff;
+					--color-text-secondary: #b6b6b6;
+					--color-javascript: #f7df1e;
 				}
 			}
 			.no-theme-transitions * {
