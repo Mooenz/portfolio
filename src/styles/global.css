@@ -48,7 +48,11 @@ html:not(.no-transition) textarea,
 html:not(.no-transition) select,
 html:not(.no-transition) label,
 html:not(.no-transition) aside {
-	transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, scale 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+	transition:
+		background-color 0.5s ease-in-out,
+		color 0.5s ease-in-out,
+		scale 0.3s ease-in-out,
+		box-shadow 0.3s ease-in-out;
 }
 
 :is(h1, h2, h3, h4, h5, h6) {
@@ -94,6 +98,24 @@ html:not(.no-transition) aside {
 	filter: blur(1px);
 }
 
+/* Animation FadeIn */
+.element {
+	opacity: 0;
+	animation: fadeIn 0.5s ease-in-out forwards;
+	animation-delay: var(--delay);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
 /*  */
 .char-wrapper {
 	position: relative;
@@ -114,7 +136,9 @@ html:not(.no-transition) aside {
 
 /*  */
 .icon {
-	transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+	transition:
+		transform 0.3s ease-in-out,
+		opacity 0.3s ease-in-out;
 }
 
 .dark .icon-moon {

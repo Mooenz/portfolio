@@ -4,8 +4,8 @@ import Project from '@/components/Project.astro';
 ---
 
 <section class="lg:mt-9">
-	<h2 class="element text-2xl font-bold mb-6">Proyectos personales</h2>
-	<div class="element flex flex-col gap-6 md:gap-10 lg:gap-15 lg:mt-15">
+	<h2 class="element text-2xl font-bold mb-6" style="--delay: 0ms">Proyectos personales</h2>
+	<div class="element flex flex-col gap-6 md:gap-10 lg:gap-15 lg:mt-15" style="--delay: 100ms">
 		{projects.map(({ name, description, technologies, repository, demo, image }) => <Project image={image} name={name} description={description} technologies={technologies} repository={repository} demo={demo} />)}
 	</div>
 </section>
