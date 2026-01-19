@@ -6,13 +6,13 @@ import IconSun from '@/assets/icons/iconSun.astro';
 ---
 
 <nav class="absolute lg:static top-3 right-3 sm:top-6 sm:right-6 flex gap-4 items-center justify-end">
-	<button class="cursor-pointer active:scale-90 w-12 h-12 bg-secondary rounded-full flex items-center justify-center hover:bg-tertiary" id="btn-toggle-theme" aria-label="Botón para cambiar el tema de la página">
-		<IconMoon width={20} height={20} class="icon text-text-secondary icon-moon" />
-		<IconSun width={20} height={20} class="icon text-text-secondary icon-sun" />
+	<button class="cursor-pointer active:scale-90 w-12 h-12 bg-secondary dark:bg-secondary-dark rounded-full flex items-center justify-center hover:bg-text dark:hover:bg-text-dark transition-all ease-in-out duration-300 group" id="btn-toggle-theme" aria-label="Botón para cambiar el tema de la página">
+		<IconMoon width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary icon-moon transition-all ease-in-out duration-300" />
+		<IconSun width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary dark:group-hover:text-primary-dark icon-sun transition-all ease-in-out duration-300" />
 	</button>
 
 	<Button href="/documents/Cv-José-M-Montaño.pdf" variants="accent" size="md" attr={{ title: 'Enlace para descargar el curriculum', id: 'btn-principal', download: '' }}>
-		<IconDownload width={16} height={16} />
+		<IconDownload width={16} height={16} class="transition-all ease-in-out duration-300" />
 		<span>Curriculum</span>
 	</Button>
 </nav>
@@ -36,5 +36,3 @@ import IconSun from '@/assets/icons/iconSun.astro';
 		init3DButton('#btn-principal');
 	});
 </script>
-
-<script></script>

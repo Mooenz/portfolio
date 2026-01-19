@@ -8,31 +8,31 @@ import LogoLinkedIn from '@/assets/icons/LogoLinkedIn.astro';
 import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 ---
 
-<aside class="ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-108 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 lg:bg-secondary items-stretch group overflow-hidden">
+<section class="ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-108 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 dark:lg:bg-secondary-dark lg:bg-secondary items-stretch group overflow-hidden transition-colors duration-300 ease-in-out">
 	<!-- Personal information -->
 	<div class="">
-		<figure class="ripple-figure relative w-12 lg:w-20 mb-6 aspect-square bg-tertiary rounded-full">
+		<figure class="ripple-figure relative w-12 lg:w-20 mb-6 aspect-square bg-tertiary dark:bg-tertiary-dark rounded-full transition-colors duration-300 ease-in-out">
 			<Image src={avatar} alt="Avatar" width="127" height="127" title={`Avatar de ${personal.name}`} class="rounded-full w-30" />
 
 			<div class="ripple pointer-events-none absolute z-100 -translate-y-1/2 top-1/2 left-[calc(100%+12px)] lg:top-[70%] lg:translate-0 lg:left-[calc(100%-14px)] flex items-center bg-green-400 dark:bg-green-400/10 lg:dark:bg-green-400 lg:bg-green-400 text-[11px] whitespace-nowrap px-2 rounded-full h-4 lg:w-4 lg:group-hover:w-[152px] transition-all duration-300 ease-in-out group-hover:dark:bg-green-400/10 lg:group-hover:left-[calc(100%-7px)]">
-				<span class="lg:opacity-0 text-white dark:text-green-400 group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out group-hover:delay-300">Disponible para trabajar</span>
+				<span class="lg:opacity-0 text-white dark:text-green-400 group-hover:opacity-100 group-hover:transition-all group-hover:duration-300 group-hover:ease-in-out group-hover:delay-300 transition-all duration-300 ease-in-out">Disponible para trabajar</span>
 			</div>
 		</figure>
-		<h1 class="title text-2xl font-bold">{personal.name}</h1>
-		<p class="text-lg mb-1 text-text-secondary">{personal.role}</p>
+		<h1 class="title text-2xl font-bold dark:text-text-dark transition-colors duration-300 ease-in-out">{personal.name}</h1>
+		<p class="text-lg mb-1 dark:text-text-secondary-dark transition-colors duration-300 ease-in-out">{personal.role}</p>
 
 		<!-- How i am? -->
-		<p class="element mt-4 sm:mt-7" style="--delay: 0ms">{personal.expertise}</p>
+		<p class="element mt-4 sm:mt-7 dark:text-text-dark transition-colors duration-300 ease-in-out" style="--delay: 0ms">{personal.expertise}</p>
 
 		<!-- Contact -->
 		<div class="element flex flex-wrap gap-5 mt-7 order-1" style="--delay: 100ms">
 			<Button variants="normal" href={personal.github} size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir a mi perfil de Github' }}>
-				<LogoGithub width={18} height={18} />
+				<LogoGithub class="transition-all ease-in-out duration-300" width={18} height={18} />
 				<span>Github</span>
 			</Button>
 
 			<Button variants="normal" href={personal.linkedIn} size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir a mi perfil de LinkedIn' }}>
-				<LogoLinkedIn width={18} height={18} />
+				<LogoLinkedIn class="transition-all ease-in-out duration-300" width={18} height={18} />
 				<span>LinkedIn</span>
 			</Button>
 		</div>
@@ -40,15 +40,15 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 
 	<!-- Experience -->
 	<div class="order-2">
-		<h2 class="element text-2xl line-clamp-1 font-semibold mt-7 lg:mt-14 mb-4 lg:mb-7" style="--delay: 0ms">Experiencia laboral</h2>
+		<h2 class="element text-2xl line-clamp-1 font-semibold mt-7 lg:mt-14 mb-4 lg:mb-7 dark:text-text-dark transition-colors duration-300 ease-in-out" style="--delay: 0ms">Experiencia laboral</h2>
 		<ul class="line list-inside space-y-8">
 			{
 				experience.map(({ position, description, period, company }) => (
-					<li class="element" style="--delay: 100ms"	>
+					<li class="element dark:text-text-dark transition-colors duration-300 ease-in-out" style="--delay: 100ms">
 						<h3 class="mb-3 line-clamp-1 text-lg font-medium">{position}</h3>
 
 						<p>
-							<span class="line-circle text-text-secondary">
+							<span class="line-circle text-text-secondary dark:text-text-secondary-dark transition-colors duration-300 ease-in-out dark:before:border-secondary-dark before:border-secondary before:border-4 before:transition-colors before:duration-300 before:ease-in-out">
 								{company} {period}
 							</span>
 							<br />
@@ -59,7 +59,7 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 			}
 		</ul>
 	</div>
-</aside>
+</section>
 
 <script>
 	import { animateLetters } from '@/utilities/animations.ts';
@@ -73,9 +73,9 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 
 <style>
 	/*  */
-	.element > p span {
+	/* .element > p span {
 		transition: color 0.5s ease-in-out;
-	}
+	} */
 	/*  */
 	.line {
 		position: relative;
@@ -106,15 +106,7 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 		height: 16px;
 		background-color: var(--color-accent);
 		border-radius: 50%;
-		border: 4px solid var(--color-secondary);
 		transform: translateY(-50%);
-		transition:
-			background-color 0.5s ease-in-out,
-			border-color 0.5s ease-in-out;
-	}
-
-	.ripple-figure {
-		transition: background-color 0.5s ease-in-out;
 	}
 
 	@media (min-width: 1024px) {
