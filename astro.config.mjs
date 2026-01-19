@@ -17,6 +17,18 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 		build: {
 			cssCodeSplit: true,
+			// Asegura que CSS se cargue antes que JS
+			modulePreload: {
+				polyfill: true,
+			},
+			rollupOptions: {
+				output: {
+					// CSS siempre se carga primero al estar en el head
+					assetFileNames: 'assets/css/[name]-[hash][extname]',
+					chunkFileNames: 'assets/js/[name]-[hash].js',
+					entryFileNames: 'assets/js/[name]-[hash].js',
+				},
+			},
 		},
 	},
 });
