@@ -117,18 +117,18 @@ body {
 /*  */
 .dark .icon-moon {
 	opacity: 0;
-	transform: scale(0);
+	transform: translateX(15px) scale(0);
 }
 
 .dark .icon-sun {
 	opacity: 1;
-	transform: scale(1);
+	transform: translateX(0) scale(1);
 }
 
 .icon-sun {
 	position: absolute;
 	opacity: 0;
-	transform: scale(0);
+	transform: translateX(-15px) scale(0);
 }
 
 /* Hover project */
