@@ -91,29 +91,6 @@ const profilePageSchema = {
 		<!-- Color scheme hint -->
 		<meta name="color-scheme" content="light dark" />
 
-		<script is:inline>
-			(function () {
-				const userPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				const currentTheme = localStorage.getItem('theme');
-				const theme = currentTheme || (userPrefersDark ? 'dark' : 'light');
-
-				document.documentElement.classList.add(theme);
-			})();
-		</script>
-
-		<!-- CSS inline para prevenir flash -->
-		<style is:inline>
-			html {
-				background-color: #ffffff;
-				color: #1a1c1c;
-			}
-
-			html.dark {
-				background-color: #1a1c1c;
-				color: #ffffff;
-			}
-		</style>
-
 		<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
 		<link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
 		<link rel="shortcut icon" href="images/favicon.ico" />
@@ -171,13 +148,3 @@ const profilePageSchema = {
 		</main>
 	</body>
 </html>
-
-<script>
-	document.addEventListener('DOMContentLoaded', () => {
-		// Marcar que GSAP está listo para mostrar los elementos
-		requestAnimationFrame(() => {
-			document.documentElement.classList.add('gsap-ready');
-			document.documentElement.classList.remove('no-transition');
-		});
-	});
-</script>
