@@ -21,7 +21,7 @@ const projects: Project[] = [
 		description: 'Desarrollé la web de IngeSoftNet que ofrece servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé, utilizando Astro, Tailwind CSS y Javascript para crear una experiencia de usuario moderna y receptiva.',
 		technologies: [
 			{ name: 'Astro', icon: 'astro', styles: 'text-astro bg-astro/10' },
-			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/20 dark:text-javascript' },
+			{ name: 'JavaScript', icon: 'javascript', styles: 'text-javascript bg-javascript/10 dark:text-javascript-dark dark:bg-javascript-dark/10' },
 			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss bg-tailwindcss/10' },
 		],
 		repository: '',
