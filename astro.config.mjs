@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import critters from 'astro-critters';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel/static';
+import partytown from '@astrojs/partytown';
 
 export default defineConfig({
 	// site: 'https://Mooenz.github.io',
@@ -12,7 +13,15 @@ export default defineConfig({
 	base: '/',
 	output: 'static',
 	adapter: vercel({}),
-	integrations: [critters(), sitemap()],
+	integrations: [
+		critters(),
+		sitemap(),
+		partytown({
+			config: {
+				forward: ['dataLayer.push'],
+			},
+		}),
+	],
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
