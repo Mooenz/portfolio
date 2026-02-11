@@ -2,6 +2,7 @@
 	"name": "portfolio",
 	"type": "module",
 	"version": "0.0.1",
+	"packageManager": "pnpm@10.29.3",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -16,6 +17,7 @@
 		"astro": "^5.17.2",
 		"astro-critters": "^2.2.1",
 		"gsap": "^3.14.2",
+		"sharp": "^0.34.5",
 		"tailwindcss": "^4.1.18"
 	}
 }
