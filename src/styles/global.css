@@ -25,6 +25,15 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+.dark {
+	--color-primary: var(--color-primary-dark);
+	--color-secondary: var(--color-secondary-dark);
+	--color-tertiary: var(--color-tertiary-dark);
+	--color-text: var(--color-text-dark);
+	--color-text-secondary: var(--color-text-secondary-dark);
+	--color-javascript: var(--color-javascript-dark);
+}
+
 html,
 body {
 	text-wrap: pretty;
