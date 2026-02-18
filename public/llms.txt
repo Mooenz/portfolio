@@ -1,0 +1,62 @@
+# Portfolio de Jose Manuel Montaño Saenz
+
+> Portafolio personal de Jose Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia. Especializado en la creación de sitios web modernos, rápidos, accesibles y bien optimizados usando Astro, Tailwind CSS y TypeScript. Disponible para trabajar. Ubicado en Colombia.
+
+## Sobre el autor
+
+- **Nombre:** Jose Manuel Montaño Saenz
+- **Rol:** Desarrollador Frontend
+- **Correo:** joss92821@hotmail.com
+- **Sitio web:** https://www.mooenz.me
+- **GitHub:** https://github.com/Mooenz
+- **LinkedIn:** https://www.linkedin.com/in/mooenz/
+
+El sitio web es un portafolio de una sola página (SPA-like) construido con Astro. Muestra la información personal, experiencia laboral y proyectos del autor. Cuenta con modo oscuro/claro, animaciones y diseño responsivo.
+
+## Stack tecnológico
+
+El proyecto está construido con las siguientes tecnologías:
+
+- **Framework:** Astro (SSG — generación estática de sitios)
+- **Estilos:** Tailwind CSS v4
+- **Lenguaje:** TypeScript
+- **Animaciones:** Animaciones CSS personalizadas con keyframes y variables `--delay`
+- **Gestor de paquetes:** pnpm
+
+## Estructura del proyecto
+
+El contenido dinámico del sitio se centraliza en archivos de constantes TypeScript:
+
+- `src/constants/personal-info.ts` — Nombre, rol, email, expertise y links sociales
+- `src/constants/experience.ts` — Historial de experiencia laboral
+- `src/constants/projects.ts` — Proyectos destacados con tecnologías, demo y repositorio
+- `src/constants/seo.ts` — Metadatos SEO: título, descripción, keywords, Open Graph
+
+Las secciones principales del sitio son:
+
+- `src/sections/Data.astro` — Panel lateral con datos personales, experiencia y links de contacto
+- `src/sections/Projects.astro` — Grid de proyectos destacados
+- `src/sections/Menu.astro` — Menú de navegación con toggle de tema oscuro/claro
+
+## Experiencia laboral
+
+**Desarrollador Web — Estrategia Segura** (Julio 2022 – Octubre 2025)
+
+Maquetación de sitios web en HTML, CSS y JavaScript con énfasis en rendimiento y compatibilidad entre navegadores. Coordinación con diseñadores, uso de librerías basadas en jQuery y maquetación de correos electrónicos (email templates). Optimización para SEO técnico y dispositivos móviles.
+
+## Habilidades técnicas
+
+- **Lenguajes:** HTML, CSS, JavaScript, TypeScript
+- **Frameworks y librerías:** Astro, Tailwind CSS, GSAP, jQuery, React.js
+- **Herramientas:** Git, GitHub, Lighthouse, Figma, Illustrator
+- **Buenas prácticas:** SEO técnico, Responsive Design, Optimización de performance, Accesibilidad básica
+
+## Proyectos
+
+- [Página web IngeSoftNet](https://ingesoftnet.com/): Sitio web corporativo para IngeSoftNet. Promociona servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé. Construido con Astro, Tailwind CSS y JavaScript.
+- [Carta digital Patio La Boca Restaurant](https://patio-la-boca.vercel.app/): Carta digital bilingüe (ES/EN) optimizada para móviles. Incluye animaciones con GSAP, datos estructurados por categorías y diseño responsivo. Construido con Astro, Tailwind CSS, TypeScript y GSAP. [Repositorio en GitHub](https://github.com/Mooenz/Patio-la-Boca-Restaurant)
+
+## Optional
+
+- [Repositorio del portafolio en GitHub](https://github.com/Mooenz/portfolio): Código fuente completo del sitio de portafolio.
+- [CV en formato YAML](https://www.mooenz.me/cv.yaml): Datos estructurados del currículum en formato legible por máquinas.
