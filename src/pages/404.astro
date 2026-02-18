@@ -9,8 +9,8 @@ import IconHouse from '@/assets/icons/IconHouse.astro';
 		<div class="section text-center">
 			<h1 class="text-4xl font-bold text-text title-main"><span class="block relative c404 text-9xl">404</span> Página no encontrada</h1>
 			<p class="text-text my-6 lg:my-10 text-lg max-w-xl">Lo siento, el recurso que buscas no existe. Pero puedes volver a la página principal.</p>
-			<Button href="/" className="w-fit mx-auto" variants="accent" size="md" attr={{ title: 'Ir a la página principal', id: 'btn-principal' }}>
-				<IconHouse width={16} height={16} />
+			<Button href="/" className="w-fit mx-auto" variants="accent" size="md" attr={{ title: 'Ir a la página principal' }}>
+				<IconHouse width={16} height={16} class="transition-all ease-in-out duration-300" />
 				Página principal
 			</Button>
 		</div>
@@ -26,6 +26,6 @@ import IconHouse from '@/assets/icons/IconHouse.astro';
 		z-index: 10;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(to top, var(--color-primary) 20%, rgba(255, 0, 0, 0) 100%);
+		background: linear-gradient(to top, var(--color-primary) 0%, rgba(255, 0, 0, 0) 100%);
 	}
 </style>
