@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import critters from 'astro-critters';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel/static';
 import partytown from '@astrojs/partytown';
@@ -14,7 +13,6 @@ export default defineConfig({
 	output: 'static',
 	adapter: vercel({}),
 	integrations: [
-		critters(),
 		sitemap(),
 		partytown({
 			config: {
