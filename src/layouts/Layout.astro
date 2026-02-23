@@ -93,15 +93,14 @@ const profilePageSchema = {
 
 		<!-- Script para aplicar el tema guardado antes del renderizado -->
 		<script is:inline>
-			(function () {
-				const savedTheme = localStorage.getItem('theme');
-				if (savedTheme === 'dark') {
-					document.documentElement.classList.add('dark');
-				} else if (savedTheme === 'light') {
-					document.documentElement.classList.remove('dark');
-				} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					document.documentElement.classList.add('dark');
-				}
+			(() => {
+				const root = document.documentElement;
+				const saved = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+				const isDark = saved ? saved === 'dark' : prefersDark;
+
+				root.classList.toggle('dark', isDark);
 			})();
 		</script>
 
@@ -147,12 +146,12 @@ const profilePageSchema = {
 		<!-- Google search console  -->
 		<meta name="google-site-verification" content="qAWFc7fQ6Gcr1d5vlc-TKfYgqz3_Yl7wGAT_NDUUdBA" />
 
-		<!-- Google tag (gtag.js) con Partytown -->
-		<script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-MNYDCMVBPH"></script>
-		<script type="text/partytown">
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYDCMVBPH"></script>
+		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
+			function gtag(...args) {
+				window.dataLayer.push(args);
 			}
 			gtag('js', new Date());
 			gtag('config', 'G-MNYDCMVBPH');

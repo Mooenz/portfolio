@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel/static';
-import partytown from '@astrojs/partytown';
 
 export default defineConfig({
 	// site: 'https://Mooenz.github.io',
@@ -12,14 +11,7 @@ export default defineConfig({
 	base: '/',
 	output: 'static',
 	adapter: vercel({}),
-	integrations: [
-		sitemap(),
-		partytown({
-			config: {
-				forward: ['dataLayer.push'],
-			},
-		}),
-	],
+	integrations: [sitemap()],
 	vite: {
 		plugins: [tailwindcss()],
 		build: {
