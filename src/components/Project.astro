@@ -28,6 +28,9 @@ import IconAstro from '@/assets/icons/IconAstro.astro';
 import IconJavascript from '@/assets/icons/IconJavascript.astro';
 import IconTailwind from '@/assets/icons/IconTailwindcss.astro';
 import IconTypescript from '@/assets/icons/IconTypescript.astro';
+import IconGsap from '@/assets/icons/IconGsap.astro';
+import IconSupabase from '@/assets/icons/IconSupabase.astro';
+import IconVercel from '@/assets/icons/IconVercel.astro';
 
 // Crea un mapa de iconos
 const iconMap: Record<string, AstroComponentFactory> = {
@@ -35,11 +38,14 @@ const iconMap: Record<string, AstroComponentFactory> = {
 	javascript: IconJavascript,
 	tailwind: IconTailwind,
 	typescript: IconTypescript,
+	gsap: IconGsap,
+	supabase: IconSupabase,
+	vercel: IconVercel,
 };
 ---
 
 <article class="project flex flex-col md:flex-row lg:flex-col xl:flex-row xl:items-center gap-8 group">
-	<figure class="relative z-10 line-gradient w-full md:min-w-80 md:max-w-80 lg:min-w-150 lg:max-w-150 xl:min-w-80 xl:max-w-80 h-[210px] overflow-hidden pl-6 sm:pl-8 pt-8 rounded-xl before:bg-secondary dark:before:bg-secondary-dark before:transition-colors before:duration-300 before:ease-in-out before:absolute before:top-0 before:left-0 before:w-full before:h-full before:z-[-11]">
+	<figure class="relative z-10 line-gradient w-full md:min-w-80 md:max-w-80 lg:min-w-150 lg:max-w-150 xl:min-w-80 xl:max-w-80 h-52.5 overflow-hidden pl-6 sm:pl-8 pt-8 rounded-xl before:bg-secondary dark:before:bg-secondary-dark before:transition-colors before:duration-300 before:ease-in-out before:absolute before:top-0 before:left-0 before:w-full before:h-full before:z-[-11]">
 		<Image src={image} alt={name} width={image.width} height={image.height} title={`Imagen ${name}`} loading="eager" class="w-full h-auto object-contain rounded-tl-xl group-hover:scale-105 transition-transform duration-300 ease-in-out" />
 
 		<Pattern />
