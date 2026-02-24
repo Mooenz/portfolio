@@ -72,11 +72,6 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 </script>
 
 <style>
-	/*  */
-	/* .element > p span {
-		transition: color 0.5s ease-in-out;
-	} */
-	/*  */
 	.line {
 		position: relative;
 		padding-left: 24px;
@@ -89,8 +84,9 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 		left: 0;
 		top: 0;
 		width: 1px;
+		border-radius: 20px;
 		height: 100%;
-		background: linear-gradient(to bottom, rgb(0, 0, 0, 0) 0%, var(--color-line-lateral) 70%, rgb(0, 0, 0, 0) 100%);
+		background: linear-gradient(to top, rgb(0, 0, 0, 0) 0%, var(--color-line-lateral) 30%);
 	}
 
 	.line-circle {
@@ -104,9 +100,13 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 		top: 50%;
 		width: 16px;
 		height: 16px;
-		background-color: var(--color-accent);
+		background-color: var(--color-text);
 		border-radius: 50%;
 		transform: translateY(-50%);
+	}
+	.line li:first-of-type .line-circle:before {
+		background-color: var(--color-accent);
+		outline: 1px solid var(--color-accent);
 	}
 
 	@media (min-width: 1024px) {

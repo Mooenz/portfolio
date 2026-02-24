@@ -8,19 +8,19 @@ interface Experience {
 
 const experience: Experience[] = [
 	{
+		id: 0,
+		position: 'Fullstack developer',
+		description: 'Desarrollador fullstack freelance especializado en aplicaciones web con Astro, React, TypeScript y Tailwind CSS. Integro backend con Supabase/PostgreSQL y despliego en Vercel, implementando autenticación, CRUD y optimización de rendimiento en producción.',
+		period: 'Octubre 2025 - Presente',
+		company: 'Freelance',
+	},
+	{
 		id: 1,
 		position: 'Desarrollador web',
-		description: 'Maquetador de sitios web en HTML, CSS y JS, mediante la coordinación con el diseñador del sitio. También, hice uso de herramientas basadas en jquery. Maquetación de emails.',
+		description: 'Desarrollo y maquetación de sitios web en HTML, CSS y JavaScript, con enfoque en rendimiento, mantenibilidad y compatibilidad entre navegadores. Implementación de funcionalidades dinámicas con JavaScript moderno (ES6+), optimización para SEO y dispositivos móviles, y mantenimiento de código existente. Trabajo colaborativo con equipos de diseño y desarrollo.',
 		period: 'Julio 2022 - Octubre 2025',
 		company: 'Estrategia Segura',
 	},
-	// 	{
-	// 	id: 2,
-	// 	position: 'Desarrollador web',
-	// 	description: 'Maquetador de sitios web en HTML, CSS y JS,  mediante la coordinación con el diseñador del sitio. Tambien, se hace uso de herramientas basadas en jquery. Maquetación de emails.',
-	// 	period: 'Julio 2022 - Octubre 2025',
-	// 	company: 'Estrategia Segura',
-	// },
 ];
 
 export default experience;
