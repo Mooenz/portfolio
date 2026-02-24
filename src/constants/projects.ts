@@ -63,7 +63,7 @@ const projects: Project[] = [
 	{
 		id: 3,
 		name: 'Rock Paper Scissors Game',
-		description: 'Desarrollé un juego interactivo de Piedra, Papel, Tijeras con modos de juego clásico y bonus (incluyendo Lagartija y Spock). La aplicación mantiene el estado de puntuación en localStorage y cuenta con un diseño totalmente responsive con soporte para tema oscuro.',
+		description: 'Desarrollé un juego interactivo de Piedra, Papel, Tijeras con modos de juego clásico y bonus (incluyendo Lagartija y Spock). La aplicación mantiene el estado de puntuación en localStorage y cuenta con un diseño totalmente responsive.',
 		technologies: [
 			{ name: 'React', icon: 'react', styles: 'text-dark bg-react dark:text-react dark:bg-react/10' },
 			{ name: 'TypeScript', icon: 'typescript', styles: 'bg-typescript text-white dark:text-typescript dark:bg-typescript/10' },
