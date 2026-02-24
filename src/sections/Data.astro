@@ -8,7 +8,7 @@ import LogoLinkedIn from '@/assets/icons/LogoLinkedIn.astro';
 import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 ---
 
-<section class="ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-108 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 dark:lg:bg-secondary-dark lg:bg-secondary items-stretch group overflow-hidden transition-colors duration-300 ease-in-out">
+<section class="ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-110 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 border-r dark:border-border-lateral-dark border-border-lateral items-stretch group overflow-hidden transition-colors duration-300 ease-in-out">
 	<!-- Personal information -->
 	<div class="">
 		<figure class="ripple-figure relative w-12 lg:w-20 mb-6 aspect-square bg-tertiary dark:bg-tertiary-dark rounded-full transition-colors duration-300 ease-in-out">
@@ -47,11 +47,10 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 					<li class="element dark:text-text-dark transition-colors duration-300 ease-in-out" style="--delay: 100ms">
 						<h3 class="mb-3 line-clamp-1 text-lg font-medium">{position}</h3>
 
-						<p>
-							<span class="line-circle text-text-secondary dark:text-text-secondary-dark transition-colors duration-300 ease-in-out dark:before:border-secondary-dark before:border-secondary before:border-4 before:transition-colors before:duration-300 before:ease-in-out">
+						<p class="text-pretty">
+							<span class="line-circle before:bg-text dark:before:bg-text-dark text-text-secondary dark:text-text-secondary-dark transition-colors duration-300 ease-in-out dark:before:border-primary-dark before:border-primary before:border-4 before:transition-all before:duration-300 before:ease-in-out mb-2 block">
 								{company}, {period}
 							</span>
-							<br />
 							{description}
 						</p>
 					</li>
@@ -100,10 +99,10 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 		top: 50%;
 		width: 16px;
 		height: 16px;
-		background-color: var(--color-text);
 		border-radius: 50%;
 		transform: translateY(-50%);
 	}
+
 	.line li:first-of-type .line-circle:before {
 		background-color: var(--color-accent);
 		outline: 1px solid var(--color-accent);

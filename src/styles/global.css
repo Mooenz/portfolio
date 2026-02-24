@@ -17,7 +17,8 @@
 	--color-react: #61dafb;
 	--color-zustand: #ff7f50;
 	--color-line-lateral: #b6b6b6;
-	--color-text-secondary: #1a1c1c;
+	--color-text-secondary: #676d6d;
+	--color-border-lateral: #ededed;
 
 	/* Colors dark */
 	--color-text-dark: #fff;
@@ -26,18 +27,10 @@
 	--color-secondary-dark: #2b2e2e;
 	--color-tertiary-dark: #3e4141;
 	--color-javascript-dark: #f7df1e;
+	--color-border-lateral-dark: #2b2e2e;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
-
-.dark {
-	--color-primary: var(--color-primary-dark);
-	--color-secondary: var(--color-secondary-dark);
-	--color-tertiary: var(--color-tertiary-dark);
-	--color-text: var(--color-text-dark);
-	--color-text-secondary: var(--color-text-secondary-dark);
-	--color-javascript: var(--color-javascript-dark);
-}
 
 html,
 body {
