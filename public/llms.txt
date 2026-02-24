@@ -1,26 +1,26 @@
 # Portfolio de Jose Manuel Montaño Saenz
 
-> Portafolio personal de Jose Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia. Especializado en la creación de sitios web modernos, rápidos, accesibles y bien optimizados usando Astro, Tailwind CSS y TypeScript. Disponible para trabajar. Ubicado en Colombia.
+> Portafolio personal de Jose Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia. Especializado en la creación de sitios web modernos, rápidos, accesibles y optimizados usando Astro, Tailwind CSS, TypeScript y JavaScript. Disponible para trabajar. Ubicado en Colombia.
 
 ## Sobre el autor
 
 - **Nombre:** Jose Manuel Montaño Saenz
-- **Rol:** Desarrollador Frontend
+- **Rol:** Desarrollador frontend
 - **Correo:** joss92821@hotmail.com
 - **Sitio web:** https://www.mooenz.me
 - **GitHub:** https://github.com/Mooenz
 - **LinkedIn:** https://www.linkedin.com/in/mooenz/
 
-El sitio web es un portafolio de una sola página (SPA-like) construido con Astro. Muestra la información personal, experiencia laboral y proyectos del autor. Cuenta con modo oscuro/claro, animaciones y diseño responsivo.
+El sitio web es un portafolio de una sola página construido con Astro. Muestra información personal, experiencia laboral y proyectos destacados. Incluye modo oscuro/claro, animaciones y diseño responsivo.
 
 ## Stack tecnológico
 
 El proyecto está construido con las siguientes tecnologías:
 
-- **Framework:** Astro (SSG — generación estática de sitios)
-- **Estilos:** Tailwind CSS v4
-- **Lenguaje:** TypeScript
-- **Animaciones:** Animaciones CSS personalizadas con keyframes y variables `--delay`
+- **Framework principal:** Astro
+- **Lenguajes:** TypeScript y JavaScript
+- **UI/Estilos:** Tailwind CSS v4
+- **Librerías y plataforma:** React, Supabase, Zustand, GSAP y Vercel
 - **Gestor de paquetes:** pnpm
 
 ## Estructura del proyecto
@@ -40,21 +40,28 @@ Las secciones principales del sitio son:
 
 ## Experiencia laboral
 
-**Desarrollador Web — Estrategia Segura** (Julio 2022 – Octubre 2025)
+**Fullstack developer — Freelance** (Octubre 2025 – Presente)
 
-Maquetación de sitios web en HTML, CSS y JavaScript con énfasis en rendimiento y compatibilidad entre navegadores. Coordinación con diseñadores, uso de librerías basadas en jQuery y maquetación de correos electrónicos (email templates). Optimización para SEO técnico y dispositivos móviles.
+Desarrollo de aplicaciones web con Astro, React, TypeScript y Tailwind CSS. Integración de backend con Supabase/PostgreSQL, implementación de autenticación y CRUD, despliegue en Vercel y optimización de rendimiento en producción.
+
+**Desarrollador web — Estrategia Segura** (Julio 2022 – Octubre 2025)
+
+Desarrollo y maquetación de sitios web en HTML, CSS y JavaScript, con enfoque en rendimiento, mantenibilidad y compatibilidad entre navegadores. Implementación de funcionalidades dinámicas con JavaScript moderno (ES6+), optimización para SEO y dispositivos móviles, y trabajo colaborativo con diseño y desarrollo.
 
 ## Habilidades técnicas
 
 - **Lenguajes:** HTML, CSS, JavaScript, TypeScript
-- **Frameworks y librerías:** Astro, Tailwind CSS, GSAP, jQuery, React.js
-- **Herramientas:** Git, GitHub, Lighthouse, Figma, Illustrator
-- **Buenas prácticas:** SEO técnico, Responsive Design, Optimización de performance, Accesibilidad básica
+- **Frameworks y librerías:** Astro, React, Tailwind CSS, GSAP, jQuery, Zustand
+- **Backend y base de datos:** Supabase, PostgreSQL
+- **Herramientas y despliegue:** Git, GitHub, Lighthouse, Figma, Illustrator, Vercel
+- **Buenas prácticas:** SEO técnico, Responsive Design, optimización de performance y accesibilidad
 
 ## Proyectos
 
-- [Página web IngeSoftNet](https://ingesoftnet.com/): Sitio web corporativo para IngeSoftNet. Promociona servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé. Construido con Astro, Tailwind CSS y JavaScript.
-- [Carta digital Patio La Boca Restaurant](https://patio-la-boca.vercel.app/): Carta digital bilingüe (ES/EN) optimizada para móviles. Incluye animaciones con GSAP, datos estructurados por categorías y diseño responsivo. Construido con Astro, Tailwind CSS, TypeScript y GSAP. [Repositorio en GitHub](https://github.com/Mooenz/Patio-la-Boca-Restaurant)
+- [Página web de IngeSoftNet](https://ingesoftnet.com/): Sitio web corporativo para IngeSoftNet. Promociona servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé. Construido con Astro, Tailwind CSS y JavaScript.
+- [Plataforma web bilingüe de Patio La Boca Restaurant](https://patio-la-boca.vercel.app/): Aplicación web SSR para carta digital (ES/EN) con categorías dinámicas, animaciones con GSAP, modo oscuro y panel administrativo con autenticación y CRUD. Construido con Astro, TypeScript, Tailwind CSS, Supabase, GSAP y Vercel. [Repositorio en GitHub](https://github.com/Mooenz/Patio-la-Boca-Restaurant)
+- [WorldRanks | Country Page](https://mooenz.github.io/react-countries-page/): Aplicación para explorar países con búsqueda, filtros, ordenamiento y detalle de países vecinos. Construido con React, TypeScript, Tailwind CSS y Zustand. [Repositorio en GitHub](https://github.com/Mooenz/react-countries-page)
+- [Rock Paper Scissors Game](https://mooenz.github.io/rock-paper-scissors/): Juego interactivo con modos clásico y bonus (Lagartija y Spock), persistencia de puntuación en localStorage y diseño responsive. Construido con React, TypeScript, Tailwind CSS y Zustand. [Repositorio en GitHub](https://github.com/Mooenz/rock-paper-scissors)
 
 ## Optional
 
