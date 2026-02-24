@@ -10,7 +10,7 @@ export interface Props {
 const { variants = 'normal', href = '#', size = 'md', attr, className = '' }: Props = Astro.props;
 
 // Class base for button
-const classBase = 'relative rounded-full flex items-center justify-center active:scale-95 transition-all ease-in-out duration-300 border-4 border-primary dark:border-primary-dark outline-2 outline-primary dark:outline-primary-dark hover:outline-primary focus:outline-primary focus-visible:outline-primary';
+const classBase = 'relative rounded-full flex items-center justify-center active:scale-95 transition-all ease-in-out duration-300 border-4 border-primary dark:border-primary-dark outline-2 outline-primary dark:outline-primary-dark hover:outline-primary-dark dark:hover:outline-primary focus:outline-primary focus-visible:outline-primary';
 
 // Variants for button
 const variantsButton = {
@@ -18,7 +18,7 @@ const variantsButton = {
 		class: 'bg-tertiary text-text-secondary hover:bg-text hover:text-primary focus:bg-text focus:text-primary focus-visible:bg-text focus-visible:text-primary dark:bg-tertiary-dark dark:text-text-secondary-dark dark:hover:bg-text-dark dark:hover:text-primary-dark dark:focus:bg-text-dark dark:focus:text-primary-dark dark:focus-visible:bg-text-dark dark:focus-visible:text-primary-dark',
 	},
 	accent: {
-		class: 'bg-accent text-white outline-primary dark:hover:outline-accent hover:outline-accent focus:outline-accent focus-visible:outline-accent dark:focus:outline-accent dark:focus-visible:outline-accent',
+		class: 'bg-accent text-white dark:hover:outline-accent hover:!outline-accent focus:outline-accent focus-visible:outline-accent dark:focus:outline-accent dark:focus-visible:outline-accent',
 	},
 	transparent: {
 		class: 'bg-transparent text-text-secondary dark:text-text-secondary-dark hover:bg-text hover:text-primary focus:bg-text focus:text-primary focus-visible:bg-text focus-visible:text-primary dark:hover:bg-text-dark dark:hover:text-primary-dark dark:focus:bg-text-dark dark:focus:text-primary-dark dark:focus-visible:bg-text-dark dark:focus-visible:text-primary-dark',
