@@ -8,7 +8,7 @@ import LogoLinkedIn from '@/assets/icons/LogoLinkedIn.astro';
 import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 ---
 
-<section class="ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-110 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 border-r dark:border-border-lateral-dark border-border-lateral items-stretch group overflow-hidden transition-colors duration-300 ease-in-out">
+<section class="animate-blurred-fade-in animate-duration-300 ripple-container flex flex-col aside w-full overflow-x-auto lg:max-w-110 sm:p-6 sm:pt-6 pt-22 p-3 lg:py-8 pb-8 border-r dark:border-border-lateral-dark border-border-lateral items-stretch group overflow-hidden transition-colors duration-300 ease-in-out">
 	<!-- Personal information -->
 	<div class="">
 		<figure class="ripple-figure relative w-12 lg:w-20 mb-6 aspect-square bg-tertiary dark:bg-tertiary-dark rounded-full transition-colors duration-300 ease-in-out">
@@ -41,14 +41,14 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 	<!-- Experience -->
 	<div class="order-2">
 		<h2 class="element text-2xl line-clamp-1 font-bold mt-7 lg:mt-14 mb-4 lg:mb-7 dark:text-text-dark transition-colors duration-300 ease-in-out" style="--delay: 0ms">Experiencia laboral</h2>
-		<ul class="line list-inside space-y-8">
+		<ul class="line list-inside space-y-8 before:animate-flip-in-y before:animate-delay-400">
 			{
-				experience.map(({ position, description, period, company }) => (
+				experience.map(({ position, description, period, company }, index) => (
 					<li class="element dark:text-text-dark transition-colors duration-300 ease-in-out" style="--delay: 100ms">
 						<h3 class="mb-3 line-clamp-1 text-lg font-medium">{position}</h3>
 
 						<p class="text-pretty">
-							<span class="line-circle before:bg-text dark:before:bg-text-dark text-text-secondary dark:text-text-secondary-dark transition-colors duration-300 ease-in-out dark:before:border-primary-dark before:border-primary before:border-4 before:transition-all before:duration-300 before:ease-in-out mb-2 block">
+							<span class={`line-circle before:animate-blurred-fade-in before:animate-delay-[${(index + 6) * 100}ms] before:bg-text dark:before:bg-text-dark text-text-secondary dark:text-text-secondary-dark transition-colors duration-300 ease-in-out dark:before:border-primary-dark before:border-primary before:border-4 before:transition-all before:duration-300 before:ease-in-out mb-2 block`}>
 								{company}, {period}
 							</span>
 							{description}
