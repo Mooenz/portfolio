@@ -6,9 +6,13 @@ import IconSun from '@/assets/icons/iconSun.astro';
 ---
 
 <nav class="absolute lg:static top-3 right-3 sm:top-6 sm:right-6 flex gap-4 items-center justify-end">
-	<button class="cursor-pointer active:scale-90 w-12 h-12 bg-tertiary dark:bg-secondary-dark rounded-full flex items-center justify-center hover:bg-text dark:hover:bg-text-dark transition-all ease-in-out duration-300 group" id="btn-toggle-theme" aria-label="Botón para cambiar el tema de la página">
-		<IconMoon width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary icon-moon transition-all ease-in-out duration-300" />
-		<IconSun width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary dark:group-hover:text-primary-dark icon-sun transition-all ease-in-out duration-300" />
+	<button
+		class="cursor-pointer active:scale-90 w-14 h-14 bg-tertiary dark:bg-secondary-dark rounded-full flex items-center justify-center hover:bg-text focus:bg-text focus-visible:bg-text dark:hover:bg-text-dark dark:focus:bg-text-dark dark:focus-visible:bg-text-dark transition-all ease-in-out duration-300 group border-4 border-primary dark:border-primary-dark outline-2 outline-primary dark:outline-primary-dark hover:outline-primary focus:outline-primary focus-visible:outline-primary"
+		id="btn-toggle-theme"
+		aria-label="Botón para cambiar el tema de la página"
+	>
+		<IconMoon width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary icon-moon transition-all ease-in-out duration-300" />
+		<IconSun width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary dark:group-hover:text-primary-dark dark:group-focus:text-primary-dark dark:group-focus-visible:text-primary-dark icon-sun transition-all ease-in-out duration-300" />
 	</button>
 
 	<Button href="/documents/Cv-José-M-Montaño.pdf" variants="accent" size="md" attr={{ title: 'Enlace para descargar el curriculum', id: 'btn-principal', download: '' }}>
@@ -18,8 +22,6 @@ import IconSun from '@/assets/icons/iconSun.astro';
 </nav>
 
 <script>
-	import { init3DButton } from '@/utilities/animations.ts';
-
 	document.addEventListener('DOMContentLoaded', () => {
 		const btnToggleTheme = document.getElementById('btn-toggle-theme') as HTMLButtonElement;
 
@@ -31,8 +33,5 @@ import IconSun from '@/assets/icons/iconSun.astro';
 				localStorage.setItem('theme', isDark ? 'dark' : 'light');
 			});
 		}
-
-		// Inicializar animaciones
-		init3DButton('#btn-principal');
 	});
 </script>
