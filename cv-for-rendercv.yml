@@ -1,0 +1,104 @@
+cv:
+  name: 'Jose Manuel Montaño Saenz'
+  title: 'Desarrollador Frontend'
+  location: 'Colombia'
+  email: 'joss92821@hotmail.com'
+  website: 'https://www.mooenz.me'
+
+  social_networks:
+    - network: 'LinkedIn'
+      username: 'mooenz'
+    - network: 'GitHub'
+      username: 'Mooenz'
+
+  sections:
+    perfil_profesional:
+      - 'Desarrollador Frontend con experiencia en la creación de aplicaciones y sitios web modernos usando Astro, React, TypeScript y Tailwind CSS. Enfocado en rendimiento, SEO técnico, arquitectura modular y buenas prácticas de desarrollo. Experiencia colaborando con Git/GitHub, code reviews y flujos de trabajo en equipo, además de integración de backend con Supabase y despliegues en Vercel.'
+
+    education:
+      - institution: Universidad Cooperativa de Colombia
+        area: Ingeniería de sistemas
+        degree: Ing.
+        grade: Ingeniero de sistemas
+        date: 2017
+        start_date: 2010-01
+        end_date: 2014-12
+        location: Ibagué, Tolima, Colombia
+
+    experiencia:
+      - company: 'Freelance'
+        position: 'Fullstack Developer'
+        date: 'Octubre 2025 - Presente'
+        start_date: '2025-10'
+        end_date:
+        summary: 'Desarrollo de aplicaciones web con Astro, React, TypeScript y Tailwind CSS. Integración de backend con Supabase/PostgreSQL y despliegue en Vercel, implementando autenticación, CRUD y optimización de rendimiento en producción.'
+        highlights:
+          - 'Implementación de autenticación y paneles administrativos'
+          - 'Desarrollo de CRUD para gestión de contenido'
+          - 'Integración de base de datos y storage con Supabase'
+          - 'Optimización de rendimiento para entornos productivos'
+
+      - company: 'Estrategia Segura'
+        position: 'Desarrollador Web'
+        date: 'Julio 2022 - Octubre 2025'
+        start_date: '2022-07'
+        end_date: '2025-10'
+        summary: 'Desarrollo y maquetación de sitios web en HTML, CSS y JavaScript, con énfasis en rendimiento, mantenibilidad y compatibilidad entre navegadores. Trabajo colaborativo con Git/GitHub para versionado, ramas feature, pull requests y revisiones de código.'
+        highlights:
+          - 'Maquetación de sitios optimizados para SEO y dispositivos móviles'
+          - 'Implementación de funcionalidades dinámicas con JavaScript moderno (ES6+)'
+          - 'Trabajo colaborativo con equipos de diseño y desarrollo usando Git Flow'
+          - 'Mantenimiento y mejora de código existente'
+
+    proyectos:
+      - name: 'Página web IngeSoftNet'
+        summary: 'Desarrollo de la web corporativa de IngeSoftNet para promoción de servicios y licencias de SysCafé, enfocada en experiencia de usuario moderna y diseño responsive.'
+        stack:
+          - 'Astro'
+          - 'Tailwind CSS'
+          - 'JavaScript'
+        repository: 'https://github.com/Mooenz/IngeSoftNet'
+        demo: 'https://ingesoftnet.com/'
+
+      - name: 'Patio La Boca Restaurant - Carta Digital'
+        summary: 'Carta digital bilingüe (ES/EN) optimizada para móviles, desarrollada con Astro, Tailwind CSS y TypeScript. Incluye animaciones con GSAP y estructura de datos por categorías.'
+        stack:
+          - 'Astro'
+          - 'Tailwind CSS'
+          - 'TypeScript'
+          - 'GSAP'
+        repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant'
+        demo: 'https://patio-la-boca.vercel.app/'
+
+      - name: 'WorldRanks | Country Page'
+        summary: 'Aplicación web para explorar información de países con filtros por texto, región y estado, ordenamiento de resultados y vista de detalle con países vecinos.'
+        stack:
+          - 'React'
+          - 'TypeScript'
+          - 'Tailwind CSS'
+          - 'Zustand'
+        repository: 'https://github.com/Mooenz/react-countries-page'
+        demo: 'https://mooenz.github.io/react-countries-page/'
+
+      - name: 'Rock Paper Scissors Game'
+        summary: 'Juego interactivo de Piedra, Papel, Tijeras con modos clásico y bonus (incluyendo Lagartija y Spock), persistencia de puntuación y diseño responsive.'
+        stack:
+          - 'React'
+          - 'TypeScript'
+          - 'Tailwind CSS'
+          - 'Zustand'
+        repository: 'https://github.com/Mooenz/rock-paper-scissors'
+        demo: 'https://mooenz.github.io/rock-paper-scissors/'
+
+    habilidades_tecnicas:
+      - label: Lenguajes
+        details: HTML, CSS, JavaScript y TypeScript
+
+      - label: Frameworks y librerías
+        details: React.js (Zustand, Context API), Astro, Tailwind CSS, GSAP, jQuery
+
+      - label: Herramientas
+        details: Git, GitHub (Git Flow, Pull Requests, Code Reviews), Supabase, Vercel, Lighthouse, Figma, Illustrator
+
+      - label: Buenas prácticas
+        details: SEO técnico, Responsive Design, Optimización de performance, Accesibilidad básica, código modular y mantenible
