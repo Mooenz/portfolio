@@ -3,6 +3,8 @@ import type { ImageMetadata } from 'astro';
 //Import images
 import imgIngeSoftNet from '@/assets/images/web-ingeSoftNet.webp';
 import imgPatioLaBoca from '@/assets/images/carta-patio-la-boca.webp';
+import imgWorldRanks from '@/assets/images/worldranks.webp';
+import imgRockPaperScissors from '@/assets/images/rock-paper-scissors.webp';
 
 interface Project {
 	readonly id: number;
@@ -38,11 +40,39 @@ const projects: Project[] = [
 			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
 			{ name: 'Supabase', icon: 'supabase', styles: 'bg-supabase text-white dark:text-supabase dark:bg-supabase/10' },
 			{ name: 'GSAP', icon: 'gsap', styles: 'bg-gsap text-dark dark:text-gsap dark:bg-gsap/10' },
-			{ name: 'Vercel', icon: 'vercel', styles: 'text-white bg-vercel dark:text-white dark:bg-vercel/20' },
+			{ name: 'Vercel', icon: 'vercel', styles: 'text-white bg-vercel dark:text-white dark:bg-vercel/10' },
 		],
 		repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant',
 		demo: 'https://patio-la-boca.vercel.app/',
 		image: imgPatioLaBoca,
+	},
+	{
+		id: 2,
+		name: 'WorldRanks | Country Page',
+		description: 'Desarrollé WorldRanks, una aplicación web para explorar información de países del mundo, con filtros por texto, región y estado, ordenamiento de resultados y vista de detalle con países vecinos, usando React, TypeScript, Tailwind CSS y Zustand.',
+		technologies: [
+			{ name: 'React', icon: 'react', styles: 'text-dark bg-react dark:text-react dark:bg-react/10' },
+			{ name: 'TypeScript', icon: 'typescript', styles: 'bg-typescript text-white dark:text-typescript dark:bg-typescript/10' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
+			{ name: 'Zustand', icon: 'zustand', styles: 'text-white bg-zustand dark:text-zustand dark:bg-zustand/10' },
+		],
+		repository: 'https://github.com/Mooenz/react-countries-page',
+		demo: 'https://mooenz.github.io/react-countries-page/',
+		image: imgWorldRanks,
+	},
+	{
+		id: 3,
+		name: 'Rock Paper Scissors Game',
+		description: 'Desarrollé un juego interactivo de Piedra, Papel, Tijeras con modos de juego clásico y bonus (incluyendo Lagartija y Spock). La aplicación mantiene el estado de puntuación en localStorage y cuenta con un diseño totalmente responsive con soporte para tema oscuro.',
+		technologies: [
+			{ name: 'React', icon: 'react', styles: 'text-dark bg-react dark:text-react dark:bg-react/10' },
+			{ name: 'TypeScript', icon: 'typescript', styles: 'bg-typescript text-white dark:text-typescript dark:bg-typescript/10' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
+			{ name: 'Zustand', icon: 'zustand', styles: 'text-white bg-zustand dark:text-zustand dark:bg-zustand/10' },
+		],
+		repository: 'https://github.com/Mooenz/rock-paper-scissors',
+		demo: 'https://mooenz.github.io/rock-paper-scissors/',
+		image: imgRockPaperScissors,
 	},
 ];
 
