@@ -1,6 +1,6 @@
 # Portafolio
 
-Mi portafolio personal desarrollado con **Astro**, **TailwindCSS**, **TypeScript** y **GSAP**.  
+Mi portafolio personal desarrollado con **Astro**, **TailwindCSS**, **TypeScript**, **JavaScript** y **GSAP**.  
 Este proyecto funciona como mi **carta de presentación profesional**, donde muestro mis habilidades, experiencia y los proyectos en los que he trabajado. Está orientado tanto a posibles empleadores como a clientes que deseen conocer mi trabajo como desarrollador web.
 
 ---
@@ -35,6 +35,7 @@ El portafolio actualmente cuenta con una única página (`index`), que incluye:
 - **Astro.js**
 - **TailwindCSS**
 - **TypeScript**
+- **JavaScript**
 - **GSAP** (animaciones)
 - Despliegue en **Vercel**
 
@@ -49,19 +50,22 @@ git clone https://github.com/Mooenz/portfolio
 
 cd portfolio
 
-npm install
+pnpm install
 
-npm run dev
+pnpm run dev
 
-npm run build
+pnpm run build
 ```
 
 ---
 
 ## 📂 Estructura del Proyecto
+
 ```md
 /
+├── cv-for-rendercv.yml
 ├── public/
+│ └── llms.txt
 ├── src/
 │ ├── components/
 │ ├── constants/
@@ -83,6 +87,8 @@ npm run build
 - `src/sections/`: Secciones específicas de la página principal.
 - `src/styles/`: Archivos de estilos globales y configuraciones de TailwindCSS.
 - `src/utilities/`: Funciones y utilidades auxiliares.
+- `cv-for-rendercv.yml`: Fuente del CV preparada para renderizado.
+- `public/llms.txt`: Resumen del portafolio en formato legible para LLMs.
 - `package.json`: Dependencias y scripts del proyecto.
 - `astro.config.mjs`: Configuración de Astro.
 - `tsconfig.json`: Configuración de TypeScript.
