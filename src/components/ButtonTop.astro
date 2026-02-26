@@ -7,16 +7,17 @@ import IconArrowUp from '@/assets/icons/IconArrowUp.astro';
 	id="volver-arriba"
 	aria-label="Volver al inicio de la página"
 >
-	<IconArrowUp class="text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary dark:group-hover:text-secondary-dark transition-all ease-in-out duration-300" />
+	<IconArrowUp class="text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary dark:group-hover:text-secondary-dark dark:group-focus-visible:text-secondary-dark dark:group-focus:text-secondary-dark transition-all ease-in-out duration-300" />
 </button>
 
 <script>
 	const backToTopButton = document.querySelector('#volver-arriba');
 	const menuPrincipal = document.querySelector('#menu-principal');
+	const topPage = document.documentElement;
 
 	if (backToTopButton && menuPrincipal) {
 		backToTopButton.addEventListener('click', () => {
-			menuPrincipal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			topPage.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		});
 
 		new IntersectionObserver(([entry]) => backToTopButton.classList.toggle('activo', !entry.isIntersecting), { threshold: 0.2 }).observe(menuPrincipal);
