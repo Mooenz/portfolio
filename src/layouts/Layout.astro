@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import '@/styles/fonts.css';
 
 import seo from '@/constants/seo.ts';
+import ButtonTop from '@/components/ButtonTop.astro';
 const { title, description, keywords, canonical, og } = seo;
 
 // En la parte del script de Astro, genera las fechas
@@ -167,5 +168,8 @@ const profilePageSchema = {
 		<main>
 			<slot />
 		</main>
+
+		<!-- Botón volver arriba -->
+		<ButtonTop />
 	</body>
 </html>
