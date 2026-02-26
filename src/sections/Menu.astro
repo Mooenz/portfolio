@@ -11,12 +11,12 @@ import IconSun from '@/assets/icons/iconSun.astro';
 		id="btn-toggle-theme"
 		aria-label="Botón para cambiar el tema de la página"
 	>
-		<IconMoon width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary icon-moon transition-all ease-in-out duration-300" />
-		<IconSun width={20} height={20} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary dark:group-hover:text-primary-dark dark:group-focus:text-primary-dark dark:group-focus-visible:text-primary-dark icon-sun transition-all ease-in-out duration-300" />
+		<IconMoon width={18} height={18} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary icon-moon transition-all ease-in-out duration-300" />
+		<IconSun width={18} height={18} class="icon text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary dark:group-hover:text-primary-dark dark:group-focus:text-primary-dark dark:group-focus-visible:text-primary-dark icon-sun transition-all ease-in-out duration-300" />
 	</button>
 
-	<Button href="/documents/Cv-José-M-Montaño.pdf" variants="accent" size="md" attr={{ title: 'Enlace para descargar el curriculum', id: 'btn-principal', download: '' }}>
-		<IconDownload width={16} height={16} class="transition-all ease-in-out duration-300" />
+	<Button href="/documents/Cv-José-M-Montaño.pdf" variants="accent" size="md" attr={{ title: 'Descargar curriculum en formato PDF', id: 'btn-principal', download: 'Cv-José-M-Montaño' }}>
+		<IconDownload width={18} height={18} class="transition-all ease-in-out duration-300" />
 		<span>Curriculum</span>
 	</Button>
 </nav>

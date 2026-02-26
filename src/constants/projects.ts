@@ -40,7 +40,7 @@ const projects: Project[] = [
 			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
 			{ name: 'Supabase', icon: 'supabase', styles: 'bg-supabase text-white dark:text-supabase dark:bg-supabase/10' },
 			{ name: 'GSAP', icon: 'gsap', styles: 'bg-gsap text-dark dark:text-gsap dark:bg-gsap/10' },
-			{ name: 'Vercel', icon: 'vercel', styles: 'text-white bg-vercel dark:text-white dark:bg-vercel/10' },
+			{ name: 'Vercel', icon: 'vercel', styles: 'text-white bg-vercel dark:text-white dark:bg-white/10' },
 		],
 		repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant',
 		demo: 'https://patio-la-boca.vercel.app/',
