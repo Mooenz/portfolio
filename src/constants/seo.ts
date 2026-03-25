@@ -20,7 +20,7 @@ const seo = {
 		url: 'https://www.mooenz.me/',
 		type: 'website',
 		locale: 'es_CO',
-		image: 'https://www.mooenz.me/images/og-image.jpg',
+		image: 'https://www.mooenz.me/images/og-image.webp',
 	},
 };
 

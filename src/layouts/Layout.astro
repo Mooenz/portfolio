@@ -13,13 +13,13 @@ const currentDate = new Date().toISOString();
 const organizationSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Person',
-	'@id': 'https://mooenz.me/#person',
+	'@id': 'https://www.mooenz.me/#person',
 	name: 'José Manuel Montaño Saenz',
 	alternateName: 'Mooenz',
-	url: 'https://mooenz.me/',
+	url: 'https://www.mooenz.me/',
 	image: {
 		'@type': 'ImageObject',
-		url: 'https://mooenz.me/images/og-image.webp',
+		url: 'https://www.mooenz.me/images/og-image.webp',
 		width: 1200,
 		height: 630,
 	},
@@ -42,14 +42,14 @@ const organizationSchema = {
 const websiteSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'WebSite',
-	'@id': 'https://mooenz.me/#website',
-	url: 'https://mooenz.me/',
+	'@id': 'https://www.mooenz.me/#website',
+	url: 'https://www.mooenz.me/',
 	name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
 	alternateName: 'Mooenz Portfolio',
 	description,
 	inLanguage: 'es-CO',
 	author: {
-		'@id': 'https://mooenz.me/#person',
+		'@id': 'https://www.mooenz.me/#person',
 	},
 	copyrightYear: currentYear,
 };
@@ -64,8 +64,8 @@ const breadcrumbSchema = {
 			name: 'Inicio',
 			item: {
 				'@type': 'WebPage',
-				'@id': 'https://mooenz.me/',
-				url: 'https://mooenz.me/',
+				'@id': 'https://www.mooenz.me/',
+				url: 'https://www.mooenz.me/',
 			},
 		},
 	],
@@ -74,9 +74,9 @@ const breadcrumbSchema = {
 const profilePageSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'ProfilePage',
-	'@id': 'https://mooenz.me/#profile',
+	'@id': 'https://www.mooenz.me/#profile',
 	mainEntity: {
-		'@id': 'https://mooenz.me/#person',
+		'@id': 'https://www.mooenz.me/#person',
 	},
 	dateCreated: '2026-01-01T00:00:00Z',
 	dateModified: currentDate,
@@ -105,21 +105,19 @@ const profilePageSchema = {
 			})();
 		</script>
 
-		<link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-		<link rel="icon" type="image/png" href="images/favicon-96x96.png" sizes="96x96" />
-		<link rel="shortcut icon" href="images/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
-		<link rel="manifest" href="images/site.webmanifest" />
+		<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+		<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+		<link rel="manifest" href="/images/site.webmanifest" />
 		<link rel="canonical" href={canonical} />
 		<meta name="msapplication-TileColor" content="#f53b57" />
 		<meta name="theme-color" content="#ffffff" />
 		<meta name="description" content={description} />
 		<meta name="keywords" content={keywords} />
-		<meta name="generator" content="" />
 		<meta name="author" content="Jose Manuel Montaño Saenz" />
 		<meta name="copyright" content="Mooenz" />
 		<meta name="robots" content="index,follow" />
-		<meta http-equiv="expires" content="43200" />
 		<title>{title}</title>
 
 		<!-- Preload de fuentes críticas para evitar render-blocking -->
@@ -133,15 +131,19 @@ const profilePageSchema = {
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content={og.type} />
 		<meta property="og:url" content={og.url} />
-		<meta property="og:image" content="/images/og-image.webp" />
+		<meta property="og:image" content={og.image} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={description} />
 		<meta property="og:locale" content={og.locale} />
+		<meta property="og:site_name" content="Mooenz Portfolio" />
 
 		<!-- Twitter  -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="/images/og-image.webp" />
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:image" content={og.image} />
+		<meta name="twitter:image:alt" content={description} />
 		<meta name="twitter:site" content="@MooenzDev" />
 
 		<!-- Google search console  -->
