@@ -23,11 +23,11 @@ const projects: Project[] = [
 		name: 'Tienda online Poesía Mestiza Coffee',
 		description: 'Desarrollé la tienda ecommerce DTC de Poesía Mestiza Coffee, marca de café colombiano de especialidad en Canadá, con catálogo multirregional, checkout con Stripe, cuentas de cliente, suscripciones, journal y soporte multilingüe (EN/ES/FR), utilizando Next.js, React, TypeScript, Medusa y Tailwind CSS para una experiencia moderna, trazable y orientada a conversión.',
 		technologies: [
-			{ name: 'Next.js', icon: 'nextdotjs', styles: 'text-white bg-nextdotjs dark:text-nextdotjs dark:bg-nextdotjs/10' },
 			{ name: 'React', icon: 'react', styles: 'text-react bg-react/10 dark:text-react dark:bg-react/10' },
 			{ name: 'TypeScript', icon: 'typescript', styles: 'text-white bg-typescript dark:text-typescript dark:bg-typescript/10' },
 			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
-			{ name: 'Medusa', icon: 'medusa', styles: 'text-white bg-medusa dark:text-medusa dark:bg-medusa/10' },
+			{ name: 'Next.js', icon: 'next', styles: 'text-white bg-text dark:text-white dark:bg-white/10' },
+			{ name: 'Medusa', icon: 'medusa', styles: 'text-white bg-text dark:text-white dark:bg-white/10' },
 		],
 		repository: '',
 		demo: 'https://www.poesiamestizacoffee.ca/',
