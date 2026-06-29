@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
-import vercel from '@astrojs/vercel/static';
 
 export default defineConfig({
 	// site: 'https://Mooenz.github.io',
@@ -10,7 +9,6 @@ export default defineConfig({
 	site: 'https://mooenz.me',
 	base: '/',
 	output: 'static',
-	adapter: vercel({}),
 	integrations: [sitemap()],
 	vite: {
 		plugins: [tailwindcss()],
