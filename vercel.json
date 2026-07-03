@@ -1,0 +1,10 @@
+{
+	"redirects": [
+		{
+			"source": "/:path*",
+			"has": [{ "type": "host", "value": "mooenz.me" }],
+			"destination": "https://www.mooenz.me/:path*",
+			"permanent": true
+		}
+	]
+}

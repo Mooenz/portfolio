@@ -1,7 +1,6 @@
 interface seo {
 	readonly title: string;
 	readonly description: string;
-	readonly keywords: string;
 	readonly canonical: string;
 	readonly og: {
 		readonly url: string;
@@ -12,9 +11,8 @@ interface seo {
 }
 
 const seo = {
-	title: 'Desarrollador Frontend | Jose Manuel Montaño Saenz',
-	description: 'Portafolio de Jose Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia en la creación de sitios web modernos, rápidos y accesibles.',
-	keywords: 'Desarrollador Frontend, Portafolio, Jose Manuel Montaño Saenz, Desarrollo web, HTML, CSS, JavaScript, React, TypeScript, Tailwind CSS, Astro',
+	title: 'Desarrollador Frontend | José Manuel Montaño Saenz',
+	description: 'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia en la creación de sitios web modernos, rápidos y accesibles.',
 	canonical: 'https://www.mooenz.me/',
 	og: {
 		url: 'https://www.mooenz.me/',

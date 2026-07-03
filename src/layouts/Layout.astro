@@ -3,10 +3,24 @@ import '@/styles/global.css';
 import '@/styles/fonts.css';
 
 import seo from '@/constants/seo.ts';
+import projects from '@/constants/projects.ts';
 import ButtonTop from '@/components/ButtonTop.astro';
-const { title, description, keywords, canonical, og } = seo;
 
-// En la parte del script de Astro, genera las fechas
+interface Props {
+	noindex?: boolean;
+	pageTitle?: string;
+	pageDescription?: string;
+}
+
+const {
+	noindex = false,
+	pageTitle = seo.title,
+	pageDescription = seo.description,
+} = Astro.props;
+
+const { canonical, og } = seo;
+const robotsContent = noindex ? 'noindex,nofollow' : 'index,follow';
+
 const currentYear = new Date().getFullYear();
 const currentDate = new Date().toISOString();
 
@@ -23,7 +37,7 @@ const organizationSchema = {
 		width: 1200,
 		height: 630,
 	},
-	description,
+	description: pageDescription,
 	jobTitle: 'Desarrollador Frontend',
 	worksFor: {
 		'@type': 'Organization',
@@ -36,7 +50,18 @@ const organizationSchema = {
 		addressCountry: 'CO',
 	},
 	sameAs: ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'],
-	knowsAbout: ['Desarrollo Web', 'JavaScript', 'TypeScript', 'React', 'Node.js', 'Astro'],
+	knowsAbout: [
+		'Desarrollo Web',
+		'JavaScript',
+		'TypeScript',
+		'React',
+		'Next.js',
+		'Astro',
+		'Tailwind CSS',
+		'Supabase',
+		'Medusa',
+		'SEO técnico',
+	],
 };
 
 const websiteSchema = {
@@ -46,7 +71,7 @@ const websiteSchema = {
 	url: 'https://www.mooenz.me/',
 	name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
 	alternateName: 'Mooenz Portfolio',
-	description,
+	description: pageDescription,
 	inLanguage: 'es-CO',
 	author: {
 		'@id': 'https://www.mooenz.me/#person',
@@ -81,6 +106,25 @@ const profilePageSchema = {
 	dateCreated: '2026-01-01T00:00:00Z',
 	dateModified: currentDate,
 };
+
+const projectsSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ItemList',
+	name: 'Proyectos personales',
+	itemListElement: projects.map((project, index) => ({
+		'@type': 'ListItem',
+		position: index + 1,
+		item: {
+			'@type': 'CreativeWork',
+			name: project.name,
+			description: project.description,
+			url: project.demo || project.repository,
+			...(project.repository && { codeRepository: project.repository }),
+			author: { '@id': 'https://www.mooenz.me/#person' },
+			keywords: project.technologies.map(({ name }) => name).join(', '),
+		},
+	})),
+};
 ---
 
 <!doctype html>
@@ -111,14 +155,14 @@ const profilePageSchema = {
 		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
 		<link rel="manifest" href="/images/site.webmanifest" />
 		<link rel="canonical" href={canonical} />
+		<link rel="alternate" type="text/plain" href="/llms.txt" title="Resumen del sitio legible para LLMs" />
 		<meta name="msapplication-TileColor" content="#f53b57" />
 		<meta name="theme-color" content="#ffffff" />
-		<meta name="description" content={description} />
-		<meta name="keywords" content={keywords} />
-		<meta name="author" content="Jose Manuel Montaño Saenz" />
+		<meta name="description" content={pageDescription} />
+		<meta name="author" content="José Manuel Montaño Saenz" />
 		<meta name="copyright" content="Mooenz" />
-		<meta name="robots" content="index,follow" />
-		<title>{title}</title>
+		<meta name="robots" content={robotsContent} />
+		<title>{pageTitle}</title>
 
 		<!-- Preload de fuentes críticas para evitar render-blocking -->
 		<link rel="preload" href="/fonts/poppins-v23-latin-500.woff2" as="font" type="font/woff2" crossorigin />
@@ -127,23 +171,23 @@ const profilePageSchema = {
 		<link rel="preload" href="/fonts/poppins-v23-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
 
 		<!-- Open Graph -->
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
 		<meta property="og:type" content={og.type} />
 		<meta property="og:url" content={og.url} />
 		<meta property="og:image" content={og.image} />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content={description} />
+		<meta property="og:image:alt" content={pageDescription} />
 		<meta property="og:locale" content={og.locale} />
 		<meta property="og:site_name" content="Mooenz Portfolio" />
 
 		<!-- Twitter  -->
 		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
 		<meta name="twitter:image" content={og.image} />
-		<meta name="twitter:image:alt" content={description} />
+		<meta name="twitter:image:alt" content={pageDescription} />
 		<meta name="twitter:site" content="@MooenzDev" />
 
 		<!-- Google search console  -->
@@ -161,10 +205,17 @@ const profilePageSchema = {
 		</script>
 
 		<!-- Datos estructurados del sitio -->
-		<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
-		<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
-		<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
-		<script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+		{
+			!noindex && (
+				<>
+					<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(projectsSchema)} />
+				</>
+			)
+		}
 	</head>
 	<body>
 		<main>

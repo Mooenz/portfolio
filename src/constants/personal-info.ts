@@ -8,7 +8,7 @@ interface PersonalInfo {
 }
 
 const personal: PersonalInfo = {
-	name: 'Jose Manuel Montaño Saenz',
+	name: 'José Manuel Montaño Saenz',
 	role: 'Desarrollador frontend',
 	email: 'joss92821@hotmail.com',
 	expertise: '+3 años de experiencia en la industria.  Ingeniero de sistemas Graduado y Especializado en el desarrollo de webs únicas, rápidas, accesibles y modernas.',
