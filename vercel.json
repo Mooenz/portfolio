@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {
 	"redirects": [
 		{
@@ -9,15 +9,3 @@
 		}
 	]
 }
-=======
-{
-	"redirects": [
-		{
-			"source": "/:path*",
-			"has": [{ "type": "host", "value": "mooenz.me" }],
-			"destination": "https://www.mooenz.me/:path*",
-			"permanent": true
-		}
-	]
-}
->>>>>>> 676f69f (Refactor configuración de Astro y actualizar contenido de SEO; eliminar favicon y ajustar formato de vercel.json)

@@ -1,11 +1,4 @@
-<<<<<<< HEAD
 User-agent: *
 Allow: /
 
 Sitemap: https://mooenz.me/sitemap-index.xml
-=======
-User-agent: *
-Allow: /
-
-Sitemap: https://www.mooenz.me/sitemap-index.xml
->>>>>>> 676f69f (Refactor configuración de Astro y actualizar contenido de SEO; eliminar favicon y ajustar formato de vercel.json)
