@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
 	// site: 'https://Mooenz.github.io',
 	// base: '/portfolio/',
-	site: 'https://www.mooenz.me',
+	site: 'https://mooenz.me',
 	base: '/',
 	output: 'static',
 	integrations: [sitemap()],

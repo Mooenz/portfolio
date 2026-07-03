@@ -2,8 +2,8 @@
 	"redirects": [
 		{
 			"source": "/:path*",
-			"has": [{ "type": "host", "value": "mooenz.me" }],
-			"destination": "https://www.mooenz.me/:path*",
+			"has": [{ "type": "host", "value": "www.mooenz.me" }],
+			"destination": "https://mooenz.me/:path*",
 			"permanent": true
 		}
 	]

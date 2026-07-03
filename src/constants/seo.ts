@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://mooenz.me';
+
 interface seo {
 	readonly title: string;
 	readonly description: string;
@@ -12,13 +14,14 @@ interface seo {
 
 const seo = {
 	title: 'Desarrollador Frontend | José Manuel Montaño Saenz',
-	description: 'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia en la creación de sitios web modernos, rápidos y accesibles.',
-	canonical: 'https://www.mooenz.me/',
+	description:
+		'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia en la creación de sitios web modernos, rápidos y accesibles.',
+	canonical: `${SITE_URL}/`,
 	og: {
-		url: 'https://www.mooenz.me/',
+		url: `${SITE_URL}/`,
 		type: 'website',
 		locale: 'es_CO',
-		image: 'https://www.mooenz.me/images/og-image.webp',
+		image: `${SITE_URL}/images/og-image.webp`,
 	},
 };
 

@@ -3,7 +3,7 @@ import experience from '@/constants/experience';
 import projects from '@/constants/projects';
 import seo from '@/constants/seo';
 
-const SITE_URL = 'https://www.mooenz.me';
+import { SITE_URL } from '@/constants/seo.ts';
 
 export function buildLlmsContent(): string {
 	const techStack = [
