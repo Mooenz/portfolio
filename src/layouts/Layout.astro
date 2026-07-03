@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 import '@/styles/global.css';
 import '@/styles/fonts.css';
@@ -221,3 +222,233 @@ const structuredData = {
 		<ButtonTop />
 	</body>
 </html>
+=======
+---
+import '@/styles/global.css';
+import '@/styles/fonts.css';
+
+import seo from '@/constants/seo.ts';
+import projects from '@/constants/projects.ts';
+import ButtonTop from '@/components/ButtonTop.astro';
+
+interface Props {
+	noindex?: boolean;
+	pageTitle?: string;
+	pageDescription?: string;
+}
+
+const {
+	noindex = false,
+	pageTitle = seo.title,
+	pageDescription = seo.description,
+} = Astro.props;
+
+const { canonical, og } = seo;
+const robotsContent = noindex ? 'noindex,nofollow' : 'index,follow';
+
+const currentYear = new Date().getFullYear();
+const currentDate = new Date().toISOString();
+
+const organizationSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	'@id': 'https://www.mooenz.me/#person',
+	name: 'José Manuel Montaño Saenz',
+	alternateName: 'Mooenz',
+	url: 'https://www.mooenz.me/',
+	image: {
+		'@type': 'ImageObject',
+		url: 'https://www.mooenz.me/images/og-image.webp',
+		width: 1200,
+		height: 630,
+	},
+	description: pageDescription,
+	jobTitle: 'Desarrollador Frontend',
+	worksFor: {
+		'@type': 'Organization',
+		name: 'Freelance',
+	},
+	address: {
+		'@type': 'PostalAddress',
+		addressLocality: 'Ibagué',
+		addressRegion: 'Tolima',
+		addressCountry: 'CO',
+	},
+	sameAs: ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'],
+	knowsAbout: [
+		'Desarrollo Web',
+		'JavaScript',
+		'TypeScript',
+		'React',
+		'Next.js',
+		'Astro',
+		'Tailwind CSS',
+		'Supabase',
+		'Medusa',
+		'SEO técnico',
+	],
+};
+
+const websiteSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'WebSite',
+	'@id': 'https://www.mooenz.me/#website',
+	url: 'https://www.mooenz.me/',
+	name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
+	alternateName: 'Mooenz Portfolio',
+	description: pageDescription,
+	inLanguage: 'es-CO',
+	author: {
+		'@id': 'https://www.mooenz.me/#person',
+	},
+	copyrightYear: currentYear,
+};
+
+const breadcrumbSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'BreadcrumbList',
+	itemListElement: [
+		{
+			'@type': 'ListItem',
+			position: 1,
+			name: 'Inicio',
+			item: {
+				'@type': 'WebPage',
+				'@id': 'https://www.mooenz.me/',
+				url: 'https://www.mooenz.me/',
+			},
+		},
+	],
+};
+
+const profilePageSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ProfilePage',
+	'@id': 'https://www.mooenz.me/#profile',
+	mainEntity: {
+		'@id': 'https://www.mooenz.me/#person',
+	},
+	dateCreated: '2026-01-01T00:00:00Z',
+	dateModified: currentDate,
+};
+
+const projectsSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'ItemList',
+	name: 'Proyectos personales',
+	itemListElement: projects.map((project, index) => ({
+		'@type': 'ListItem',
+		position: index + 1,
+		item: {
+			'@type': 'CreativeWork',
+			name: project.name,
+			description: project.description,
+			url: project.demo || project.repository,
+			...(project.repository && { codeRepository: project.repository }),
+			author: { '@id': 'https://www.mooenz.me/#person' },
+			keywords: project.technologies.map(({ name }) => name).join(', '),
+		},
+	})),
+};
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Color scheme hint -->
+		<meta name="color-scheme" content="light dark" />
+
+		<!-- Script para aplicar el tema guardado antes del renderizado -->
+		<script is:inline>
+			(() => {
+				const root = document.documentElement;
+				const saved = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+				const isDark = saved ? saved === 'dark' : prefersDark;
+
+				root.classList.toggle('dark', isDark);
+			})();
+		</script>
+
+		<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+		<link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96" />
+		<link rel="shortcut icon" href="/images/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+		<link rel="manifest" href="/images/site.webmanifest" />
+		<link rel="canonical" href={canonical} />
+		<link rel="alternate" type="text/plain" href="/llms.txt" title="Resumen del sitio legible para LLMs" />
+		<meta name="msapplication-TileColor" content="#f53b57" />
+		<meta name="theme-color" content="#ffffff" />
+		<meta name="description" content={pageDescription} />
+		<meta name="author" content="José Manuel Montaño Saenz" />
+		<meta name="copyright" content="Mooenz" />
+		<meta name="robots" content={robotsContent} />
+		<title>{pageTitle}</title>
+
+		<!-- Preload de fuentes críticas para evitar render-blocking -->
+		<link rel="preload" href="/fonts/poppins-v23-latin-500.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/poppins-v23-latin-600.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/poppins-v23-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/fonts/poppins-v23-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+
+		<!-- Open Graph -->
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:type" content={og.type} />
+		<meta property="og:url" content={og.url} />
+		<meta property="og:image" content={og.image} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={pageDescription} />
+		<meta property="og:locale" content={og.locale} />
+		<meta property="og:site_name" content="Mooenz Portfolio" />
+
+		<!-- Twitter  -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		<meta name="twitter:image" content={og.image} />
+		<meta name="twitter:image:alt" content={pageDescription} />
+		<meta name="twitter:site" content="@MooenzDev" />
+
+		<!-- Google search console  -->
+		<meta name="google-site-verification" content="qAWFc7fQ6Gcr1d5vlc-TKfYgqz3_Yl7wGAT_NDUUdBA" />
+
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-MNYDCMVBPH"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(...args) {
+				window.dataLayer.push(args);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-MNYDCMVBPH');
+		</script>
+
+		<!-- Datos estructurados del sitio -->
+		{
+			!noindex && (
+				<>
+					<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(profilePageSchema)} />
+					<script type="application/ld+json" set:html={JSON.stringify(projectsSchema)} />
+				</>
+			)
+		}
+	</head>
+	<body>
+		<main>
+			<slot />
+		</main>
+
+		<!-- Botón volver arriba -->
+		<ButtonTop />
+	</body>
+</html>
+>>>>>>> 676f69f (Refactor configuración de Astro y actualizar contenido de SEO; eliminar favicon y ajustar formato de vercel.json)
