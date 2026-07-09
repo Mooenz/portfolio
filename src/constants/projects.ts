@@ -7,8 +7,9 @@ import imgWorldRanks from '@/assets/images/worldranks.webp';
 import imgRockPaperScissors from '@/assets/images/rock-paper-scissors.webp';
 import imgPoesiaMestiza from '@/assets/images/store-poesiaMestiza.webp';
 import imgTaskBoard from '@/assets/images/task-board.webp';
+import imgMultiStepForm from '@/assets/images/multiStepForm.webp';
 
-interface Project {
+interface Project {	
 	readonly id: number;
 	readonly name: string;
 	readonly description: string;
@@ -94,34 +95,48 @@ const projects: Project[] = [
 	},
 	{
 		id: 4,
-		name: "Task Board",
-		description: "Desarrollé una aplicación fullstack de gestión de tareas inspirada en el challenge de devChallenges, con tablero editable y CRUD completo de tareas (crear, actualizar estado/contenido y eliminar). El frontend usa React con TanStack Query y Zustand, y el backend expone una API REST en Express con validación Zod y sesión anónima mediante cookie HTTP-only.",
+		name: 'Task Board',
+		description: 'Desarrollé una aplicación fullstack de gestión de tareas inspirada en el challenge de devChallenges, con tablero editable y CRUD completo de tareas (crear, actualizar estado/contenido y eliminar). El frontend usa React con TanStack Query y Zustand, y el backend expone una API REST en Express con validación Zod y sesión anónima mediante cookie HTTP-only.',
 		technologies: [
 			{
-				name: "React",
-				icon: "react",
-				styles: "text-dark bg-react dark:text-react dark:bg-react/10"
+				name: 'React',
+				icon: 'react',
+				styles: 'text-dark bg-react dark:text-react dark:bg-react/10',
 			},
 			{
-				name: "TypeScript",
-				icon: "typescript",
-				styles: "bg-typescript text-white dark:text-typescript dark:bg-typescript/10"
+				name: 'TypeScript',
+				icon: 'typescript',
+				styles: 'bg-typescript text-white dark:text-typescript dark:bg-typescript/10',
 			},
 			{
-				name: "Tailwind CSS",
-				icon: "tailwind",
-				styles: "text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10"
+				name: 'Tailwind CSS',
+				icon: 'tailwind',
+				styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10',
 			},
 			{
-				name: "Zustand",
-				icon: "zustand",
-				styles: "text-white bg-zustand dark:text-zustand dark:bg-zustand/10"
-			}
+				name: 'Zustand',
+				icon: 'zustand',
+				styles: 'text-white bg-zustand dark:text-zustand dark:bg-zustand/10',
+			},
 		],
-		repository: "https://github.com/Mooenz/task-board",
-		demo: "",
-		image: imgTaskBoard
-	}
+		repository: 'https://github.com/Mooenz/task-board',
+		demo: 'https://mooenz.github.io/task-board',
+		image: imgTaskBoard,
+	},
+	{
+		id: 5,
+		name: 'Multi-step Form',
+		description: 'Formulario de suscripción en cuatro pasos con validación, selección de plan, complementos y resumen final. Implementado con React, TypeScript, Vite, Tailwind CSS y Zod para una experiencia responsive en escritorio y móvil.',
+		technologies: [
+			{ name: 'React', icon: 'react', styles: 'text-react bg-react/10 dark:text-react dark:bg-react/10' },
+			{ name: 'TypeScript', icon: 'typescript', styles: 'text-white bg-typescript dark:text-typescript dark:bg-typescript/10' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
+			{ name: 'Zod', icon: 'zod', styles: 'text-white bg-zod dark:text-zod dark:bg-zod/10' },
+		],
+		repository: 'https://github.com/Mooenz/multi-step-form',
+		demo: 'https://mooenz.github.io/multi-step-form/',
+		image: imgMultiStepForm,
+	},
 ];
 
 export default projects;
