@@ -6,6 +6,7 @@ import imgPatioLaBoca from '@/assets/images/carta-patio-la-boca.webp';
 import imgWorldRanks from '@/assets/images/worldranks.webp';
 import imgRockPaperScissors from '@/assets/images/rock-paper-scissors.webp';
 import imgPoesiaMestiza from '@/assets/images/store-poesiaMestiza.webp';
+import imgTaskBoard from '@/assets/images/task-board.webp';
 
 interface Project {
 	readonly id: number;
@@ -91,6 +92,36 @@ const projects: Project[] = [
 		demo: 'https://mooenz.github.io/rock-paper-scissors/',
 		image: imgRockPaperScissors,
 	},
+	{
+		id: 4,
+		name: "Task Board",
+		description: "Desarrollé una aplicación fullstack de gestión de tareas inspirada en el challenge de devChallenges, con tablero editable y CRUD completo de tareas (crear, actualizar estado/contenido y eliminar). El frontend usa React con TanStack Query y Zustand, y el backend expone una API REST en Express con validación Zod y sesión anónima mediante cookie HTTP-only.",
+		technologies: [
+			{
+				name: "React",
+				icon: "react",
+				styles: "text-dark bg-react dark:text-react dark:bg-react/10"
+			},
+			{
+				name: "TypeScript",
+				icon: "typescript",
+				styles: "bg-typescript text-white dark:text-typescript dark:bg-typescript/10"
+			},
+			{
+				name: "Tailwind CSS",
+				icon: "tailwind",
+				styles: "text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10"
+			},
+			{
+				name: "Zustand",
+				icon: "zustand",
+				styles: "text-white bg-zustand dark:text-zustand dark:bg-zustand/10"
+			}
+		],
+		repository: "https://github.com/Mooenz/task-board",
+		demo: "",
+		image: imgTaskBoard
+	}
 ];
 
 export default projects;
