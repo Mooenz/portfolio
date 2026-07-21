@@ -1,4 +1,4 @@
-export const SITE_URL = 'https://mooenz.me';
+export const SITE_URL = 'https://www.mooenz.me';
 
 interface seo {
 	readonly title: string;
