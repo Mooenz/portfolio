@@ -4,6 +4,7 @@ interface seo {
 	readonly title: string;
 	readonly description: string;
 	readonly canonical: string;
+	readonly fbAppId: string;
 	readonly og: {
 		readonly url: string;
 		readonly locale: string;
@@ -18,6 +19,8 @@ const seo = {
 	description:
 		'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia en la creación de sitios web modernos, rápidos y accesibles.',
 	canonical: `${SITE_URL}/`,
+	// App ID de Meta for Developers: https://developers.facebook.com/apps/
+	fbAppId: '2135374490721492',
 	og: {
 		url: `${SITE_URL}/`,
 		type: 'website',

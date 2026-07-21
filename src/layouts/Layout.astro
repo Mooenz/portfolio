@@ -18,7 +18,7 @@ const {
 	pageDescription = seo.description,
 } = Astro.props;
 
-const { canonical, og } = seo;
+const { canonical, fbAppId, og } = seo;
 const robotsContent = noindex ? 'noindex,nofollow' : 'index,follow';
 
 const currentYear = new Date().getFullYear();
@@ -186,6 +186,7 @@ const structuredData = {
 		<meta property="og:image:alt" content={og.imageAlt} />
 		<meta property="og:locale" content={og.locale} />
 		<meta property="og:site_name" content="Mooenz Portfolio" />
+		{fbAppId && <meta property="fb:app_id" content={fbAppId} />}
 
 		<!-- Twitter  -->
 		<meta name="twitter:card" content="summary_large_image" />
