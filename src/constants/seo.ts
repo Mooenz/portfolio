@@ -9,6 +9,7 @@ interface seo {
 		readonly locale: string;
 		readonly type: string;
 		readonly image: string;
+		readonly imageAlt: string;
 	};
 }
 
@@ -22,6 +23,7 @@ const seo = {
 		type: 'website',
 		locale: 'es_CO',
 		image: `${SITE_URL}/images/og-image.webp`,
+		imageAlt: 'José Manuel Montaño Saenz — Desarrollador Frontend',
 	},
 };
 

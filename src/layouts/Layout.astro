@@ -112,7 +112,10 @@ const projectsSchema = {
 		item: {
 			'@type': 'CreativeWork',
 			name: project.name,
-			description: project.description,
+			description:
+				project.description.length > 160
+					? `${project.description.slice(0, 157).trimEnd()}...`
+					: project.description,
 			url: project.demo || project.repository,
 			...(project.repository && { codeRepository: project.repository }),
 			author: { '@id': `${SITE_URL}/#person` },
@@ -128,7 +131,7 @@ const structuredData = {
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es-CO">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -180,7 +183,7 @@ const structuredData = {
 		<meta property="og:image:type" content="image/webp" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
-		<meta property="og:image:alt" content={pageDescription} />
+		<meta property="og:image:alt" content={og.imageAlt} />
 		<meta property="og:locale" content={og.locale} />
 		<meta property="og:site_name" content="Mooenz Portfolio" />
 
@@ -189,7 +192,7 @@ const structuredData = {
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={pageDescription} />
 		<meta name="twitter:image" content={og.image} />
-		<meta name="twitter:image:alt" content={pageDescription} />
+		<meta name="twitter:image:alt" content={og.imageAlt} />
 		<meta name="twitter:site" content="@MooenzDev" />
 		<meta name="twitter:creator" content="@MooenzDev" />
 
