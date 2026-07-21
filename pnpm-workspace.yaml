@@ -1,2 +1,5 @@
+packages:
+  - '.'
+
 minimumReleaseAgeExclude:
   - astro@7.1.3
