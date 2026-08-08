@@ -1,21 +1,12 @@
 import personal from '@/constants/personal-info';
 import experience from '@/constants/experience';
 import projects from '@/constants/projects';
-import seo from '@/constants/seo';
-
-import { SITE_URL } from '@/constants/seo.ts';
+import seo, { SITE_URL } from '@/constants/seo';
 
 export function buildLlmsContent(): string {
-	const techStack = [
-		...new Set(projects.flatMap((project) => project.technologies.map(({ name }) => name))),
-	].join(', ');
+	const techStack = [...new Set(projects.flatMap((project) => project.technologies.map(({ name }) => name)))].join(', ');
 
-	const experienceSection = experience
-		.map(
-			({ position, company, period, description }) =>
-				`**${position} — ${company}** (${period})\n\n${description}`
-		)
-		.join('\n\n');
+	const experienceSection = experience.map(({ position, company, period, description }) => `**${position} — ${company}** (${period})\n\n${description}`).join('\n\n');
 
 	const projectsSection = projects
 		.map((project) => {
