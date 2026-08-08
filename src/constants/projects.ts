@@ -8,6 +8,7 @@ import imgRockPaperScissors from '@/assets/images/rock-paper-scissors.webp';
 import imgPoesiaMestiza from '@/assets/images/store-poesiaMestiza.webp';
 import imgTaskBoard from '@/assets/images/task-board.webp';
 import imgMultiStepForm from '@/assets/images/multiStepForm.webp';
+import imgGrizzly from '@/assets/images/store-grizzly.webp';
 
 interface Project {
 	readonly id: number;
@@ -22,12 +23,29 @@ interface Project {
 const projects: Project[] = [
 	{
 		id: 0,
-		name: 'Tienda online Poesía Mestiza Coffee',
-		description: 'Desarrollé la tienda ecommerce DTC de Poesía Mestiza Coffee, marca de café colombiano de especialidad en Canadá, con catálogo multirregional, checkout con Stripe, cuentas de cliente, suscripciones, journal y soporte multilingüe (EN/ES/FR), utilizando Next.js, React, TypeScript, Medusa y Tailwind CSS para una experiencia moderna, trazable y orientada a conversión.',
+		name: 'Tienda online GRIZZLY Chanclas',
+		description:
+			'Desarrollé la tienda ecommerce DTC de GRIZZLY, marca colombiana de chanclas premium fabricadas en Ibagué, con catálogo por colecciones, checkout de invitado sin registro y seguimiento por token, pagos con Wompi y contraentrega por WhatsApp, reserva de stock con expiración automática, cotización y guías de envío nacional, correos transaccionales y panel interno de gestión de pedidos, utilizando Next.js, React, TypeScript, Supabase y Tailwind CSS sobre una arquitectura server-first con RLS, Server Actions y máquina de estados en base de datos.',
 		technologies: [
 			{ name: 'React', icon: 'react', styles: 'text-dark bg-react dark:text-react dark:bg-react/10' },
 			{ name: 'TypeScript', icon: 'typescript', styles: 'text-white bg-typescript dark:text-typescript dark:bg-typescript/10' },
 			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
+			{ name: 'Supabase', icon: 'supabase', styles: 'text-white bg-supabase dark:text-supabase dark:bg-supabase/10' },
+			{ name: 'Next.js', icon: 'next', styles: 'text-white bg-text dark:text-white dark:bg-white/10' },
+		],
+		repository: '',
+		demo: 'https://www.grizzlycol.com/',
+		image: imgGrizzly,
+	},
+	{
+		id: 1,
+		name: 'Tienda online Poesía Mestiza Coffee',
+		description: 'Desarrollé la tienda ecommerce DTC de Poesía Mestiza Coffee, marca de café colombiano de especialidad en Canadá, con catálogo multirregional, checkout con Stripe, cuentas de cliente, suscripciones, journal y soporte multilingüe (EN/ES/FR), utilizando Next.js, React, TypeScript, Supabase, Medusa y Tailwind CSS para una experiencia moderna, trazable y orientada a conversión.',
+		technologies: [
+			{ name: 'React', icon: 'react', styles: 'text-dark bg-react dark:text-react dark:bg-react/10' },
+			{ name: 'TypeScript', icon: 'typescript', styles: 'text-white bg-typescript dark:text-typescript dark:bg-typescript/10' },
+			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
+			{ name: 'Supabase', icon: 'supabase', styles: 'text-white bg-supabase dark:text-supabase dark:bg-supabase/10' },
 			{ name: 'Next.js', icon: 'next', styles: 'text-white bg-text dark:text-white dark:bg-white/10' },
 			{ name: 'Medusa', icon: 'medusa', styles: 'text-white bg-text dark:text-white dark:bg-white/10' },
 		],
@@ -36,7 +54,7 @@ const projects: Project[] = [
 		image: imgPoesiaMestiza,
 	},
 	{
-		id: 12,
+		id: 2,
 		name: 'Página web de IngeSoftNet',
 		description: 'Desarrollé la web de IngeSoftNet que ofrece servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé, utilizando Astro, Tailwind CSS y Javascript para crear una experiencia de usuario moderna y receptiva.',
 		technologies: [
@@ -49,7 +67,7 @@ const projects: Project[] = [
 		image: imgIngeSoftNet,
 	},
 	{
-		id: 1,
+		id: 3,
 		name: 'Plataforma web bilingüe de Patio La Boca Restaurant',
 		description: 'Aplicación web SSR para la carta digital (es/en) de Patio La Boca Restaurant, construida con Astro y TypeScript. Incluye navegación por categorías dinámicas desde Supabase, animaciones con GSAP, modo oscuro, panel administrativo con autenticación, CRUD de secciones/platos y carga segura de imágenes para mantener el menú actualizado en producción.',
 		technologies: [
@@ -66,7 +84,7 @@ const projects: Project[] = [
 		image: imgPatioLaBoca,
 	},
 	{
-		id: 2,
+		id: 4,
 		name: 'WorldRanks | Country Page',
 		description: 'Desarrollé WorldRanks, una aplicación web para explorar información de países del mundo, con filtros por texto, región y estado, ordenamiento de resultados y vista de detalle con países vecinos, usando React, TypeScript, Tailwind CSS y Zustand.',
 		technologies: [
@@ -80,7 +98,7 @@ const projects: Project[] = [
 		image: imgWorldRanks,
 	},
 	{
-		id: 3,
+		id: 5,
 		name: 'Rock Paper Scissors Game',
 		description: 'Desarrollé un juego interactivo de Piedra, Papel, Tijeras con modos de juego clásico y bonus (incluyendo Lagartija y Spock). La aplicación mantiene el estado de puntuación en localStorage y cuenta con un diseño totalmente responsive.',
 		technologies: [
@@ -94,7 +112,7 @@ const projects: Project[] = [
 		image: imgRockPaperScissors,
 	},
 	{
-		id: 4,
+		id: 6,
 		name: 'Task Board',
 		description: 'Desarrollé una aplicación fullstack de gestión de tareas inspirada en el challenge de devChallenges, con tablero editable y CRUD completo de tareas (crear, actualizar estado/contenido y eliminar). El frontend usa React con TanStack Query y Zustand, y el backend expone una API REST en Express con validación Zod y sesión anónima mediante cookie HTTP-only.',
 		technologies: [
@@ -124,7 +142,7 @@ const projects: Project[] = [
 		image: imgTaskBoard,
 	},
 	{
-		id: 5,
+		id: 7,
 		name: 'Multi-step Form',
 		description: 'Formulario de suscripción en cuatro pasos con validación, selección de plan, complementos y resumen final. Implementado con React, TypeScript, Vite, Tailwind CSS y Zod para una experiencia responsive en escritorio y móvil.',
 		technologies: [
