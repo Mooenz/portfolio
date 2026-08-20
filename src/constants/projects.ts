@@ -146,7 +146,7 @@ const projects: Project[] = [
 		name: 'Multi-step Form',
 		description: 'Formulario de suscripción en cuatro pasos con validación, selección de plan, complementos y resumen final. Implementado con React, TypeScript, Vite, Tailwind CSS y Zod para una experiencia responsive en escritorio y móvil.',
 		technologies: [
-			{ name: 'React', icon: 'react', styles: 'text-react bg-react/10 dark:text-react dark:bg-react/10' },
+			{ name: 'React', icon: 'react', styles: 'text-dark bg-react dark:text-react dark:bg-react/10' },
 			{ name: 'TypeScript', icon: 'typescript', styles: 'text-white bg-typescript dark:text-typescript dark:bg-typescript/10' },
 			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-white bg-tailwindcss dark:text-tailwindcss dark:bg-tailwindcss/10' },
 			{ name: 'Zod', icon: 'zod', styles: 'text-white bg-zod dark:text-zod dark:bg-zod/10' },
