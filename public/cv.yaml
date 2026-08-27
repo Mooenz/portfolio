@@ -51,6 +51,16 @@ cv:
           - 'Mantenimiento y mejora de código existente'
 
     proyectos:
+      - name: 'Tienda online GRIZZLY Chanclas'
+        summary: 'Tienda ecommerce DTC de marca colombiana de chanclas premium, con catálogo por colecciones, checkout de invitado con seguimiento por token, pagos con Wompi y contraentrega por WhatsApp, reserva de stock, cotización de envíos y panel interno de gestión de pedidos.'
+        stack:
+          - 'Next.js'
+          - 'React'
+          - 'TypeScript'
+          - 'Supabase'
+          - 'Tailwind CSS'
+        demo: 'https://www.grizzlycol.com/'
+
       - name: 'Tienda online Poesía Mestiza Coffee'
         summary: 'Tienda ecommerce DTC con catálogo multirregional, checkout con Stripe, cuentas de cliente, suscripciones y soporte multilingüe (EN/ES/FR).'
         stack:
