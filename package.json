@@ -15,6 +15,7 @@
 		"@astrojs/sitemap": "^3.7.3",
 		"@astrojs/vercel": "^11.0.8",
 		"@tailwindcss/vite": "^4.3.3",
+		"@vercel/functions": "3.9.3",
 		"astro": "^7.2.9",
 		"astro-critters": "^2.2.1",
 		"gsap": "^3.15.0",
