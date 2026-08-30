@@ -132,6 +132,74 @@ test('home: la marca "Mooenz" aparece en title y contenido servido', () => {
 	assert.match(html, /Sobre[^<]*Mooenz/, 'El contenido HTML de la portada debe nombrar la marca "Mooenz"');
 });
 
+// --- Descubribilidad de marca: NAP consistente y nombres de entidad ---------
+
+const NAP = {
+	brand: 'Mooenz',
+	brandLong: 'Mooenz Portfolio',
+	legalName: 'José Manuel Montaño Saenz',
+	location: 'Ibagué, Tolima, Colombia',
+	email: 'joss92821@hotmail.com',
+	domain: 'www.mooenz.me',
+};
+
+const addressBlock = (html) => (html.match(/<address[\s\S]*?<\/address>/) ?? [null])[0];
+
+for (const page of ['index.html', 'about/index.html', 'contact/index.html', 'privacy/index.html', '404.html']) {
+	test(`NAP: ${page} incluye un bloque <address> con marca, ubicación, correo y dominio`, () => {
+		const block = addressBlock(read(page));
+		assert.ok(block, `${page} debe incluir un <address> en el footer`);
+		const text = visibleText(block);
+		for (const needle of [NAP.brand, NAP.brandLong, NAP.legalName, NAP.location, NAP.email, NAP.domain]) {
+			assert.ok(text.includes(needle), `El <address> de ${page} debe contener "${needle}" (NAP consistente)`);
+		}
+		// El dominio canónico debe ir enlazado a la home, sin cadena de redirecciones.
+		assert.match(block, /href="https:\/\/www\.mooenz\.me\/"/, `${page} debe enlazar al dominio canónico apuntando a la raíz con www`);
+	});
+}
+
+test('marca: nombres de entidad JSON-LD coherentes con la búsqueda "Mooenz Portfolio"', () => {
+	const html = read('index.html');
+	const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+	const graph = JSON.parse(m[1])['@graph'] ?? [];
+
+	const org = graph.find((n) => n['@type'] === 'Organization');
+	assert.equal(org.name, NAP.brand, 'Organization.name debe ser la marca corta "Mooenz"');
+	assert.ok([].concat(org.alternateName).includes(NAP.brandLong), 'Organization.alternateName debe incluir "Mooenz Portfolio"');
+	assert.equal(org.legalName, NAP.legalName, 'Organization.legalName debe ser el nombre real');
+	assert.equal(org.address.addressLocality, 'Ibagué', 'Organization.address debe coincidir con el NAP visible');
+
+	const website = graph.find((n) => n['@type'] === 'WebSite');
+	assert.equal(website.name, NAP.brandLong, 'WebSite.name debe ser "Mooenz Portfolio" (frase exacta de búsqueda)');
+	assert.ok([].concat(website.alternateName).includes(NAP.brand), 'WebSite.alternateName debe incluir "Mooenz"');
+	assert.equal(website.publisher?.['@id'], 'https://www.mooenz.me/#organization', 'WebSite.publisher debe apuntar a la Organization');
+
+	const person = graph.find((n) => n['@type'] === 'Person');
+	assert.ok([].concat(person.alternateName).includes(NAP.brand), 'Person.alternateName debe incluir "Mooenz"');
+
+	assert.match(html, /<meta property="og:site_name" content="Mooenz Portfolio">/, 'og:site_name debe ser "Mooenz Portfolio"');
+});
+
+for (const file of ['llms.txt', 'index.md']) {
+	test(`marca: ${file} declara la marca y el dominio canónico`, () => {
+		const txt = read(file);
+		assert.ok(txt.includes(NAP.brandLong), `${file} debe nombrar "Mooenz Portfolio"`);
+		assert.match(txt, /\*\*Marca:\*\*\s*Mooenz/, `${file} debe declarar explícitamente la marca`);
+		assert.ok(txt.includes(NAP.location), `${file} debe indicar la ubicación (${NAP.location})`);
+		assert.ok(txt.includes(NAP.domain), `${file} debe citar el dominio canónico ${NAP.domain}`);
+	});
+}
+
+test('home: las secciones sin JS están asociadas a su encabezado (estructura no plana)', () => {
+	const html = read('index.html');
+	for (const id of ['about-heading', 'experience-heading', 'projects-heading']) {
+		assert.ok(
+			html.includes(`aria-labelledby="${id}"`) && new RegExp(`<h[1-6][^>]*id="${id}"`).test(html),
+			`Debe existir una <section aria-labelledby="${id}"> con su encabezado correspondiente`,
+		);
+	}
+});
+
 test('sitemap incluye las páginas de confianza', () => {
 	const xml = read('sitemap-0.xml');
 	for (const p of ['about', 'contact', 'privacy']) {
