@@ -111,5 +111,5 @@ Este proyecto tiene licencia MIT, lo que significa que cualquier persona puede u
 
 ## 📬 Contacto
 
-GitHub: [@mooenz](https://github.com/Mooenz)
-LinkedIn: [@mooenz](https://www.linkedin.com/in/mooenzdev)
+GitHub: [@Mooenz](https://github.com/Mooenz)
+LinkedIn: [@mooenz](https://www.linkedin.com/in/mooenz/)

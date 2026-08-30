@@ -15,7 +15,7 @@ interface seo {
 }
 
 const seo = {
-	title: 'Desarrollador Frontend | José Manuel Montaño Saenz',
+	title: 'Desarrollador Frontend | José Manuel Montaño Saenz (Mooenz)',
 	description:
 		'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia en la creación de sitios web modernos, rápidos y accesibles.',
 	canonical: `${SITE_URL}/`,

@@ -37,7 +37,12 @@ const postalAddress = {
 	addressCountry: 'CO',
 };
 
-const sameAsProfiles = ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'];
+const sameAsProfiles = [
+	'https://github.com/Mooenz',
+	'https://www.linkedin.com/in/mooenz/',
+	'https://twitter.com/MooenzDev',
+	'https://x.com/MooenzDev',
+];
 
 const personSchema = {
 	'@type': 'Person',
@@ -113,7 +118,7 @@ const websiteSchema = {
 	'@id': `${SITE_URL}/#website`,
 	url: `${SITE_URL}/`,
 	name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
-	alternateName: 'Mooenz Portfolio',
+	alternateName: ['Mooenz', 'Mooenz Portfolio'],
 	description: pageDescription,
 	inLanguage: 'es-CO',
 	author: {
