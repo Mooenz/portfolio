@@ -2,6 +2,7 @@ import personal from '@/constants/personal-info';
 import experience from '@/constants/experience';
 import projects from '@/constants/projects';
 import seo, { SITE_URL } from '@/constants/seo';
+import { buildWhenToUseSection } from '@/utilities/build-markdown-content';
 
 export function buildLlmsContent(): string {
 	const techStack = [...new Set(projects.flatMap((project) => project.technologies.map(({ name }) => name)))].join(', ');
@@ -31,6 +32,8 @@ export function buildLlmsContent(): string {
 
 El sitio web es un portafolio de una sola página construido con Astro. Muestra información personal, experiencia laboral y proyectos destacados. Incluye modo oscuro/claro, animaciones y diseño responsivo.
 
+${buildWhenToUseSection()}
+
 ## Stack tecnológico
 
 El proyecto está construido con las siguientes tecnologías:
@@ -58,6 +61,13 @@ ${experienceSection}
 ## Proyectos
 
 ${projectsSection}
+
+## Páginas de referencia
+
+- [Sobre mí](${SITE_URL}/about): Trayectoria, forma de trabajo y stack principal.
+- [Contacto](${SITE_URL}/contact): Cómo y cuándo escribir, tiempos de respuesta e idiomas.
+- [Privacidad](${SITE_URL}/privacy): Qué datos recopila el sitio y cómo se tratan.
+- [Versión Markdown de la home](${SITE_URL}/index.md): Mismo contenido de la portada en \`text/markdown\` (también vía \`Accept: text/markdown\` sobre \`/\`).
 
 ## Optional
 
