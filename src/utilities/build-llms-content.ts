@@ -1,7 +1,7 @@
 import personal from '@/constants/personal-info';
 import experience from '@/constants/experience';
 import projects from '@/constants/projects';
-import seo, { SITE_URL } from '@/constants/seo';
+import seo, { SITE_URL, SITE_DOMAIN, BRAND } from '@/constants/seo';
 import { buildWhenToUseSection } from '@/utilities/build-markdown-content';
 
 export function buildLlmsContent(): string {
@@ -17,18 +17,20 @@ export function buildLlmsContent(): string {
 		})
 		.join('\n');
 
-	return `# Portfolio de ${personal.name}
+	return `# ${BRAND.fullName} — Portfolio de ${personal.name}
 
-> ${seo.description} Disponible para trabajar. Ubicado en Colombia.
+> ${seo.description} Disponible para trabajar. Ubicado en ${BRAND.locality}, ${BRAND.region}, ${BRAND.country}.
 
 ## Sobre el autor
 
 - **Nombre:** ${personal.name}
+- **Marca:** ${BRAND.name} (también «${BRAND.fullName}»)
 - **Rol:** ${personal.role}
 - **Correo:** ${personal.email}
-- **Sitio web:** ${SITE_URL}
+- **Sitio web:** ${SITE_URL} (${SITE_DOMAIN})
 - **GitHub:** ${personal.github}
 - **LinkedIn:** ${personal.linkedIn}
+- **Ubicación:** ${BRAND.locality}, ${BRAND.region}, ${BRAND.country}
 
 El sitio web es un portafolio de una sola página construido con Astro. Muestra información personal, experiencia laboral y proyectos destacados. Incluye modo oscuro/claro, animaciones y diseño responsivo.
 

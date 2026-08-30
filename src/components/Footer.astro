@@ -1,5 +1,6 @@
 ---
 import personal from '@/constants/personal-info';
+import { BRAND, SITE_URL, SITE_DOMAIN } from '@/constants/seo';
 
 const year = new Date().getFullYear();
 
@@ -11,23 +12,42 @@ const links = [
 	{ href: '/llms.txt', label: 'llms.txt' },
 	{ href: '/documents/Cv-José-M-Montaño.pdf', label: 'CV (PDF)' },
 ];
+
+// NAP canónico (Name, Address, Phone-equivalent). Debe coincidir palabra por
+// palabra con el JSON-LD (`Organization`/`Person`) para reforzar que esta marca
+// y este dominio son la misma entidad ante buscadores y motores de IA.
+const location = `${BRAND.locality}, ${BRAND.region}, ${BRAND.country}`;
 ---
 
 <footer class="bg-primary dark:bg-primary-dark border-t border-border-lateral dark:border-border-lateral-dark transition-colors duration-300 ease-in-out">
-	<div class="mx-auto max-w-5xl px-3 sm:px-6 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-text-secondary dark:text-text-secondary-dark">
-		<nav aria-label="Enlaces del pie de página">
-			<ul class="flex flex-wrap gap-x-5 gap-y-2">
-				{
-					links.map(({ href, label }) => (
-						<li>
-							<a class="hover:text-text dark:hover:text-text-dark transition-colors duration-300 ease-in-out underline underline-offset-2" href={href}>
-								{label}
-							</a>
-						</li>
-					))
-				}
-			</ul>
-		</nav>
-		<p>© {year} {personal.name}</p>
+	<div class="mx-auto max-w-5xl px-3 sm:px-6 py-6 flex flex-col gap-4 text-sm text-text-secondary dark:text-text-secondary-dark">
+		<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+			<nav aria-label="Enlaces del pie de página">
+				<ul class="flex flex-wrap gap-x-5 gap-y-2">
+					{
+						links.map(({ href, label }) => (
+							<li>
+								<a class="hover:text-text dark:hover:text-text-dark transition-colors duration-300 ease-in-out underline underline-offset-2" href={href}>
+									{label}
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
+			<p>© {year} {personal.name}</p>
+		</div>
+
+		<address class="not-italic leading-relaxed">
+			<span class="font-medium text-text dark:text-text-dark">{BRAND.name}</span>
+			<span aria-hidden="true"> · </span>{BRAND.fullName}
+			<span aria-hidden="true"> · </span>{BRAND.legalName}, {personal.role}
+			<br />
+			{location}
+			<span aria-hidden="true"> · </span>
+			<a class="hover:text-text dark:hover:text-text-dark transition-colors duration-300 ease-in-out underline underline-offset-2" href={`mailto:${personal.email}`}>{personal.email}</a>
+			<span aria-hidden="true"> · </span>
+			<a class="hover:text-text dark:hover:text-text-dark transition-colors duration-300 ease-in-out underline underline-offset-2" href={`${SITE_URL}/`} rel="home">{SITE_DOMAIN}</a>
+		</address>
 	</div>
 </footer>

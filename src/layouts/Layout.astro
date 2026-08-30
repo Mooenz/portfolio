@@ -2,7 +2,7 @@
 import '@/styles/global.css';
 import '@/styles/fonts.css';
 
-import seo, { SITE_URL } from '@/constants/seo.ts';
+import seo, { SITE_URL, BRAND } from '@/constants/seo.ts';
 import projects from '@/constants/projects.ts';
 import personal from '@/constants/personal-info.ts';
 import ButtonTop from '@/components/ButtonTop.astro';
@@ -32,9 +32,9 @@ const currentDate = new Date().toISOString();
 
 const postalAddress = {
 	'@type': 'PostalAddress',
-	addressLocality: 'Ibagué',
-	addressRegion: 'Tolima',
-	addressCountry: 'CO',
+	addressLocality: BRAND.locality,
+	addressRegion: BRAND.region,
+	addressCountry: BRAND.countryCode,
 };
 
 const sameAsProfiles = [
@@ -47,8 +47,8 @@ const sameAsProfiles = [
 const personSchema = {
 	'@type': 'Person',
 	'@id': `${SITE_URL}/#person`,
-	name: 'José Manuel Montaño Saenz',
-	alternateName: 'Mooenz',
+	name: BRAND.legalName,
+	alternateName: [BRAND.name, `${BRAND.name} (${BRAND.legalName})`],
 	url: `${SITE_URL}/`,
 	email: `mailto:${personal.email}`,
 	image: {
@@ -88,8 +88,9 @@ const personSchema = {
 const organizationSchema = {
 	'@type': 'Organization',
 	'@id': `${SITE_URL}/#organization`,
-	name: 'Mooenz — José Manuel Montaño Saenz',
-	alternateName: 'Mooenz Portfolio',
+	name: BRAND.name,
+	legalName: BRAND.legalName,
+	alternateName: [BRAND.fullName, `${BRAND.name} — ${BRAND.legalName}`],
 	url: `${SITE_URL}/`,
 	email: `mailto:${personal.email}`,
 	description: 'Estudio freelance de desarrollo web frontend y fullstack (Astro, React, Next.js, TypeScript) de José Manuel Montaño Saenz.',
@@ -117,8 +118,9 @@ const websiteSchema = {
 	'@type': 'WebSite',
 	'@id': `${SITE_URL}/#website`,
 	url: `${SITE_URL}/`,
-	name: 'José Manuel Montaño Saenz - Desarrollador Frontend',
-	alternateName: ['Mooenz', 'Mooenz Portfolio'],
+	name: BRAND.fullName,
+	alternateName: [BRAND.name, `${BRAND.legalName} - Desarrollador Frontend`],
+	publisher: { '@id': `${SITE_URL}/#organization` },
 	description: pageDescription,
 	inLanguage: 'es-CO',
 	author: {
@@ -214,8 +216,8 @@ const structuredData = {
 		<meta name="msapplication-TileColor" content="#f53b57" />
 		<meta name="theme-color" content="#ffffff" />
 		<meta name="description" content={pageDescription} />
-		<meta name="author" content="José Manuel Montaño Saenz" />
-		<meta name="copyright" content="Mooenz" />
+		<meta name="author" content={BRAND.legalName} />
+		<meta name="copyright" content={BRAND.name} />
 		<meta name="robots" content={robotsContent} />
 		<title>{pageTitle}</title>
 
@@ -236,7 +238,7 @@ const structuredData = {
 		<meta property="og:image:height" content="630" />
 		<meta property="og:image:alt" content={og.imageAlt} />
 		<meta property="og:locale" content={og.locale} />
-		<meta property="og:site_name" content="Mooenz Portfolio" />
+		<meta property="og:site_name" content={BRAND.fullName} />
 		{fbAppId && <meta property="fb:app_id" content={fbAppId} />}
 
 		<!-- Twitter  -->

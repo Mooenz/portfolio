@@ -1,7 +1,7 @@
 import personal from '@/constants/personal-info';
 import experience from '@/constants/experience';
 import projects from '@/constants/projects';
-import seo, { SITE_URL } from '@/constants/seo';
+import seo, { SITE_URL, SITE_DOMAIN, BRAND } from '@/constants/seo';
 
 /**
  * Bloque reutilizable de "cuándo contactar" (when-to-use). Se incluye tanto en
@@ -46,11 +46,12 @@ export function buildHomepageMarkdown(): string {
 
 > ${seo.description}
 
-- **Sitio web:** ${SITE_URL}/
+- **Marca:** ${BRAND.name} (también «${BRAND.fullName}»)
+- **Sitio web:** ${SITE_URL}/ (${SITE_DOMAIN})
 - **Correo:** ${personal.email}
 - **GitHub:** ${personal.github}
 - **LinkedIn:** ${personal.linkedIn}
-- **Ubicación:** Ibagué, Tolima, Colombia (America/Bogota, UTC-5)
+- **Ubicación:** ${BRAND.locality}, ${BRAND.region}, ${BRAND.country} (${BRAND.timezone}, UTC-5)
 - **Disponibilidad:** disponible para trabajar (freelance)
 
 ## Sobre mí

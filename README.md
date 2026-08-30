@@ -1,6 +1,9 @@
-# Portafolio
+# Mooenz Portfolio
 
-Mi portafolio personal desarrollado con **Astro**, **TailwindCSS**, **TypeScript**, **JavaScript** y **GSAP**.  
+**Mooenz Portfolio** es el portafolio personal de **José Manuel Montaño Saenz** (alias **Mooenz**), desarrollador frontend.
+Sitio en producción: <https://www.mooenz.me>
+
+Desarrollado con **Astro**, **TailwindCSS**, **TypeScript**, **JavaScript** y **GSAP**.  
 Este proyecto funciona como mi **carta de presentación profesional**, donde muestro mis habilidades, experiencia y los proyectos en los que he trabajado. Está orientado tanto a posibles empleadores como a clientes que deseen conocer mi trabajo como desarrollador web.
 
 ---
