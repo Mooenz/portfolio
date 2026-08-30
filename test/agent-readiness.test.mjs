@@ -2,6 +2,11 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { prefersMarkdown, parseAccept } from '../src/utilities/accept-negotiation.mjs';
+import { buildNotFoundMarkdown, NOT_FOUND_MARKDOWN, RECOVERY_LINKS } from '../src/utilities/markdown-404.mjs';
+
+const root = (p) => fileURLToPath(new URL(`../${p}`, import.meta.url));
+const readRoot = (p) => readFileSync(root(p), 'utf8');
 
 /**
  * Verificación de la preparación del sitio para agentes de IA.
@@ -73,8 +78,11 @@ test('home: contenido sin JavaScript con jerarquía de encabezados', () => {
 	const html = read('index.html');
 	const h1 = html.match(/<h1[\s>]/g) ?? [];
 	const h2 = html.match(/<h2[\s>]/g) ?? [];
+	const h3 = html.match(/<h3[\s>]/g) ?? [];
 	assert.equal(h1.length, 1, 'Debe haber exactamente un H1');
-	assert.ok(h2.length >= 2, 'Debe haber varios H2 (estructura no plana)');
+	assert.ok(h2.length >= 3, 'Debe haber varios H2 (intro + experiencia + proyectos)');
+	assert.ok(h3.length >= 3, 'Debe haber H3 anidados (estructura de 3 niveles, no plana)');
+	assert.match(html, /<h2[^>]*class="sr-only"[^>]*>Sobre /, 'La intro debe tener su propio encabezado de sección');
 	assert.ok(visibleText(html).length >= 500, 'Debe haber >= 500 caracteres de texto en el HTML plano');
 	assert.match(html, /<link rel="alternate" type="text\/markdown" href="\/index\.md"/, 'Debe anunciar la variante Markdown');
 });
@@ -96,6 +104,34 @@ test('home: JSON-LD con Organization completo (contactPoint + address)', () => {
 	assert.ok(org.address.addressCountry, 'address necesita addressCountry');
 });
 
+test('home: perfiles sameAs consistentes para descubrimiento de marca', () => {
+	const html = read('index.html');
+	const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+	const graph = (JSON.parse(m[1])['@graph']) ?? [];
+	const withSameAs = graph.filter((n) => Array.isArray(n.sameAs));
+	assert.ok(withSameAs.length >= 2, 'Person y Organization deben declarar sameAs');
+	for (const node of withSameAs) {
+		for (const url of node.sameAs) {
+			assert.match(url, /^https:\/\//, `sameAs debe usar https: ${url}`);
+		}
+		assert.ok(
+			node.sameAs.includes('https://github.com/Mooenz'),
+			'sameAs debe usar la URL canónica de GitHub (github.com/Mooenz)',
+		);
+	}
+	assert.ok(!html.includes('https://github.com/mooenz"'), 'No debe quedar la variante en minúsculas de GitHub');
+
+	const website = graph.find((n) => n['@type'] === 'WebSite');
+	const alt = [].concat(website?.alternateName ?? []);
+	assert.ok(alt.includes('Mooenz'), 'WebSite debe declarar "Mooenz" como alternateName');
+});
+
+test('home: la marca "Mooenz" aparece en title y contenido servido', () => {
+	const html = read('index.html');
+	assert.match(html, /<title>[^<]*Mooenz[^<]*<\/title>/, 'El <title> de la portada debe incluir la marca "Mooenz"');
+	assert.match(html, /Sobre[^<]*Mooenz/, 'El contenido HTML de la portada debe nombrar la marca "Mooenz"');
+});
+
 test('sitemap incluye las páginas de confianza', () => {
 	const xml = read('sitemap-0.xml');
 	for (const p of ['about', 'contact', 'privacy']) {
@@ -103,15 +139,8 @@ test('sitemap incluye las páginas de confianza', () => {
 	}
 });
 
-test('vercel.json: negociación de contenido Markdown + Vary: Accept', () => {
-	const cfg = JSON.parse(readFileSync(fileURLToPath(new URL('../vercel.json', import.meta.url)), 'utf8'));
-
-	const rewrite = (cfg.rewrites ?? []).find((r) => r.destination === '/index.md');
-	assert.ok(rewrite, 'Debe existir un rewrite a /index.md');
-	assert.equal(rewrite.source, '/');
-	const cond = (rewrite.has ?? []).find((h) => h.type === 'header' && h.key.toLowerCase() === 'accept');
-	assert.ok(cond, 'El rewrite debe condicionarse a la cabecera Accept');
-	assert.match(cond.value, /text\/markdown/, 'La condición debe buscar text/markdown');
+test('vercel.json: Vary: Accept y Content-Type de las variantes machine-readable', () => {
+	const cfg = JSON.parse(readRoot('vercel.json'));
 
 	const hasVaryAccept = (source) => {
 		const entry = (cfg.headers ?? []).find((h) => h.source === source);
@@ -125,4 +154,66 @@ test('vercel.json: negociación de contenido Markdown + Vary: Accept', () => {
 	const mdEntry = cfg.headers.find((h) => h.source === '/index.md');
 	const ct = mdEntry.headers.find((h) => h.key.toLowerCase() === 'content-type');
 	assert.ok(ct && /text\/markdown/.test(ct.value), '/index.md debe servirse como text/markdown');
+
+	// La negociación en `/` la hace el middleware edge, no un rewrite estático
+	// (los rewrites de vercel.json no se evalúan cuando `/` resuelve a index.html).
+	assert.ok(
+		!(cfg.rewrites ?? []).some((r) => r.source === '/'),
+		'No debe quedar un rewrite estático inerte para "/"',
+	);
+});
+
+test('middleware.ts: negociación de Markdown en la misma URL para "/"', () => {
+	assert.ok(existsSync(root('middleware.ts')), 'Debe existir middleware.ts en la raíz del proyecto');
+	const src = readRoot('middleware.ts');
+	assert.match(src, /from '@vercel\/functions'/, 'Debe usar los helpers de @vercel/functions');
+	assert.match(src, /rewrite\(new URL\('\/index\.md'/, 'Debe reescribir "/" a /index.md');
+	assert.match(src, /prefersMarkdown/, 'Debe decidir según la cabecera Accept');
+	assert.match(src, /status:\s*404/, 'Debe responder 404 con cuerpo Markdown en rutas inexistentes');
+	assert.match(src, /export const config/, 'Debe declarar un matcher para acotar su alcance');
+
+	const pkg = JSON.parse(readRoot('package.json'));
+	const deps = { ...pkg.dependencies, ...pkg.devDependencies };
+	assert.ok(deps['@vercel/functions'], '@vercel/functions debe estar declarado como dependencia');
+});
+
+test('accept-negotiation: prefersMarkdown respeta la especificidad y los q-values', () => {
+	// Agente que pide Markdown explícitamente.
+	assert.equal(prefersMarkdown('text/markdown'), true);
+	assert.equal(prefersMarkdown('text/markdown, text/html'), true);
+	assert.equal(prefersMarkdown('text/html, text/markdown'), true);
+	assert.equal(prefersMarkdown('text/x-markdown'), true);
+	assert.equal(prefersMarkdown('text/markdown;q=0.9, text/html;q=0.8'), true);
+
+	// Navegadores y crawlers normales: NO deben recibir Markdown.
+	assert.equal(prefersMarkdown('*/*'), false);
+	assert.equal(prefersMarkdown(''), false);
+	assert.equal(prefersMarkdown(null), false);
+	assert.equal(prefersMarkdown('text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'), false);
+	assert.equal(prefersMarkdown('text/*'), false);
+
+	// El cliente prefiere HTML de forma explícita.
+	assert.equal(prefersMarkdown('text/markdown;q=0.5, text/html;q=1.0'), false);
+	assert.equal(prefersMarkdown('text/html, text/markdown;q=0.1'), false);
+
+	// El parser no revienta con entradas raras.
+	assert.deepEqual(parseAccept('  '), []);
+	assert.equal(parseAccept('text/markdown;q=abc')[0].q, 1);
+});
+
+test('markdown-404: cuerpo corto con enlaces de recuperación', () => {
+	assert.ok(NOT_FOUND_MARKDOWN.startsWith('# '), 'Debe empezar por un encabezado H1 Markdown');
+	assert.match(NOT_FOUND_MARKDOWN, /404/);
+	assert.ok(RECOVERY_LINKS.length >= 6, 'Debe ofrecer varios destinos de recuperación');
+	for (const path of ['/', '/index.md', '/llms.txt', '/sitemap-index.xml', '/about', '/contact', '/privacy']) {
+		assert.ok(
+			NOT_FOUND_MARKDOWN.includes(`(https://www.mooenz.me${path})`),
+			`El 404 Markdown debe enlazar a ${path}`,
+		);
+	}
+	// Corto: una pantalla, no un documento largo.
+	assert.ok(NOT_FOUND_MARKDOWN.length < 1200, 'El cuerpo debe ser breve');
+
+	const withPath = buildNotFoundMarkdown('/ruta/inexistente');
+	assert.match(withPath, /`\/ruta\/inexistente`/, 'Debe citar la ruta solicitada cuando se conoce');
 });
