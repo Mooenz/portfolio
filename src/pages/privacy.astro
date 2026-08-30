@@ -1,0 +1,48 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import personal from '@/constants/personal-info';
+---
+
+<PageLayout
+	pageTitle="Privacidad | José Manuel Montaño Saenz"
+	pageDescription="Política de privacidad del portafolio de José Manuel Montaño Saenz (mooenz.me): qué datos se recopilan, con qué fines y qué derechos tienes."
+	heading="Política de privacidad"
+>
+	<p>
+		Esta política explica qué información se recopila cuando visitas <strong>mooenz.me</strong> y cómo se trata. El
+		sitio es un portafolio personal de <strong>{personal.name}</strong> y no vende productos ni crea cuentas de
+		usuario.
+	</p>
+	<h2>Datos que se recopilan</h2>
+	<ul>
+		<li>
+			<strong>Analítica de uso:</strong> el sitio usa Google Analytics para medir visitas de forma agregada (páginas
+			vistas, país aproximado, tipo de dispositivo y navegador). Google puede almacenar cookies con este fin.
+		</li>
+		<li>
+			<strong>Registros del servidor:</strong> el alojamiento (Vercel) guarda registros técnicos habituales, como la
+			dirección IP y la hora de la petición, para operar y proteger el servicio.
+		</li>
+		<li>
+			<strong>Mensajes que envías:</strong> si me escribes por correo o LinkedIn, conservo ese mensaje y tus datos de
+			contacto para responderte y dar seguimiento a la conversación.
+		</li>
+	</ul>
+	<h2>Con qué fin se usan</h2>
+	<p>
+		Los datos se usan únicamente para entender el tráfico del sitio, mantenerlo en funcionamiento y responder a las
+		consultas que me llegan. No se elaboran perfiles publicitarios ni se comparten los datos con terceros salvo los
+		proveedores mencionados (Google, Vercel), que actúan como encargados de tratamiento.
+	</p>
+	<h2>Cookies</h2>
+	<p>
+		Las únicas cookies del sitio son las de la analítica. Puedes bloquearlas desde la configuración de tu navegador
+		sin que ello afecte al contenido del portafolio.
+	</p>
+	<h2>Tus derechos</h2>
+	<p>
+		Puedes solicitar el acceso, la rectificación o la eliminación de los datos que tenga sobre ti escribiendo a
+		<a href={`mailto:${personal.email}`}>{personal.email}</a>. Atenderé la solicitud en un plazo razonable.
+	</p>
+	<p>Última actualización: 29 de agosto de 2026. Para más información, vuelve a la <a href="/">página principal</a>.</p>
+</PageLayout>

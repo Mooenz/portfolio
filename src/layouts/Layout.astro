@@ -4,32 +4,48 @@ import '@/styles/fonts.css';
 
 import seo, { SITE_URL } from '@/constants/seo.ts';
 import projects from '@/constants/projects.ts';
+import personal from '@/constants/personal-info.ts';
 import ButtonTop from '@/components/ButtonTop.astro';
+import Footer from '@/components/Footer.astro';
 
 interface Props {
 	noindex?: boolean;
 	pageTitle?: string;
 	pageDescription?: string;
+	canonicalPath?: string;
 }
 
 const {
 	noindex = false,
 	pageTitle = seo.title,
 	pageDescription = seo.description,
+	canonicalPath,
 } = Astro.props;
 
-const { canonical, fbAppId, og } = seo;
+const { fbAppId, og } = seo;
+const canonical = canonicalPath ? new URL(canonicalPath, SITE_URL).href : seo.canonical;
+const ogUrl = canonical;
 const robotsContent = noindex ? 'noindex,nofollow' : 'index,follow';
 
 const currentYear = new Date().getFullYear();
 const currentDate = new Date().toISOString();
 
-const organizationSchema = {
+const postalAddress = {
+	'@type': 'PostalAddress',
+	addressLocality: 'Ibagué',
+	addressRegion: 'Tolima',
+	addressCountry: 'CO',
+};
+
+const sameAsProfiles = ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'];
+
+const personSchema = {
 	'@type': 'Person',
 	'@id': `${SITE_URL}/#person`,
 	name: 'José Manuel Montaño Saenz',
 	alternateName: 'Mooenz',
 	url: `${SITE_URL}/`,
+	email: `mailto:${personal.email}`,
 	image: {
 		'@type': 'ImageObject',
 		url: `${SITE_URL}/images/og-image.webp`,
@@ -39,16 +55,17 @@ const organizationSchema = {
 	description: pageDescription,
 	jobTitle: 'Desarrollador Frontend',
 	worksFor: {
-		'@type': 'Organization',
-		name: 'Freelance',
+		'@id': `${SITE_URL}/#organization`,
 	},
-	address: {
-		'@type': 'PostalAddress',
-		addressLocality: 'Ibagué',
-		addressRegion: 'Tolima',
-		addressCountry: 'CO',
+	address: postalAddress,
+	contactPoint: {
+		'@type': 'ContactPoint',
+		contactType: 'sales',
+		email: personal.email,
+		url: `${SITE_URL}/contact`,
+		availableLanguage: ['es', 'en'],
 	},
-	sameAs: ['https://twitter.com/MooenzDev', 'https://github.com/mooenz', 'https://www.linkedin.com/in/mooenz/'],
+	sameAs: sameAsProfiles,
 	knowsAbout: [
 		'Desarrollo Web',
 		'JavaScript',
@@ -61,6 +78,34 @@ const organizationSchema = {
 		'Medusa',
 		'SEO técnico',
 	],
+};
+
+const organizationSchema = {
+	'@type': 'Organization',
+	'@id': `${SITE_URL}/#organization`,
+	name: 'Mooenz — José Manuel Montaño Saenz',
+	alternateName: 'Mooenz Portfolio',
+	url: `${SITE_URL}/`,
+	email: `mailto:${personal.email}`,
+	description: 'Estudio freelance de desarrollo web frontend y fullstack (Astro, React, Next.js, TypeScript) de José Manuel Montaño Saenz.',
+	logo: {
+		'@type': 'ImageObject',
+		url: `${SITE_URL}/images/favicon-96x96.png`,
+		width: 96,
+		height: 96,
+	},
+	image: `${SITE_URL}/images/og-image.webp`,
+	founder: { '@id': `${SITE_URL}/#person` },
+	address: postalAddress,
+	areaServed: 'Worldwide',
+	contactPoint: {
+		'@type': 'ContactPoint',
+		contactType: 'sales',
+		email: personal.email,
+		url: `${SITE_URL}/contact`,
+		availableLanguage: ['es', 'en'],
+	},
+	sameAs: sameAsProfiles,
 };
 
 const websiteSchema = {
@@ -126,7 +171,7 @@ const projectsSchema = {
 
 const structuredData = {
 	'@context': 'https://schema.org',
-	'@graph': [organizationSchema, websiteSchema, breadcrumbSchema, profilePageSchema, projectsSchema],
+	'@graph': [personSchema, organizationSchema, websiteSchema, breadcrumbSchema, profilePageSchema, projectsSchema],
 };
 ---
 
@@ -160,6 +205,7 @@ const structuredData = {
 		<link rel="manifest" href="/images/site.webmanifest" />
 		<link rel="canonical" href={canonical} />
 		<link rel="alternate" type="text/plain" href="/llms.txt" title="Resumen del sitio legible para LLMs" />
+		<link rel="alternate" type="text/markdown" href="/index.md" title="Versión Markdown de la página principal" />
 		<meta name="msapplication-TileColor" content="#f53b57" />
 		<meta name="theme-color" content="#ffffff" />
 		<meta name="description" content={pageDescription} />
@@ -178,7 +224,7 @@ const structuredData = {
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={pageDescription} />
 		<meta property="og:type" content={og.type} />
-		<meta property="og:url" content={og.url} />
+		<meta property="og:url" content={ogUrl} />
 		<meta property="og:image" content={og.image} />
 		<meta property="og:image:type" content="image/webp" />
 		<meta property="og:image:width" content="1200" />
@@ -222,6 +268,8 @@ const structuredData = {
 		<main>
 			<slot />
 		</main>
+
+		<Footer />
 
 		<!-- Botón volver arriba -->
 		<ButtonTop />

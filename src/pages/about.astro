@@ -1,0 +1,42 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import personal from '@/constants/personal-info';
+---
+
+<PageLayout
+	pageTitle="Sobre mí | José Manuel Montaño Saenz"
+	pageDescription="Quién es José Manuel Montaño Saenz (Mooenz): desarrollador frontend y fullstack con más de 3 años de experiencia en Astro, React, Next.js y TypeScript."
+	heading="Sobre mí"
+>
+	<p>
+		Soy <strong>{personal.name}</strong>, también conocido como <strong>Mooenz</strong>. Soy ingeniero de sistemas
+		graduado y trabajo como desarrollador <strong>frontend y fullstack</strong> con más de 3 años de experiencia
+		construyendo sitios y aplicaciones web para empleadores y clientes. Vivo en Ibagué, Tolima (Colombia) y trabajo de
+		forma remota en la zona horaria America/Bogota (UTC-5).
+	</p>
+	<p>
+		Mi trabajo se centra en interfaces rápidas, accesibles y mantenibles. El stack que uso a diario es
+		<strong>Astro, React, Next.js y TypeScript</strong> con Tailwind CSS para la capa visual, y
+		<strong>Supabase/PostgreSQL</strong> en el backend para autenticación, datos y reglas de acceso (RLS). Despliego
+		en Vercel y cuido las métricas de rendimiento (Core Web Vitals), el SEO técnico y, cada vez más, la optimización
+		para motores de búsqueda con IA (GEO).
+	</p>
+	<h2>Cómo trabajo</h2>
+	<p>
+		Empiezo por entender el objetivo de negocio y las personas que van a usar el producto. A partir de ahí defino una
+		arquitectura sencilla, entrego en incrementos pequeños y verificables, y dejo el proyecto documentado para que
+		otro equipo pueda continuarlo. Doy prioridad a la accesibilidad (WCAG), a la carga inicial y a un código que se
+		pueda leer sin sorpresas.
+	</p>
+	<h2>Experiencia reciente</h2>
+	<ul>
+		<li>Tiendas ecommerce DTC a medida con Next.js, Supabase y Medusa: catálogo, checkout, pagos y panel de gestión.</li>
+		<li>Plataformas web bilingües con panel administrativo y contenido gestionado desde Supabase.</li>
+		<li>Sitios corporativos con Astro enfocados en rendimiento y posicionamiento.</li>
+	</ul>
+	<p>
+		Puedes ver el detalle de proyectos y tecnologías en la <a href="/">página principal</a>, revisar el resumen legible
+		para máquinas en <a href="/llms.txt">llms.txt</a> o descargar mi <a href="/cv.yaml">CV en formato YAML</a>. Para
+		hablar de un proyecto, visita la página de <a href="/contact">contacto</a>.
+	</p>
+</PageLayout>

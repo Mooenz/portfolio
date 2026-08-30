@@ -1,0 +1,39 @@
+---
+import PageLayout from '@/layouts/PageLayout.astro';
+import personal from '@/constants/personal-info';
+---
+
+<PageLayout
+	pageTitle="Contacto | José Manuel Montaño Saenz"
+	pageDescription="Cómo contactar a José Manuel Montaño Saenz (Mooenz): correo, LinkedIn y GitHub, tiempos de respuesta e idiomas de trabajo."
+	heading="Contacto"
+>
+	<p>
+		¿Tienes un proyecto web en mente o quieres saber si encajo en tu equipo? La forma más rápida de contactarme es por
+		<strong>correo electrónico</strong>. Suelo responder en <strong>1 o 2 días hábiles</strong>. Trabajo en español e
+		inglés, de forma remota, en la zona horaria America/Bogota (UTC-5).
+	</p>
+	<h2>Canales</h2>
+	<ul>
+		<li>Correo: <a href={`mailto:${personal.email}`}>{personal.email}</a></li>
+		<li>LinkedIn: <a href={personal.linkedIn} rel="noopener noreferrer">{personal.linkedIn}</a></li>
+		<li>GitHub: <a href={personal.github} rel="noopener noreferrer">{personal.github}</a></li>
+	</ul>
+	<h2>Qué incluir en tu mensaje</h2>
+	<p>
+		Para poder darte una respuesta útil desde el primer correo, cuéntame brevemente: el objetivo del proyecto, si ya
+		existe un sitio o parte del producto, la fecha aproximada en la que quieres tenerlo listo y el rango de
+		presupuesto con el que trabajas. Si es una oferta de empleo, indícame la modalidad, el equipo y el stack.
+	</p>
+	<h2>Para qué tipo de trabajo</h2>
+	<p>
+		Encajo bien en desarrollo frontend y fullstack con Astro, React, Next.js y TypeScript, tiendas ecommerce DTC a
+		medida, sitios corporativos rápidos y accesibles, integración con Supabase/PostgreSQL y auditorías de rendimiento,
+		accesibilidad y SEO/GEO. No es mi terreno el desarrollo de apps móviles nativas, la infraestructura DevOps a gran
+		escala ni el diseño de identidad de marca desde cero.
+	</p>
+	<p>
+		También puedes consultar el <a href="/llms.txt">resumen para asistentes de IA</a> o volver a la
+		<a href="/">página principal</a>.
+	</p>
+</PageLayout>
