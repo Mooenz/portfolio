@@ -7,7 +7,9 @@
 		"dev": "astro dev",
 		"build": "astro build",
 		"preview": "astro preview",
-		"astro": "astro"
+		"astro": "astro",
+		"test": "astro build && node --test \"test/*.test.mjs\"",
+		"test:only": "node --test \"test/*.test.mjs\""
 	},
 	"devDependencies": {
 		"@astrojs/sitemap": "^3.7.3",
