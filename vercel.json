@@ -1,0 +1,30 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"rewrites": [
+		{
+			"source": "/",
+			"has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+			"destination": "/index.md"
+		}
+	],
+	"headers": [
+		{
+			"source": "/",
+			"headers": [{ "key": "Vary", "value": "Accept, Accept-Encoding" }]
+		},
+		{
+			"source": "/index.md",
+			"headers": [
+				{ "key": "Content-Type", "value": "text/markdown; charset=utf-8" },
+				{ "key": "Vary", "value": "Accept, Accept-Encoding" }
+			]
+		},
+		{
+			"source": "/llms.txt",
+			"headers": [
+				{ "key": "Content-Type", "value": "text/plain; charset=utf-8" },
+				{ "key": "Vary", "value": "Accept, Accept-Encoding" }
+			]
+		}
+	]
+}
