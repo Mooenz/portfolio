@@ -1,8 +1,9 @@
 cv:
-  name: 'Jose Manuel Montaño Saenz'
-  title: 'Desarrollador Frontend'
-  location: 'Colombia'
+  name: 'José Manuel Montaño Saenz'
+  title: 'Desarrollador Frontend | React · Next.js · TypeScript | Ecommerce'
+  location: 'Ibagué, Tolima, Colombia (modalidad remota)'
   email: 'joss92821@hotmail.com'
+  phone: '+57 302 271 3706'
   website: 'https://www.mooenz.me'
 
   social_networks:
@@ -13,72 +14,162 @@ cv:
 
   sections:
     perfil_profesional:
-      - 'Desarrollador Frontend con experiencia en la creación de aplicaciones y sitios web modernos usando Astro, React, TypeScript y Tailwind CSS. Enfocado en rendimiento, SEO técnico, arquitectura modular y buenas prácticas de desarrollo. Experiencia colaborando con Git/GitHub, code reviews y flujos de trabajo en equipo, además de integración de backend con Supabase y despliegues en Vercel.'
-
-    education:
-      - institution: Universidad Cooperativa de Colombia
-        area: Ingeniería de sistemas
-        degree: Ing.
-        grade: Ingeniero de sistemas
-        date: 2017
-        start_date: 2010-01
-        end_date: 2014-12
-        location: Ibagué, Tolima, Colombia
+      - 'Desarrollador Frontend con 5 años y 8 meses de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. Especializado en ecommerce: he lanzado tiendas a producción con catálogo, checkout, pasarelas de pago (Wompi, Stripe) y paneles internos de gestión, apoyándome en Supabase y PostgreSQL para datos, autenticación y control de acceso. Trabajo con foco en rendimiento, SEO técnico y accesibilidad, con 12 sitios corporativos entregados en puntajes de 90+ en Google PageSpeed. Modalidad remota, con clientes en Colombia y Canadá.'
 
     experiencia:
       - company: 'Freelance'
-        position: 'Fullstack Developer'
+        position: 'Desarrollador Frontend'
         date: 'Octubre 2025 - Presente'
         start_date: '2025-10'
         end_date:
-        summary: 'Desarrollo de aplicaciones web con Astro, React, TypeScript y Tailwind CSS. Integración de backend con Supabase/PostgreSQL y despliegue en Vercel, implementando autenticación, CRUD y optimización de rendimiento en producción.'
+        location: 'Remoto · Clientes en Colombia y Canadá'
+        stack:
+          - 'Next.js'
+          - 'React'
+          - 'TypeScript'
+          - 'Astro'
+          - 'Supabase'
+          - 'PostgreSQL'
+          - 'Tailwind CSS'
+          - 'Stripe'
+          - 'Wompi'
+          - 'Medusa'
+          - 'Vercel'
+        summary: 'Desarrollo de tiendas ecommerce y sitios corporativos para clientes en Colombia y Canadá, en modalidad remota y como desarrollador único: análisis de requerimientos, implementación del frontend, integración de backend como servicio y puesta en producción.'
         highlights:
-          - 'Implementación de autenticación y paneles administrativos'
-          - 'Desarrollo de CRUD para gestión de contenido'
-          - 'Integración de base de datos y storage con Supabase'
-          - 'Optimización de rendimiento para entornos productivos'
+          - 'Lancé a producción 4 proyectos de cliente como desarrollador único, desde el análisis de requerimientos hasta el despliegue en Vercel.'
+          - 'Integré pasarelas de pago según el mercado de cada cliente (Wompi en Colombia, Stripe en Canadá), junto con cotización de envíos y correos transaccionales.'
+          - 'Modelé los datos y el control de acceso sobre Supabase y PostgreSQL aplicando Row Level Security, autenticación y Server Actions validadas.'
+          - 'Entregué a cada cliente autonomía sobre su contenido mediante paneles administrativos e interfaces multilingües (ES/EN/FR).'
 
       - company: 'Estrategia Segura'
         position: 'Desarrollador Web'
         date: 'Julio 2022 - Octubre 2025'
         start_date: '2022-07'
         end_date: '2025-10'
-        summary: 'Desarrollo y maquetación de sitios web en HTML, CSS y JavaScript, con énfasis en rendimiento, mantenibilidad y compatibilidad entre navegadores. Trabajo colaborativo con Git/GitHub para versionado, ramas feature, pull requests y revisiones de código.'
+        stack:
+          - 'HTML5'
+          - 'CSS3'
+          - 'JavaScript (ES6+)'
+          - 'jQuery'
+          - 'Bootstrap'
+          - 'Kendo UI'
+          - 'GSAP'
+          - 'AOS.js'
+          - 'Isotope'
+          - 'jQuery Validator'
+          - 'reCAPTCHA'
+        summary: 'Desarrollo y mantenimiento de sitios web corporativos y sistemas internos para los clientes de la agencia, con responsabilidad sobre el análisis de requerimientos, la maquetación responsive, el rendimiento, la accesibilidad y el SEO técnico de cada entrega.'
         highlights:
-          - 'Maquetación de sitios optimizados para SEO y dispositivos móviles'
-          - 'Implementación de funcionalidades dinámicas con JavaScript moderno (ES6+)'
-          - 'Trabajo colaborativo con equipos de diseño y desarrollo usando Git Flow'
-          - 'Mantenimiento y mejora de código existente'
+          - 'Desarrollé y mantuve 12 sitios web corporativos y 2 sistemas internos en 3 años, encargándome del análisis de requerimientos, la maquetación responsive y la implementación de funcionalidades dinámicas.'
+          - 'Alcancé puntajes de 90+ en los cuatro indicadores de Google PageSpeed (rendimiento, accesibilidad, buenas prácticas y SEO) en la totalidad de los sitios entregados, aplicando carga diferida de imágenes y scripts, minificación de CSS y JavaScript, identificación de CSS crítico e imágenes redimensionadas para pantallas pequeñas.'
+          - 'Ejecuté auditorías de accesibilidad y optimización de SEO técnico sobre cada entrega, corrigiendo estructura semántica, jerarquía de encabezados, textos alternativos y metadatos.'
+          - 'Implementé animaciones e interacciones avanzadas con GSAP y AOS.js, traduciendo a código las indicaciones de transición definidas por el diseñador.'
+          - 'Reduje el spam y los errores de formulario integrando validación con jQuery Validator y reCAPTCHA, y construí filtrado dinámico de contenido con Isotope.'
+          - 'Coordiné la entrega de proyectos bajo metodología Scrum, con dailies diarios, reunión semanal de avances y gestión en Jira.'
+
+      - company: 'Freelance'
+        position: 'Desarrollador Frontend'
+        date: 'Enero 2021 - Julio 2022'
+        start_date: '2021-01'
+        end_date: '2022-07'
+        stack:
+          - 'React'
+          - 'JavaScript'
+          - 'HTML'
+          - 'CSS'
+          - 'Tailwind CSS'
+          - 'Hostinger'
+        summary: 'Desarrollo del sitio web corporativo de un cliente directo, con React como base del frontend y despliegue del build estático en hosting compartido.'
+        highlights:
+          - 'Desarrollé y puse en producción el sitio corporativo de AUDISERVICIOS S.A.S como desarrollador único: 7 páginas en React y Tailwind CSS —inicio, nosotros, personal, preguntas frecuentes, contacto, política de datos y quejas y apelaciones— con formulario de contacto y despliegue del build estático en Hostinger.'
+
+      - company: 'Comdata · AUDISERVICIOS S.A.S'
+        position: 'Asesor de Cobranza y Asistente Administrativo'
+        date: 'Noviembre 2018 - Mayo 2020'
+        start_date: '2018-11'
+        end_date: '2020-05'
+        location: 'Ibagué, Colombia'
+        highlights:
+          - 'Atendí y negocié directamente con clientes en procesos de cobranza y gestión administrativa, base sobre la que hoy apoyo el levantamiento de requerimientos y la comunicación con clientes freelance.'
 
     proyectos:
-      - name: 'Tienda online GRIZZLY Chanclas'
-        summary: 'Tienda ecommerce DTC de marca colombiana de chanclas premium, con catálogo por colecciones, checkout de invitado con seguimiento por token, pagos con Wompi y contraentrega por WhatsApp, reserva de stock, cotización de envíos y panel interno de gestión de pedidos.'
+      - name: 'GRIZZLY — Ecommerce DTC de calzado'
+        summary: 'Tienda ecommerce DTC de una marca colombiana de calzado, desarrollada y lanzada a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de gestión de pedidos.'
+        stack:
+          - 'Next.js (App Router)'
+          - 'React'
+          - 'TypeScript'
+          - 'Supabase'
+          - 'PostgreSQL'
+          - 'Tailwind CSS'
+          - 'Wompi'
+          - 'Vercel'
+        highlights:
+          - 'Lancé la tienda completa a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de pedidos.'
+          - 'Eliminé la sobreventa de inventario implementando reserva de stock con expiración por TTL y control de concurrencia sobre PostgreSQL.'
+          - 'Reduje la fricción de compra construyendo un checkout de invitado con seguimiento de pedido por token.'
+          - 'Habilité el cobro en línea y contra entrega integrando Wompi, cotización de envíos y correos transaccionales.'
+          - 'Aseguré el acceso a datos de clientes y pedidos aplicando Row Level Security (RLS), autenticación y Server Actions validadas en Supabase.'
+        demo: 'https://www.grizzlycol.com/'
+
+      - name: 'Poesía Mestiza Coffee — Café de especialidad'
+        summary: 'Tienda ecommerce de café de especialidad para el mercado canadiense, con catálogo multirregional, cuentas de cliente, suscripciones recurrentes y soporte en tres idiomas.'
         stack:
           - 'Next.js'
           - 'React'
           - 'TypeScript'
+          - 'Medusa'
           - 'Supabase'
+          - 'Stripe'
           - 'Tailwind CSS'
-        demo: 'https://www.grizzlycol.com/'
+          - 'Vercel'
+        highlights:
+          - 'Habilité la venta internacional con catálogo multirregional sobre Medusa, con precios y disponibilidad por región.'
+          - 'Implementé checkout con Stripe, cuentas de cliente y suscripciones recurrentes.'
+          - 'Amplié el alcance del sitio a 3 idiomas (inglés, español, francés) mediante internacionalización del catálogo y la interfaz.'
+        demo: 'https://www.poesiamestizacoffee.ca/'
 
-      - name: 'Página web IngeSoftNet'
-        summary: 'Desarrollo de la web corporativa de IngeSoftNet para promoción de servicios y licencias de SysCafé, enfocada en experiencia de usuario moderna y diseño responsive.'
+      - name: 'Patio La Boca — Carta digital bilingüe'
+        summary: 'Carta digital bilingüe (ES/EN) para restaurante, servida por SSR, con categorías y productos administrables por el propio cliente.'
+        stack:
+          - 'Astro (SSR)'
+          - 'TypeScript'
+          - 'Tailwind CSS'
+          - 'Supabase'
+          - 'GSAP'
+          - 'Vercel'
+        highlights:
+          - 'Reemplacé la carta impresa del cliente por una aplicación SSR bilingüe (ES/EN) con categorías y productos administrables desde Supabase.'
+          - 'Entregué al cliente autonomía sobre el contenido con un panel administrativo con autenticación y carga segura de imágenes.'
+          - 'Elevé la navegación con animaciones en GSAP y modo oscuro.'
+        repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant'
+        demo: 'https://patio-la-boca.vercel.app/'
+
+      - name: 'IngeSoftNet — Web corporativa de SysCafé'
+        summary: 'Sitio corporativo de servicios y licencias del software SysCafé, responsive y orientado a la conversión de visitantes en solicitudes de licencia.'
         stack:
           - 'Astro'
           - 'Tailwind CSS'
           - 'JavaScript'
+        highlights:
+          - 'Desarrollé el sitio corporativo de servicios y licencias, responsive, orientado a la conversión de visitantes en solicitudes de licencia.'
         repository: 'https://github.com/Mooenz/IngeSoftNet'
         demo: 'https://ingesoftnet.com/'
 
-      - name: 'Patio La Boca Restaurant - Carta Digital'
-        summary: 'Carta digital bilingüe (ES/EN) optimizada para móviles, desarrollada con Astro, Tailwind CSS y TypeScript. Incluye animaciones con GSAP y estructura de datos por categorías.'
+      - name: 'Task Board — Gestor de tareas fullstack'
+        summary: 'Proyecto personal: gestor de tareas fullstack con tablero editable, CRUD completo y API REST propia.'
         stack:
-          - 'Astro'
-          - 'Tailwind CSS'
+          - 'React'
           - 'TypeScript'
-          - 'GSAP'
-        repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant'
-        demo: 'https://patio-la-boca.vercel.app/'
+          - 'TanStack Query'
+          - 'Zustand'
+          - 'Node.js'
+          - 'Express'
+          - 'Zod'
+        highlights:
+          - 'Diseñé un gestor de tareas fullstack con tablero editable y CRUD completo, exponiendo una API REST en Express con validación de esquemas mediante Zod y sesión anónima por cookie HTTP-only.'
+        repository: 'https://github.com/Mooenz/task-board'
 
       - name: 'WorldRanks | Country Page'
         summary: 'Aplicación web para explorar información de países con filtros por texto, región y estado, ordenamiento de resultados y vista de detalle con países vecinos.'
@@ -102,13 +193,42 @@ cv:
 
     habilidades_tecnicas:
       - label: Lenguajes
-        details: HTML, CSS, JavaScript y TypeScript
+        details: JavaScript (ES6+), TypeScript, HTML5, CSS3, SQL
 
-      - label: Frameworks y librerías
-        details: React.js (Zustand, Context API), Astro, Tailwind CSS, GSAP, jQuery
+      - label: Frontend
+        details: React, Next.js (App Router, Server Components, Server Actions), Astro, Tailwind CSS, Bootstrap, Zustand, Context API, TanStack Query, GSAP, diseño responsive, componentes reutilizables
+
+      - label: Backend y datos
+        details: Node.js, Express, Supabase, PostgreSQL, Medusa, APIs REST, Zod, Row Level Security (RLS), autenticación y autorización
+
+      - label: Ecommerce y pagos
+        details: Stripe, Wompi, checkout, gestión de inventario, cotización de envíos, correos transaccionales, internacionalización (i18n)
+
+      - label: Rendimiento y SEO
+        details: Google PageSpeed, Core Web Vitals, LCP, CLS, SEO técnico, CSS crítico, carga diferida, minificación, imágenes responsivas, code splitting, SSR/SSG/ISR
+
+      - label: Accesibilidad
+        details: auditorías de accesibilidad, HTML semántico, jerarquía de encabezados, textos alternativos
 
       - label: Herramientas
-        details: Git, GitHub (Git Flow, Pull Requests, Code Reviews), Supabase, Vercel, Lighthouse, Figma, Illustrator
+        details: Git, GitHub, Vercel, Lighthouse, Chrome DevTools, Figma, Jira
 
-      - label: Buenas prácticas
-        details: SEO técnico, Responsive Design, Optimización de performance, Accesibilidad básica, código modular y mantenible
+      - label: Metodologías
+        details: Scrum, dailies, Jira, trabajo remoto y colaboración asíncrona, análisis de requerimientos
+
+    idiomas:
+      - label: Español
+        details: Nativo
+
+      - label: Inglés
+        details: A2 — lectura de documentación técnica
+
+    education:
+      - institution: Universidad Cooperativa de Colombia
+        area: Ingeniería de sistemas
+        degree: Ing.
+        grade: Ingeniero de sistemas
+        date: 2017
+        start_date: 2010-01
+        end_date: 2014-12
+        location: Ibagué, Tolima, Colombia
