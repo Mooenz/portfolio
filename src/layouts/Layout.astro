@@ -10,6 +10,7 @@ import Footer from '@/components/Footer.astro';
 
 interface Props {
 	noindex?: boolean;
+	nofollow?: boolean;
 	pageTitle?: string;
 	pageDescription?: string;
 	canonicalPath?: string;
@@ -17,6 +18,7 @@ interface Props {
 
 const {
 	noindex = false,
+	nofollow = false,
 	pageTitle = seo.title,
 	pageDescription = seo.description,
 	canonicalPath,
@@ -25,7 +27,7 @@ const {
 const { fbAppId, og } = seo;
 const canonical = canonicalPath ? new URL(canonicalPath, SITE_URL).href : seo.canonical;
 const ogUrl = canonical;
-const robotsContent = noindex ? 'noindex,nofollow' : 'index,follow';
+const robotsContent = noindex ? (nofollow ? 'noindex,nofollow' : 'noindex,follow') : 'index,follow';
 
 const currentYear = new Date().getFullYear();
 const currentDate = new Date().toISOString();

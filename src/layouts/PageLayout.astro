@@ -7,14 +7,15 @@ interface Props {
 	pageTitle: string;
 	pageDescription: string;
 	heading: string;
+	noindex?: boolean;
 }
 
-const { pageTitle, pageDescription, heading } = Astro.props;
+const { pageTitle, pageDescription, heading, noindex = false } = Astro.props;
 
 const canonicalPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 ---
 
-<Layout pageTitle={pageTitle} pageDescription={pageDescription} canonicalPath={canonicalPath}>
+<Layout noindex={noindex} pageTitle={pageTitle} pageDescription={pageDescription} canonicalPath={canonicalPath}>
 	<section class="bg-primary dark:bg-primary-dark transition-colors duration-300 ease-in-out p-3 sm:p-6 lg:p-10 min-h-dvh">
 		<article class="section mx-auto max-w-2xl py-10 lg:py-16">
 			<h1 class="text-3xl lg:text-4xl font-bold text-text dark:text-text-dark transition-colors duration-300 ease-in-out">{heading}</h1>

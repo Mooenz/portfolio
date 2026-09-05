@@ -3,13 +3,20 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
+const NOINDEX_PATHS = ['/about', '/contact', '/privacy'];
+
 export default defineConfig({
 	// site: 'https://Mooenz.github.io',
 	// base: '/portfolio/',
 	site: 'https://www.mooenz.me',
 	base: '/',
 	output: 'static',
-	integrations: [sitemap()],
+	// Las páginas marcadas con noindex no deben anunciarse en el sitemap.
+	integrations: [
+		sitemap({
+			filter: (page) => !NOINDEX_PATHS.some((path) => new URL(page).pathname.replace(/\/+$/, '') === path),
+		}),
+	],
 	vite: {
 		plugins: [tailwindcss()],
 		build: {

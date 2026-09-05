@@ -19,6 +19,7 @@ const dist = (p) => fileURLToPath(new URL(`../dist/${p}`, import.meta.url));
 const read = (p) => readFileSync(dist(p), 'utf8');
 const visibleText = (html) =>
 	html
+		.replace(/<!--[\s\S]*?-->/g, ' ')
 		.replace(/<script[\s\S]*?<\/script>/g, ' ')
 		.replace(/<style[\s\S]*?<\/style>/g, ' ')
 		.replace(/<[^>]+>/g, ' ')
@@ -46,13 +47,17 @@ for (const page of ['about', 'contact', 'privacy']) {
 		assert.ok(len >= 500, `/${page} tiene ${len} caracteres visibles, se esperan >= 500`);
 	});
 
-	test(`trust anchor: /${page} tiene canonical propio e is index,follow`, () => {
+	test(`trust anchor: /${page} tiene canonical propio y es noindex,follow`, () => {
 		const html = read(`${page}/index.html`);
 		assert.ok(
 			html.includes(`<link rel="canonical" href="https://www.mooenz.me/${page}">`),
 			`/${page} debe declararse canónica de sí misma, no de la home`,
 		);
-		assert.match(html, /<meta name="robots" content="index,follow">/, `/${page} debe ser indexable`);
+		assert.match(
+			html,
+			/<meta name="robots" content="noindex,follow">/,
+			`/${page} debe estar desindexada pero conservar follow`,
+		);
 	});
 }
 
@@ -60,7 +65,7 @@ test('llms.txt: incluye sección "cuándo usar" con casos de uso y contacto', ()
 	const txt = read('llms.txt');
 	assert.match(txt, /##\s+Cuándo contactar/i, 'Falta la sección "Cuándo contactar (when to use)"');
 	assert.match(txt, /Cómo contactar:/i, 'Debe explicar cómo debe contactar un agente');
-	assert.ok(txt.includes('joss92821@hotmail.com'), 'Debe exponer un correo de contacto');
+	assert.ok(txt.includes(NAP.email), 'Debe exponer un correo de contacto');
 	assert.match(txt, /Astro, React, Next\.js y TypeScript/i, 'Debe nombrar casos de uso concretos');
 	assert.ok(txt.includes('https://www.mooenz.me/about'), 'Debe enlazar las páginas de referencia');
 });
@@ -143,18 +148,21 @@ const NAP = {
 	domain: 'www.mooenz.me',
 };
 
-const addressBlock = (html) => (html.match(/<address[\s\S]*?<\/address>/) ?? [null])[0];
+// El footer es deliberadamente mínimo: marca + año + autor, sin bloque <address>.
+// El NAP completo (ubicación, correo, dominio) vive en el JSON-LD y en
+// llms.txt/index.md, que es donde lo leen buscadores y agentes; repetirlo en cada
+// pie de página no añadía señal y ensuciaba el diseño. Lo que sí se verifica aquí
+// es que la marca y el autor aparezcan igual en las cinco páginas.
+const footerBlock = (html) => (html.match(/<footer[\s\S]*?<\/footer>/) ?? [null])[0];
 
 for (const page of ['index.html', 'about/index.html', 'contact/index.html', 'privacy/index.html', '404.html']) {
-	test(`NAP: ${page} incluye un bloque <address> con marca, ubicación, correo y dominio`, () => {
-		const block = addressBlock(read(page));
-		assert.ok(block, `${page} debe incluir un <address> en el footer`);
+	test(`marca: ${page} cierra con un footer que nombra a "${NAP.brand}" y a su autor`, () => {
+		const block = footerBlock(read(page));
+		assert.ok(block, `${page} debe incluir un <footer>`);
 		const text = visibleText(block);
-		for (const needle of [NAP.brand, NAP.brandLong, NAP.legalName, NAP.location, NAP.email, NAP.domain]) {
-			assert.ok(text.includes(needle), `El <address> de ${page} debe contener "${needle}" (NAP consistente)`);
+		for (const needle of [NAP.brand, NAP.legalName]) {
+			assert.ok(text.includes(needle), `El footer de ${page} debe contener "${needle}" (marca consistente)`);
 		}
-		// El dominio canónico debe ir enlazado a la home, sin cadena de redirecciones.
-		assert.match(block, /href="https:\/\/www\.mooenz\.me\/"/, `${page} debe enlazar al dominio canónico apuntando a la raíz con www`);
 	});
 }
 
@@ -200,10 +208,14 @@ test('home: las secciones sin JS están asociadas a su encabezado (estructura no
 	}
 });
 
-test('sitemap incluye las páginas de confianza', () => {
+test('sitemap: la home entra y las páginas noindex quedan fuera', () => {
 	const xml = read('sitemap-0.xml');
+	assert.ok(xml.includes('https://www.mooenz.me/'), 'El sitemap debe incluir la home');
 	for (const p of ['about', 'contact', 'privacy']) {
-		assert.ok(xml.includes(`https://www.mooenz.me/${p}`), `El sitemap debe incluir /${p}`);
+		assert.ok(
+			!xml.includes(`https://www.mooenz.me/${p}`),
+			`El sitemap no debe anunciar /${p}: está marcada como noindex`,
+		);
 	}
 });
 
