@@ -2,12 +2,35 @@
 @import 'tailwind-animations';
 
 @theme {
-	--color-primary: #ffffff;
-	--color-secondary: #fbfbfb;
-	--color-tertiary: #ededed;
-	--color-accent: #f53b57;
-	--color-accent-hover: #9e182f;
-	--color-text: #1a1c1c;
+	/*text*/
+	--aztec-50: #ecf2f2;
+	--aztec-100: #d2dddd;
+	--aztec-200: #b2bcbc;
+	--aztec-300: #979f9f;
+	--aztec-400: #7e8585;
+	--aztec-500: #676d6d;
+	--aztec-600: #525656;
+	--aztec-700: #3e4141;
+	--aztec-800: #2b2e2e;
+	--aztec-900: #1a1c1c;
+
+	/*accent*/
+	--amaranth-50: #fdedee;
+	--amaranth-100: #f79099;
+	--amaranth-300: #f53b57;
+	--amaranth-500: #770f22;
+	--amaranth-700: #2a0206;
+
+	--color-primary: var(--aztec-50);
+	--color-secondary: var(--aztec-100);
+	--color-tertiary: var(--aztec-200);
+	--color-accent: var(--amaranth-300);
+	--color-accent-hover: var(--amaranth-500);
+	--color-text: var(--aztec-900);
+	--color-line-lateral: var(--aztec-300);
+	--color-text-secondary: var(--aztec-500);
+	--color-border-lateral: var(--aztec-200);
+
 	--color-tailwindcss: #06b6d4;
 	--color-javascript: #ffc107;
 	--color-astro: #bc52ee;
@@ -18,18 +41,15 @@
 	--color-react: #61dafb;
 	--color-zustand: #ff7f50;
 	--color-zod: #408aff;
-	--color-line-lateral: #b6b6b6;
-	--color-text-secondary: #676d6d;
-	--color-border-lateral: #ededed;
 
 	/* Colors dark */
-	--color-text-dark: #fff;
-	--color-text-secondary-dark: #b2bcbc;
-	--color-primary-dark: #1a1c1c;
-	--color-secondary-dark: #2b2e2e;
-	--color-tertiary-dark: #3e4141;
+	--color-text-dark: var(--aztec-50);
+	--color-text-secondary-dark: var(--aztec-200);
+	--color-primary-dark: var(--aztec-900);
+	--color-secondary-dark: var(--aztec-800);
+	--color-tertiary-dark: var(--aztec-700);
 	--color-javascript-dark: #f7df1e;
-	--color-border-lateral-dark: #2b2e2e;
+	--color-border-lateral-dark: var(--aztec-800);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
