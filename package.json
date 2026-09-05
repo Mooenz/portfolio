@@ -1,8 +1,8 @@
 {
 	"name": "portfolio",
 	"type": "module",
-	"version": "1.4.0",
-	"packageManager": "pnpm@11.24.0",
+	"version": "1.5.0",
+	"packageManager": "pnpm@11.25.0",
 	"scripts": {
 		"dev": "astro dev",
 		"build": "astro build",
@@ -12,11 +12,11 @@
 		"test:only": "node --test \"test/*.test.mjs\""
 	},
 	"devDependencies": {
-		"@astrojs/sitemap": "^3.7.3",
-		"@astrojs/vercel": "^11.0.8",
+		"@astrojs/sitemap": "^3.7.4",
+		"@astrojs/vercel": "^11.0.10",
 		"@tailwindcss/vite": "^4.3.3",
-		"@vercel/functions": "3.9.3",
-		"astro": "^7.2.9",
+		"@vercel/functions": "3.9.5",
+		"astro": "^7.3.1",
 		"astro-critters": "^2.2.1",
 		"gsap": "^3.15.0",
 		"sharp": "^0.35.4",
