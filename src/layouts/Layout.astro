@@ -178,9 +178,21 @@ const projectsSchema = {
 	})),
 };
 
+// Person, Organization, WebSite y ProfilePage tienen `@id` estables y describen
+// al sitio entero: valen en cualquier página indexable y Google los fusiona por
+// `@id`. El breadcrumb y la lista de proyectos, en cambio, describen la portada;
+// anunciarlos en otra URL le diría a Google que esa página lista los proyectos.
+const isHome = canonical === seo.canonical;
+
 const structuredData = {
 	'@context': 'https://schema.org',
-	'@graph': [personSchema, organizationSchema, websiteSchema, breadcrumbSchema, profilePageSchema, projectsSchema],
+	'@graph': [
+		personSchema,
+		organizationSchema,
+		websiteSchema,
+		profilePageSchema,
+		...(isHome ? [breadcrumbSchema, projectsSchema] : []),
+	],
 };
 ---
 

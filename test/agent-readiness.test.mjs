@@ -39,7 +39,16 @@ test('404: cuerpo con enlaces de recuperación para agentes', () => {
 	assert.ok(visibleText(html).length >= 300, 'El 404 debe incluir texto de orientación');
 });
 
-for (const page of ['about', 'contact', 'privacy']) {
+// `/about` se indexa: es el ancla de confianza que Google busca por su cuenta
+// para resolver la entidad detrás de la marca. `/contact` y `/privacy` quedan
+// fuera del índice, pero conservan `follow` para no cortar el rastreo.
+const TRUST_ANCHORS = {
+	about: 'index,follow',
+	contact: 'noindex,follow',
+	privacy: 'noindex,follow',
+};
+
+for (const [page, robots] of Object.entries(TRUST_ANCHORS)) {
 	test(`trust anchor: /${page} existe con >=500 caracteres y un H1`, () => {
 		const html = read(`${page}/index.html`);
 		assert.match(html, /<h1[\s>]/, `/${page} debe tener un <h1>`);
@@ -47,19 +56,41 @@ for (const page of ['about', 'contact', 'privacy']) {
 		assert.ok(len >= 500, `/${page} tiene ${len} caracteres visibles, se esperan >= 500`);
 	});
 
-	test(`trust anchor: /${page} tiene canonical propio y es noindex,follow`, () => {
+	test(`trust anchor: /${page} tiene canonical propio y robots "${robots}"`, () => {
 		const html = read(`${page}/index.html`);
 		assert.ok(
 			html.includes(`<link rel="canonical" href="https://www.mooenz.me/${page}">`),
 			`/${page} debe declararse canónica de sí misma, no de la home`,
 		);
-		assert.match(
-			html,
-			/<meta name="robots" content="noindex,follow">/,
-			`/${page} debe estar desindexada pero conservar follow`,
+		assert.ok(
+			html.includes(`<meta name="robots" content="${robots}">`),
+			`/${page} debe declarar robots "${robots}"`,
 		);
 	});
 }
+
+const graphTypes = (html) => {
+	const raw = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+	assert.ok(raw, 'La página debe emitir datos estructurados JSON-LD');
+	return JSON.parse(raw[1])['@graph'].map((node) => node['@type']);
+};
+
+test('JSON-LD: las entidades se repiten, los nodos de la portada no', () => {
+	const home = graphTypes(read('index.html'));
+	for (const type of ['Person', 'Organization', 'WebSite', 'ProfilePage', 'BreadcrumbList', 'ItemList']) {
+		assert.ok(home.includes(type), `La portada debe declarar ${type}`);
+	}
+
+	// `/about` reafirma las mismas entidades (Google las fusiona por `@id`), pero
+	// no puede declarar el breadcrumb ni la lista de proyectos de la portada.
+	const about = graphTypes(read('about/index.html'));
+	for (const type of ['Person', 'Organization', 'WebSite', 'ProfilePage']) {
+		assert.ok(about.includes(type), `/about debe reafirmar la entidad ${type}`);
+	}
+	for (const type of ['BreadcrumbList', 'ItemList']) {
+		assert.ok(!about.includes(type), `/about no debe declarar ${type}: describe la portada`);
+	}
+});
 
 test('llms.txt: incluye sección "cuándo usar" con casos de uso y contacto', () => {
 	const txt = read('llms.txt');
@@ -208,18 +239,27 @@ test('home: las secciones sin JS están asociadas a su encabezado (estructura no
 	}
 });
 
-test('sitemap: la home entra y las páginas noindex quedan fuera', () => {
+test('sitemap: anuncia las páginas indexables con su URL canónica', () => {
 	const xml = read('sitemap-0.xml');
-	assert.ok(xml.includes('https://www.mooenz.me/'), 'El sitemap debe incluir la home');
-	for (const p of ['about', 'contact', 'privacy']) {
-		assert.ok(
-			!xml.includes(`https://www.mooenz.me/${p}`),
-			`El sitemap no debe anunciar /${p}: está marcada como noindex`,
-		);
+	assert.ok(xml.includes('<loc>https://www.mooenz.me/</loc>'), 'El sitemap debe incluir la home');
+
+	for (const [page, robots] of Object.entries(TRUST_ANCHORS)) {
+		const announced = xml.includes(`<loc>https://www.mooenz.me/${page}</loc>`);
+		if (robots.startsWith('noindex')) {
+			assert.ok(!xml.includes(`https://www.mooenz.me/${page}`), `El sitemap no debe anunciar /${page}: es noindex`);
+		} else {
+			assert.ok(announced, `El sitemap debe anunciar /${page}: es indexable`);
+		}
 	}
+
+	// La URL del sitemap debe coincidir con el canonical, que va sin barra final.
+	assert.ok(
+		!/<loc>https:\/\/www\.mooenz\.me\/[^<]+\/<\/loc>/.test(xml),
+		'Ninguna URL del sitemap (salvo la home) debe llevar barra final: rompería el canonical',
+	);
 });
 
-test('vercel.json: Vary: Accept y Content-Type de las variantes machine-readable', () => {
+test('vercel.json: cabeceras, indexación y redirecciones de rutas heredadas', () => {
 	const cfg = JSON.parse(readRoot('vercel.json'));
 
 	const hasVaryAccept = (source) => {
@@ -234,6 +274,36 @@ test('vercel.json: Vary: Accept y Content-Type de las variantes machine-readable
 	const mdEntry = cfg.headers.find((h) => h.source === '/index.md');
 	const ct = mdEntry.headers.find((h) => h.key.toLowerCase() === 'content-type');
 	assert.ok(ct && /text\/markdown/.test(ct.value), '/index.md debe servirse como text/markdown');
+
+	// Los archivos legibles por máquina no deben competir en el índice de Google:
+	// `/index.md` es la misma portada que `/`, `/llms.txt` la duplica en resumen
+	// y `/cv.yaml` son datos en crudo. La directiva va acotada a `googlebot:` a
+	// propósito: un `noindex` sin ámbito lo leería cualquier rastreador que
+	// respete la cabecera, incluidos los de los motores de IA, que son justo el
+	// público de estos archivos.
+	for (const source of ['/index.md', '/llms.txt', '/cv.yaml']) {
+		const entry = cfg.headers.find((h) => h.source === source);
+		assert.ok(entry, `Falta la entrada de headers para ${source}`);
+		const robots = entry.headers.find((h) => h.key.toLowerCase() === 'x-robots-tag');
+		assert.ok(robots, `${source} debe enviar X-Robots-Tag`);
+		assert.match(
+			robots.value,
+			/^googlebot:\s*noindex/i,
+			`${source} debe acotar el noindex a Googlebot, no aplicarlo a todo rastreador`,
+		);
+	}
+
+	// Rutas que existieron en builds anteriores: deben redirigir con 301 en vez
+	// de acumular 404 en el informe de cobertura de Search Console.
+	for (const [source, destination] of [
+		['/site.webmanifest', '/images/site.webmanifest'],
+		['/images/favicon.ico', '/favicon.ico'],
+	]) {
+		const redirect = (cfg.redirects ?? []).find((r) => r.source === source);
+		assert.ok(redirect, `Falta la redirección para ${source}`);
+		assert.equal(redirect.destination, destination, `${source} debe apuntar a ${destination}`);
+		assert.equal(redirect.permanent, true, `${source} debe redirigir con 301`);
+	}
 
 	// La negociación en `/` la hace el middleware edge, no un rewrite estático
 	// (los rewrites de vercel.json no se evalúan cuando `/` resuelve a index.html).
