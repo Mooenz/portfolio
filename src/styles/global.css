@@ -2,7 +2,15 @@
 @import 'tailwind-animations';
 
 @theme {
-	/*text*/
+	/* ============================================================
+	   RAMPAS DE MARCA
+	   Únicas fuentes de color del proyecto. Fuera de este bloque no
+	   debe existir ningún color «tradicional»: ni la paleta por
+	   defecto de Tailwind, ni negro/blanco puros, ni literales
+	   sueltos. Todo se deriva de estas dos rampas.
+	   ============================================================ */
+
+	/* Neutro */
 	--aztec-50: #ecf2f2;
 	--aztec-100: #d2dddd;
 	--aztec-200: #b2bcbc;
@@ -14,45 +22,144 @@
 	--aztec-800: #2b2e2e;
 	--aztec-900: #1a1c1c;
 
-	/*accent*/
+	/* Acento */
 	--amaranth-50: #fdedee;
 	--amaranth-100: #f79099;
 	--amaranth-300: #f53b57;
 	--amaranth-500: #770f22;
 	--amaranth-700: #2a0206;
 
+	/* ============================================================
+	   60 · SUPERFICIE DOMINANTE
+	   El lienzo de la página. Ocupa la mayor parte del área.
+	   ============================================================ */
 	--color-primary: var(--aztec-50);
+	--color-primary-dark: var(--aztec-900);
+
+	/* ============================================================
+	   30 · SOPORTE (superficies elevadas, texto y separadores)
+	   Estructura la jerarquía sin competir con el acento.
+	   ============================================================ */
 	--color-secondary: var(--aztec-100);
 	--color-tertiary: var(--aztec-200);
-	--color-accent: var(--amaranth-300);
-	--color-accent-hover: var(--amaranth-500);
-	--color-text: var(--aztec-900);
-	--color-line-lateral: var(--aztec-300);
-	--color-text-secondary: var(--aztec-500);
-	--color-border-lateral: var(--aztec-200);
-
-	--color-tailwindcss: #06b6d4;
-	--color-javascript: #ffc107;
-	--color-astro: #bc52ee;
-	--color-supabase: #3fcf8e;
-	--color-gsap: #0ae448;
-	--color-vercel: #000;
-	--color-typescript: #3178c6;
-	--color-react: #61dafb;
-	--color-zustand: #ff7f50;
-	--color-zod: #408aff;
-
-	/* Colors dark */
-	--color-text-dark: var(--aztec-50);
-	--color-text-secondary-dark: var(--aztec-200);
-	--color-primary-dark: var(--aztec-900);
 	--color-secondary-dark: var(--aztec-800);
 	--color-tertiary-dark: var(--aztec-700);
-	--color-javascript-dark: #f7df1e;
+
+	/* Texto sobre la superficie dominante */
+	--color-text: var(--aztec-900); /* 15.12:1 sobre primary       AAA */
+	--color-text-dark: var(--aztec-50); /* 15.12:1 sobre primary-dark  AAA */
+	--color-text-secondary: var(--aztec-500); /*  4.65:1 sobre primary       AA  */
+	--color-text-secondary-dark: var(--aztec-200); /*  8.81:1 sobre primary-dark  AAA */
+
+	/* Texto e iconos sobre superficies de soporte (tertiary / secondary-dark) */
+	--color-on-surface: var(--aztec-700); /*  5.31:1 sobre tertiary       AA  */
+	--color-on-surface-dark: var(--aztec-100); /*  7.43:1 sobre tertiary-dark  AAA */
+
+	/* Separadores y líneas (decorativos, exentos de 1.4.11) */
+	--color-line-lateral: var(--aztec-300);
+	--color-line-lateral-dark: var(--aztec-600);
+	--color-border-lateral: var(--aztec-200);
 	--color-border-lateral-dark: var(--aztec-800);
+
+	/* ============================================================
+	   10 · ACENTO
+	   Solo CTA principal, enlaces, foco y el indicador de
+	   disponibilidad. Nunca como color de fondo extenso.
+	   ============================================================ */
+	--color-accent: var(--amaranth-300); /* superficie: 3.29:1 sobre primary — OK para UI no textual */
+	--color-accent-hover: var(--amaranth-500);
+	--color-on-accent: var(--amaranth-700); /*  5.09:1 sobre accent         AA  */
+	--color-on-accent-hover: var(--amaranth-50); /*  9.88:1 sobre accent-hover   AAA */
+
+	/* El acento puro no alcanza 4.5:1 como texto en claro: los enlaces
+	   usan un tono más profundo en claro y el vivo en oscuro. */
+	--color-link: var(--amaranth-500); /*  9.89:1 sobre primary       AAA */
+	--color-link-dark: var(--amaranth-300); /*  4.60:1 sobre primary-dark  AA  */
+
+	--color-tailwindcss: #06b6d4;
+	--color-tailwindcss-ink: #047184;
+	--color-javascript: #ffc107;
+	--color-javascript-ink: #866400;
+	--color-javascript-dark: #f7df1e;
+	--color-astro: #bc52ee;
+	--color-astro-ink: #9d16dd;
+	--color-astro-dark: #c261f0;
+	--color-supabase: #3fcf8e;
+	--color-supabase-ink: #1e764e;
+	--color-gsap: #0ae448;
+	--color-gsap-ink: #057926;
+	--color-vercel: var(--aztec-900);
+	--color-vercel-dark: var(--aztec-50);
+	--color-typescript: #3178c6;
+	--color-typescript-ink: #2a66a9;
+	--color-typescript-dark: #508fd4;
+	--color-react: #61dafb;
+	--color-react-ink: #047392;
+	--color-zustand: #ff7f50;
+	--color-zustand-ink: #bf3300;
+	--color-zod: #408aff;
+	--color-zod-ink: #005aea;
+
+	/* Sombra derivada del neutro, no de negro puro */
+	--shadow-soft: 0 4px 8px color-mix(in srgb, var(--aztec-900) 12%, transparent);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* En oscuro, las líneas decorativas bajan de tono para no destacar
+   más que el texto. */
+.dark {
+	--color-line-lateral: var(--color-line-lateral-dark);
+}
+
+/* La UI nativa (scrollbars, controles de formulario, selección) hereda
+   los colores del sistema si no se declara nada: se fijan a la paleta
+   para que tampoco ahí quede rastro de los colores por defecto. */
+:root {
+	color-scheme: light;
+	accent-color: var(--color-accent);
+	scrollbar-color: var(--aztec-300) var(--color-primary);
+}
+
+:root.dark {
+	color-scheme: dark;
+	scrollbar-color: var(--aztec-600) var(--color-primary-dark);
+}
+
+::selection {
+	background-color: var(--color-accent);
+	color: var(--color-on-accent);
+}
+
+/* Anillo de foco de reserva para los enlaces que no traen utilidades propias
+   (prosa, listas del 404). `:where()` no aporta especificidad, así que los
+   botones siguen mandando sobre su propio anillo. */
+:where(a, button, [tabindex]):focus-visible {
+	outline: 2px solid var(--color-text);
+	outline-offset: 2px;
+}
+
+.dark :where(a, button, [tabindex]):focus-visible {
+	outline-color: var(--color-text-dark);
+}
+
+/* El pulso del indicador de disponibilidad se repite de forma indefinida.
+   Con `reduce` se detiene todo el movimiento no esencial y las transiciones
+   pasan a ser instantáneas, conservando los estados finales. */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
 
 html,
 body {
@@ -62,6 +169,12 @@ body {
 	font-size-adjust: 0.56;
 	background-color: var(--color-primary);
 	color: var(--color-text);
+}
+
+html.dark,
+html.dark body {
+	background-color: var(--color-primary-dark);
+	color: var(--color-text-dark);
 }
 
 :is(h1, h2, h3, h4, h5, h6) {

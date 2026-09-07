@@ -3,11 +3,11 @@ import IconArrowUp from '@/assets/icons/IconArrowUp.astro';
 ---
 
 <button
-	class="btn-volver-arriba active:scale-90 activo fixed bottom-5 left-5 z-9999 w-14 h-14 flex items-center justify-center rounded-full cursor-pointer shadow-[0_4px_8px_rgba(0,0,0,0.05)] text-2xl scale-0 focus:opacity-100 focus-within:opacity-100 bg-tertiary dark:bg-secondary-dark hover:bg-text focus:bg-text focus-visible:bg-text dark:hover:bg-text-dark dark:focus:bg-text-dark dark:focus-visible:bg-text-dark transition-all ease-in-out duration-300 group border-4 border-primary dark:border-primary-dark outline-2 outline-primary dark:outline-primary-dark hover:outline-primary-dark dark:hover:outline-primary focus:outline-primary-dark dark:focus:outline-primary focus-visible:outline-primary-dark dark:focus-visible:outline-primary group"
+	class="btn-volver-arriba active:scale-90 activo fixed bottom-5 left-5 z-9999 w-14 h-14 flex items-center justify-center rounded-full cursor-pointer shadow-soft text-2xl scale-0 focus:opacity-100 focus-within:opacity-100 bg-tertiary dark:bg-secondary-dark hover:bg-text focus:bg-text focus-visible:bg-text dark:hover:bg-text-dark dark:focus:bg-text-dark dark:focus-visible:bg-text-dark transition-all ease-in-out duration-300 group border-4 border-primary dark:border-primary-dark outline-2 outline-primary dark:outline-primary-dark hover:outline-primary-dark dark:hover:outline-primary focus:outline-primary-dark dark:focus:outline-primary focus-visible:outline-primary-dark dark:focus-visible:outline-primary group"
 	id="volver-arriba"
 	aria-label="Volver al inicio de la página"
 >
-	<IconArrowUp class="text-text-secondary dark:text-text-secondary-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary dark:group-hover:text-secondary-dark dark:group-focus-visible:text-secondary-dark dark:group-focus:text-secondary-dark transition-all ease-in-out duration-300" />
+	<IconArrowUp class="text-on-surface dark:text-on-surface-dark group-hover:text-primary group-focus:text-primary group-focus-visible:text-primary dark:group-hover:text-secondary-dark dark:group-focus-visible:text-secondary-dark dark:group-focus:text-secondary-dark transition-all ease-in-out duration-300" />
 </button>
 
 <script>
@@ -25,7 +25,15 @@ import IconArrowUp from '@/assets/icons/IconArrowUp.astro';
 </script>
 
 <style>
+	/* `scale: 0` solo lo encoge: seguiria siendo enfocable con el teclado y
+	   anunciado por lectores de pantalla. `visibility` lo saca del orden de
+	   foco y del arbol de accesibilidad mientras esta colapsado. */
+	.btn-volver-arriba {
+		visibility: hidden;
+	}
+
 	.btn-volver-arriba.activo {
 		scale: 1;
+		visibility: visible;
 	}
 </style>

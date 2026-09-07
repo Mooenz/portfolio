@@ -56,11 +56,11 @@ const iconMap: Record<string, AstroComponentFactory> = {
 
 <article class="project flex flex-col md:flex-row lg:flex-col xl:flex-row xl:items-center gap-8 group">
 	<figure class="relative z-10 line-gradient w-full md:min-w-80 md:max-w-80 lg:min-w-150 lg:max-w-150 xl:min-w-80 xl:max-w-80 h-52.5 overflow-hidden pl-6 sm:pl-8 pt-8 rounded-xl before:bg-secondary dark:before:bg-secondary-dark before:transition-colors before:duration-300 before:ease-in-out before:absolute before:top-0 before:left-0 before:w-full before:h-full before:z-[-11]">
-		<Image src={image} alt={`Imagen de ${name}`} width={image.width} height={image.height} title={`Imagen vista previa de ${name}`} loading="lazy" class="w-full h-auto object-contain rounded-tl-xl group-hover:scale-105 transition-transform duration-300 ease-in-out" />
+		<Image src={image} alt={`Captura de la interfaz del proyecto ${name}`} width={image.width} height={image.height} loading="lazy" class="w-full h-auto object-contain rounded-tl-xl group-hover:scale-105 transition-transform duration-300 ease-in-out" />
 
 		<Pattern />
 	</figure>
-	<div class="dark:text-text-dark transition-colors duration-300 ease-in-out">
+	<div class="text-text dark:text-text-dark transition-colors duration-300 ease-in-out">
 		<h3 class="text-xl font-medium">{name}</h3>
 		{
 			technologies && (
@@ -83,14 +83,14 @@ const iconMap: Record<string, AstroComponentFactory> = {
 			{
 				repository ? (
 					<Button href={repository} variants="transparent" size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: 'Ir al repositorio del proyecto' }}>
-						<LogoGitHub width={16} height={16} class="transition-all ease-in-out duration-300" />
-						<span>Repositorio</span>
+						<LogoGitHub width={16} height={16} class="transition-transform ease-in-out duration-300" />
+						<span>Repositorio<span class="sr-only"> de {name}</span></span>
 					</Button>
 				) : null
 			}
 			<Button href={demo} variants="normal" size="sm" attr={{ target: '_blank', rel: 'noopener noreferrer', title: `Vista previa del proyecto ${demo}` }}>
-				<Vector width={16} height={16} class="transition-all ease-in-out duration-300" />
-				<span>Vista previa</span>
+				<Vector width={16} height={16} class="transition-transform ease-in-out duration-300" />
+				<span>Vista previa<span class="sr-only"> de {name}</span></span>
 			</Button>
 		</div>
 	</div>

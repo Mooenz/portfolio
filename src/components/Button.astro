@@ -9,16 +9,21 @@ export interface Props {
 
 const { variants = 'normal', href = '#', size = 'md', attr, className = '' }: Props = Astro.props;
 
+// Abrir en otra pestaña sin avisar rompe la expectativa de quien navega con
+// lector de pantalla. El aviso va en texto oculto visualmente: no necesita
+// modal ni cambia el diseño.
+const opensNewTab = attr?.target === '_blank';
+
 // Class base for button
-const classBase = 'relative rounded-full flex items-center justify-center active:scale-95 transition-all ease-in-out duration-300 border-4 border-primary dark:border-primary-dark outline-2 outline-primary dark:outline-primary-dark hover:outline-primary-dark dark:hover:outline-primary focus:outline-primary focus-visible:outline-primary';
+const classBase = 'relative rounded-full flex items-center justify-center active:scale-95 transition-all ease-in-out duration-300 border-4 border-primary dark:border-primary-dark outline-2 outline-primary dark:outline-primary-dark hover:outline-primary-dark dark:hover:outline-primary focus:outline-text dark:focus:outline-text-dark focus-visible:outline-text dark:focus-visible:outline-text-dark';
 
 // Variants for button
 const variantsButton = {
 	normal: {
-		class: 'bg-tertiary text-text-secondary hover:bg-text hover:text-primary focus:bg-text focus:text-primary focus-visible:bg-text focus-visible:text-primary dark:bg-tertiary-dark dark:text-text-secondary-dark dark:hover:bg-text-dark dark:hover:text-primary-dark dark:focus:bg-text-dark dark:focus:text-primary-dark dark:focus-visible:bg-text-dark dark:focus-visible:text-primary-dark',
+		class: 'bg-tertiary text-on-surface hover:bg-text hover:text-primary focus:bg-text focus:text-primary focus-visible:bg-text focus-visible:text-primary dark:bg-tertiary-dark dark:text-on-surface-dark dark:hover:bg-text-dark dark:hover:text-primary-dark dark:focus:bg-text-dark dark:focus:text-primary-dark dark:focus-visible:bg-text-dark dark:focus-visible:text-primary-dark',
 	},
 	accent: {
-		class: 'bg-accent text-white dark:hover:outline-accent hover:!outline-accent focus:outline-accent focus-visible:outline-accent dark:focus:outline-accent dark:focus-visible:outline-accent',
+		class: 'bg-accent text-on-accent hover:bg-accent-hover hover:text-on-accent-hover focus:bg-accent-hover focus:text-on-accent-hover focus-visible:bg-accent-hover focus-visible:text-on-accent-hover hover:!outline-accent-hover',
 	},
 	transparent: {
 		class: 'bg-transparent text-text-secondary dark:text-text-secondary-dark hover:bg-text hover:text-primary focus:bg-text focus:text-primary focus-visible:bg-text focus-visible:text-primary dark:hover:bg-text-dark dark:hover:text-primary-dark dark:focus:bg-text-dark dark:focus:text-primary-dark dark:focus-visible:bg-text-dark dark:focus-visible:text-primary-dark',
@@ -37,6 +42,7 @@ const classFinal = `btn-especial ${sizesObject[size]} ${variantsButton[variants]
 
 <a href={href} class={`${classBase}  ${classFinal}`} {...attr}>
 	<slot />
+	{opensNewTab && <span class="sr-only"> (abre en una ventana nueva)</span>}
 </a>
 
 <style is:global>

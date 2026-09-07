@@ -205,6 +205,10 @@ const structuredData = {
 		<!-- Color scheme hint -->
 		<meta name="color-scheme" content="light dark" />
 
+		<!-- Color de la barra del navegador: --color-primary / --color-primary-dark.
+		     Debe ir antes del script para que este pueda sincronizarlo. -->
+		<meta name="theme-color" content="#ecf2f2" id="meta-theme-color" />
+
 		<!-- Script para aplicar el tema guardado antes del renderizado -->
 		<script is:inline>
 			(() => {
@@ -215,6 +219,9 @@ const structuredData = {
 				const isDark = saved ? saved === 'dark' : prefersDark;
 
 				root.classList.toggle('dark', isDark);
+
+				// aztec-50 / aztec-900: la UI del navegador acompaña al lienzo.
+				document.getElementById('meta-theme-color')?.setAttribute('content', isDark ? '#1a1c1c' : '#ecf2f2');
 			})();
 		</script>
 
@@ -227,8 +234,8 @@ const structuredData = {
 		<link rel="canonical" href={canonical} />
 		<link rel="alternate" type="text/plain" href="/llms.txt" title="Resumen del sitio legible para LLMs" />
 		<link rel="alternate" type="text/markdown" href="/index.md" title="Versión Markdown de la página principal" />
+		<!-- amaranth-300: color de acento de la paleta -->
 		<meta name="msapplication-TileColor" content="#f53b57" />
-		<meta name="theme-color" content="#ffffff" />
 		<meta name="description" content={pageDescription} />
 		<meta name="author" content={BRAND.legalName} />
 		<meta name="copyright" content={BRAND.name} />
