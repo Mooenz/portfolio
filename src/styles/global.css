@@ -29,6 +29,11 @@
 	--amaranth-500: #770f22;
 	--amaranth-700: #2a0206;
 
+	/* Estado (disponibilidad) */
+	--salem-100: #2fd07f;
+	--salem-300: #0b9b55;
+	--salem-500: #0a6b3c;
+
 	/* ============================================================
 	   60 · SUPERFICIE DOMINANTE
 	   El lienzo de la página. Ocupa la mayor parte del área.
@@ -63,13 +68,21 @@
 
 	/* ============================================================
 	   10 · ACENTO
-	   Solo CTA principal, enlaces, foco y el indicador de
-	   disponibilidad. Nunca como color de fondo extenso.
+	   Solo CTA principal, enlaces y foco. Nunca como color de fondo
+	   extenso. El indicador de disponibilidad se sale del acento
+	   (ver «estado») para no competir con el CTA.
 	   ============================================================ */
 	--color-accent: var(--amaranth-300); /* superficie: 3.29:1 sobre primary — OK para UI no textual */
 	--color-accent-hover: var(--amaranth-500);
 	--color-on-accent: var(--amaranth-700); /*  5.09:1 sobre accent         AA  */
 	--color-on-accent-hover: var(--amaranth-50); /*  9.88:1 sobre accent-hover   AAA */
+
+	/* Estado: verde de disponibilidad. Sigue el patrón de las etiquetas de
+	   tecnología (fondo al 10 % y texto del mismo tono), así que el color
+	   pleno solo pinta el punto y el texto cambia de tono por tema. */
+	--color-available: var(--salem-300); /* punto: 3.18:1 sobre primary, 4.76:1 sobre primary-dark */
+	--color-available-ink: var(--salem-500); /*  5.22:1 sobre la píldora al 10 % en claro   AA  */
+	--color-available-dark: var(--salem-100); /*  7.56:1 sobre la píldora al 10 % en oscuro  AAA */
 
 	/* El acento puro no alcanza 4.5:1 como texto en claro: los enlaces
 	   usan un tono más profundo en claro y el vivo en oscuro. */

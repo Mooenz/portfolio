@@ -43,7 +43,7 @@ interface seo {
 const seo = {
 	title: 'Desarrollador Frontend | José Manuel Montaño Saenz (Mooenz)',
 	description:
-		'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 3 años de experiencia en la creación de sitios web modernos, rápidos y accesibles.',
+		'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 5 años de experiencia en React, Next.js, TypeScript y Astro. Especializado en ecommerce.',
 	canonical: `${SITE_URL}/`,
 	// App ID de Meta for Developers: https://developers.facebook.com/apps/
 	fbAppId: '2135374490721492',

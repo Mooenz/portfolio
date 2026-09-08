@@ -60,31 +60,66 @@ const personSchema = {
 		height: 630,
 	},
 	description: pageDescription,
-	jobTitle: 'Desarrollador Frontend',
+	jobTitle: personal.role,
 	worksFor: {
 		'@id': `${SITE_URL}/#organization`,
 	},
 	address: postalAddress,
+	telephone: personal.phoneE164,
 	contactPoint: {
 		'@type': 'ContactPoint',
 		contactType: 'sales',
 		email: personal.email,
+		telephone: personal.phoneE164,
 		url: `${SITE_URL}/contact`,
-		availableLanguage: ['es', 'en'],
+		availableLanguage: ['es'],
 	},
 	sameAs: sameAsProfiles,
+	// El `knowsAbout` refleja las «Habilidades técnicas» del CV: es lo que un
+	// motor de IA lee para decidir si este perfil encaja en una vacante.
 	knowsAbout: [
 		'Desarrollo Web',
 		'JavaScript',
 		'TypeScript',
+		'HTML',
+		'CSS',
+		'SQL',
 		'React',
 		'Next.js',
 		'Astro',
 		'Tailwind CSS',
+		'Node.js',
+		'Express',
 		'Supabase',
+		'PostgreSQL',
 		'Medusa',
+		'Zustand',
+		'TanStack Query',
+		'Zod',
+		'GSAP',
+		'Ecommerce',
+		'Stripe',
+		'Wompi',
+		'Row Level Security',
+		'Core Web Vitals',
 		'SEO técnico',
+		'Accesibilidad web',
 	],
+	knowsLanguage: personal.languages.map(({ name }) => ({
+		'@type': 'Language',
+		name,
+	})),
+	alumniOf: {
+		'@type': 'CollegeOrUniversity',
+		name: personal.education.institution,
+		address: postalAddress,
+	},
+	hasCredential: {
+		'@type': 'EducationalOccupationalCredential',
+		credentialCategory: 'degree',
+		name: `${personal.education.degree} — ${personal.education.institution}`,
+		dateCreated: personal.education.graduated,
+	},
 };
 
 const organizationSchema = {
@@ -106,12 +141,14 @@ const organizationSchema = {
 	founder: { '@id': `${SITE_URL}/#person` },
 	address: postalAddress,
 	areaServed: 'Worldwide',
+	telephone: personal.phoneE164,
 	contactPoint: {
 		'@type': 'ContactPoint',
 		contactType: 'sales',
 		email: personal.email,
+		telephone: personal.phoneE164,
 		url: `${SITE_URL}/contact`,
-		availableLanguage: ['es', 'en'],
+		availableLanguage: ['es'],
 	},
 	sameAs: sameAsProfiles,
 };
@@ -159,7 +196,7 @@ const profilePageSchema = {
 
 const projectsSchema = {
 	'@type': 'ItemList',
-	name: 'Proyectos personales',
+	name: 'Proyectos destacados',
 	itemListElement: projects.map((project, index) => ({
 		'@type': 'ListItem',
 		position: index + 1,
@@ -173,7 +210,7 @@ const projectsSchema = {
 			url: project.demo || project.repository,
 			...(project.repository && { codeRepository: project.repository }),
 			author: { '@id': `${SITE_URL}/#person` },
-			keywords: project.technologies.map(({ name }) => name).join(', '),
+			keywords: project.stack.join(', '),
 		},
 	})),
 };
