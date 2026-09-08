@@ -3,6 +3,9 @@ import experience from '@/constants/experience';
 import projects from '@/constants/projects';
 import seo, { SITE_URL, SITE_DOMAIN, BRAND } from '@/constants/seo';
 
+/** Idiomas con su nivel real, tal y como constan en el CV. */
+export const languagesLine = personal.languages.map(({ name, level }) => `${name} (${level})`).join(' · ');
+
 /**
  * Bloque reutilizable de "cuándo contactar" (when-to-use). Se incluye tanto en
  * `/llms.txt` como en la representación Markdown de la home (`/index.md`) para
@@ -15,14 +18,14 @@ export function buildWhenToUseSection(): string {
 Contacta a ${personal.name} (Mooenz) cuando necesites:
 
 - Desarrollo de aplicaciones web frontend o fullstack con Astro, React, Next.js y TypeScript.
-- Tiendas online DTC / ecommerce a medida: catálogo, checkout, pagos, correos transaccionales y panel de gestión (Next.js + Supabase o Medusa).
+- Tiendas online DTC / ecommerce a medida: catálogo, checkout, pagos (Stripe, Wompi), correos transaccionales y panel de gestión (Next.js + Supabase o Medusa).
 - Sitios corporativos rápidos y accesibles, con SEO técnico y buenas métricas de Core Web Vitals.
 - Integración de backend con Supabase/PostgreSQL: autenticación, CRUD, RLS y despliegue en Vercel.
 - Auditoría o mejora de un sitio existente: rendimiento, accesibilidad (WCAG) y optimización para buscadores y motores de IA (GEO).
 
 No es el perfil indicado para: apps móviles nativas, infraestructura DevOps a gran escala, ciencia de datos o diseño de identidad de marca desde cero.
 
-Cómo contactar: escribe a ${personal.email} o mediante LinkedIn (${personal.linkedIn}). Respuesta habitual en 1-2 días hábiles. Zona horaria: America/Bogota (UTC-5). Idiomas: español e inglés.`;
+Cómo contactar: escribe a ${personal.email}, llama al ${personal.phone} o usa LinkedIn (${personal.linkedIn}). Respuesta habitual en 1-2 días hábiles. Zona horaria: America/Bogota (UTC-5). Idiomas: ${languagesLine}.`;
 }
 
 /**
@@ -31,28 +34,32 @@ Cómo contactar: escribe a ${personal.email} o mediante LinkedIn (${personal.lin
  */
 export function buildHomepageMarkdown(): string {
 	const experienceSection = experience
-		.map(({ position, company, period, description }) => `### ${position} — ${company}\n\n_${period}_\n\n${description}`)
+		.map(({ position, company, period, description, location, stack }) => `### ${position} — ${company}\n\n_${period} · ${location}_\n\n${description}\n\n**Stack:** ${stack.join(' · ')}`)
 		.join('\n\n');
 
 	const projectsSection = projects
 		.map((project) => {
-			const stack = project.technologies.map(({ name }) => name).join(', ');
-			const repo = project.repository ? `\n  - Repositorio: ${project.repository}` : '';
-			return `### ${project.name}\n\n${project.description}\n\n- Demo: ${project.demo}\n- Stack: ${stack}${repo}`;
+			const repo = project.repository ? `\n- Repositorio: ${project.repository}` : '';
+			return `### ${project.name}\n\n${project.description}\n\n- Demo: ${project.demo}\n- Stack: ${project.stack.join(', ')}${repo}`;
 		})
 		.join('\n\n');
+
+	const { degree, institution, location, period, graduated } = personal.education;
 
 	return `# ${personal.name} — ${personal.role}
 
 > ${seo.description}
 
 - **Marca:** ${BRAND.name} (también «${BRAND.fullName}»)
+- **Especialidad:** ${personal.headline}
 - **Sitio web:** ${SITE_URL}/ (${SITE_DOMAIN})
 - **Correo:** ${personal.email}
+- **Teléfono:** ${personal.phone}
 - **GitHub:** ${personal.github}
 - **LinkedIn:** ${personal.linkedIn}
 - **Ubicación:** ${BRAND.locality}, ${BRAND.region}, ${BRAND.country} (${BRAND.timezone}, UTC-5)
-- **Disponibilidad:** disponible para trabajar (freelance)
+- **Disponibilidad:** disponible para trabajar, modalidad remota (clientes en Colombia y Canadá)
+- **Idiomas:** ${languagesLine}
 
 ## Sobre mí
 
@@ -69,6 +76,12 @@ ${experienceSection}
 ## Proyectos
 
 ${projectsSection}
+
+## Educación
+
+**${degree} — ${institution}**
+
+_${period} · ${location}_ · Título de Ingeniero de sistemas (${graduated}).
 
 ## Páginas de referencia
 

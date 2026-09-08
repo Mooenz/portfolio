@@ -10,7 +10,7 @@ Ibagué, Tolima, Colombia · Modalidad remota
 
 ## Perfil profesional
 
-Desarrollador Frontend con 5 años y 8 meses de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. Especializado en ecommerce: he lanzado tiendas a producción con catálogo, checkout, pasarelas de pago (Wompi, Stripe) y paneles internos de gestión, apoyándome en Supabase y PostgreSQL para datos, autenticación y control de acceso. Trabajo con foco en rendimiento, SEO técnico y accesibilidad, con 12 sitios corporativos entregados en puntajes de 90+ en Google PageSpeed. Modalidad remota, con clientes en Colombia y Canadá.
+Desarrollador Frontend con 5 años y 8 meses de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. Especializado en ecommerce: he lanzado tiendas a producción con catálogo, checkout, pasarelas de pago (Wompi, Stripe) y paneles internos de gestión, apoyándome en Supabase y PostgreSQL para datos, autenticación y control de acceso. Trabajo con foco en rendimiento, SEO técnico y accesibilidad, con 12 sitios corporativos entregados en puntajes de 90+ en Google PageSpeed. Modalidad remota.
 
 ---
 
@@ -90,7 +90,6 @@ Carta digital bilingüe (ES/EN) para restaurante, servida por SSR, con categorí
 - Elevé la navegación con animaciones en GSAP y modo oscuro.
 
 **Stack:** Astro (SSR) · TypeScript · Tailwind CSS · Supabase · GSAP · Vercel
-**Repositorio:** https://github.com/Mooenz/Patio-la-Boca-Restaurant
 **Demo:** https://patio-la-boca.vercel.app/
 
 ### IngeSoftNet — Web corporativa de SysCafé
@@ -99,7 +98,6 @@ Sitio corporativo de servicios y licencias del software SysCafé, responsive y o
 - Desarrollé el sitio corporativo de servicios y licencias, responsive, orientado a la conversión de visitantes en solicitudes de licencia.
 
 **Stack:** Astro · Tailwind CSS · JavaScript
-**Repositorio:** https://github.com/Mooenz/IngeSoftNet
 **Demo:** https://ingesoftnet.com/
 
 ### Task Board — Gestor de tareas fullstack

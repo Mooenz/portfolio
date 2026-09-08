@@ -1,21 +1,29 @@
 import personal from '@/constants/personal-info';
 import experience from '@/constants/experience';
 import projects from '@/constants/projects';
+import skills from '@/constants/skills';
 import seo, { SITE_URL, SITE_DOMAIN, BRAND } from '@/constants/seo';
-import { buildWhenToUseSection } from '@/utilities/build-markdown-content';
+import { buildWhenToUseSection, languagesLine } from '@/utilities/build-markdown-content';
 
 export function buildLlmsContent(): string {
-	const techStack = [...new Set(projects.flatMap((project) => project.technologies.map(({ name }) => name)))].join(', ');
+	// El agregado se queda con el nombre base de cada tecnología: sin esto,
+	// «Next.js (App Router)» y «Next.js» cuentan como dos entradas distintas.
+	const techStack = [...new Set(projects.flatMap((project) => project.stack.map((tech) => tech.replace(/\s*\(.*\)$/, ''))))].sort().join(', ');
 
-	const experienceSection = experience.map(({ position, company, period, description }) => `**${position} — ${company}** (${period})\n\n${description}`).join('\n\n');
+	const experienceSection = experience
+		.map(({ position, company, period, description, location, stack }) => `**${position} — ${company}** (${period} · ${location})\n\nStack: ${stack.join(', ')}.\n\n${description}`)
+		.join('\n\n');
 
 	const projectsSection = projects
 		.map((project) => {
-			const stack = project.technologies.map(({ name }) => name).join(', ');
 			const repo = project.repository ? ` [Repositorio en GitHub](${project.repository})` : '';
-			return `- [${project.name}](${project.demo}): ${project.description} Construido con ${stack}.${repo}`;
+			return `- [${project.name}](${project.demo}): ${project.description} Construido con ${project.stack.join(', ')}.${repo}`;
 		})
 		.join('\n');
+
+	const skillsSection = skills.map(({ label, details }) => `- **${label}:** ${details}`).join('\n');
+
+	const { degree, institution, location, period, graduated } = personal.education;
 
 	return `# ${BRAND.fullName} — Portfolio de ${personal.name}
 
@@ -26,27 +34,34 @@ export function buildLlmsContent(): string {
 - **Nombre:** ${personal.name}
 - **Marca:** ${BRAND.name} (también «${BRAND.fullName}»)
 - **Rol:** ${personal.role}
+- **Especialidad:** ${personal.headline}
 - **Correo:** ${personal.email}
+- **Teléfono:** ${personal.phone}
 - **Sitio web:** ${SITE_URL} (${SITE_DOMAIN})
 - **GitHub:** ${personal.github}
 - **LinkedIn:** ${personal.linkedIn}
 - **Ubicación:** ${BRAND.locality}, ${BRAND.region}, ${BRAND.country}
+- **Modalidad:** remota, con clientes en Colombia y Canadá
+- **Idiomas:** ${languagesLine}
+
+${personal.expertise}
 
 El sitio web es un portafolio de una sola página construido con Astro. Muestra información personal, experiencia laboral y proyectos destacados. Incluye modo oscuro/claro, animaciones y diseño responsivo.
 
 ${buildWhenToUseSection()}
 
-## Stack tecnológico
+## Stack tecnológico del sitio
 
-El proyecto está construido con las siguientes tecnologías:
+Este portafolio está construido con las siguientes tecnologías:
 
 - **Framework principal:** Astro
 - **Lenguajes:** TypeScript y JavaScript
 - **UI/Estilos:** Tailwind CSS v4
-- **Librerías y plataforma:** React, Next.js, Medusa, Supabase, Zustand, GSAP y Vercel
+- **Animación:** GSAP
+- **Despliegue:** Vercel
 - **Gestor de paquetes:** pnpm
 
-Tecnologías usadas en proyectos: ${techStack}.
+Tecnologías usadas en los proyectos listados abajo: ${techStack}.
 
 ## Experiencia laboral
 
@@ -54,15 +69,15 @@ ${experienceSection}
 
 ## Habilidades técnicas
 
-- **Lenguajes:** HTML, CSS, JavaScript, TypeScript
-- **Frameworks y librerías:** Astro, React, Next.js, Tailwind CSS, GSAP, Medusa, Zustand
-- **Backend y base de datos:** Supabase, PostgreSQL
-- **Herramientas y despliegue:** Git, GitHub, Lighthouse, Figma, Illustrator, Vercel
-- **Buenas prácticas:** SEO técnico, Responsive Design, optimización de performance y accesibilidad
+${skillsSection}
 
 ## Proyectos
 
 ${projectsSection}
+
+## Educación
+
+- **${degree} — ${institution}** (${period} · ${location}). Título de Ingeniero de sistemas (${graduated}).
 
 ## Páginas de referencia
 
@@ -75,5 +90,6 @@ ${projectsSection}
 
 - [Repositorio del portafolio en GitHub](https://github.com/Mooenz/portfolio): Código fuente completo del sitio de portafolio.
 - [CV en formato YAML](${SITE_URL}/cv.yaml): Datos estructurados del currículum en formato legible por máquinas.
+- [CV en PDF](${SITE_URL}/documents/Cv-José-M-Montaño.pdf): Versión imprimible del currículum.
 `;
 }

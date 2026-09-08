@@ -1,39 +1,58 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
 import personal from '@/constants/personal-info';
+
+const { degree, institution, location, period, graduated } = personal.education;
 ---
 
 <PageLayout
 	pageTitle="Sobre mí | José Manuel Montaño Saenz"
-	pageDescription="Quién es José Manuel Montaño Saenz (Mooenz): desarrollador frontend y fullstack con más de 3 años de experiencia en Astro, React, Next.js y TypeScript."
+	pageDescription="Quién es José Manuel Montaño Saenz (Mooenz): desarrollador frontend con más de 5 años de experiencia en React, Next.js, TypeScript y Astro, especializado en ecommerce."
 	heading="Sobre mí"
 >
 	<p>
 		Soy <strong>{personal.name}</strong>, también conocido como <strong>Mooenz</strong>. Soy ingeniero de sistemas
-		graduado y trabajo como desarrollador <strong>frontend y fullstack</strong> con más de 3 años de experiencia
-		construyendo sitios y aplicaciones web para empleadores y clientes. Vivo en Ibagué, Tolima (Colombia) y trabajo de
-		forma remota en la zona horaria America/Bogota (UTC-5).
+		graduado y trabajo como <strong>Desarrollador Frontend</strong> con más de <strong>5 años de experiencia</strong>
+		(desde enero de 2021) construyendo sitios y aplicaciones web para empleadores y clientes. Vivo en Ibagué, Tolima
+		(Colombia) y trabajo de forma remota.
 	</p>
 	<p>
-		Mi trabajo se centra en interfaces rápidas, accesibles y mantenibles. El stack que uso a diario es
-		<strong>Astro, React, Next.js y TypeScript</strong> con Tailwind CSS para la capa visual, y
-		<strong>Supabase/PostgreSQL</strong> en el backend para autenticación, datos y reglas de acceso (RLS). Despliego
-		en Vercel y cuido las métricas de rendimiento (Core Web Vitals), el SEO técnico y, cada vez más, la optimización
-		para motores de búsqueda con IA (GEO).
+		Mi especialidad es el <strong>ecommerce DTC</strong>: he lanzado tiendas a producción como desarrollador único,
+		con catálogo, checkout, pasarelas de pago (<strong>Wompi</strong> en Colombia, <strong>Stripe</strong> en Canadá),
+		cotización de envíos, correos transaccionales y panel interno de gestión de pedidos. El stack que uso a diario es
+		<strong>React, Next.js, TypeScript y Astro</strong> con Tailwind CSS para la capa visual, y
+		<strong>Supabase/PostgreSQL</strong> (con Medusa cuando el catálogo es multirregional) en el backend para
+		autenticación, datos y reglas de acceso (RLS). Despliego en Vercel y cuido las métricas de rendimiento (Core Web
+		Vitals), el SEO técnico y, cada vez más, la optimización para motores de búsqueda con IA (GEO).
 	</p>
 	<h2>Cómo trabajo</h2>
 	<p>
 		Empiezo por entender el objetivo de negocio y las personas que van a usar el producto. A partir de ahí defino una
 		arquitectura sencilla, entrego en incrementos pequeños y verificables, y dejo el proyecto documentado para que
 		otro equipo pueda continuarlo. Doy prioridad a la accesibilidad (WCAG), a la carga inicial y a un código que se
-		pueda leer sin sorpresas.
+		pueda leer sin sorpresas. He trabajado bajo <strong>Scrum</strong>, con dailies y gestión en Jira.
 	</p>
-	<h2>Experiencia reciente</h2>
+	<h2>Trayectoria</h2>
 	<ul>
-		<li>Tiendas ecommerce DTC a medida con Next.js, Supabase y Medusa: catálogo, checkout, pagos y panel de gestión.</li>
-		<li>Plataformas web bilingües con panel administrativo y contenido gestionado desde Supabase.</li>
-		<li>Sitios corporativos con Astro enfocados en rendimiento y posicionamiento.</li>
+		<li>
+			<strong>Freelance (octubre 2025 – hoy):</strong> tiendas ecommerce DTC y sitios corporativos para clientes en
+			Colombia y Canadá, como desarrollador único y de punta a punta.
+		</li>
+		<li>
+			<strong>Estrategia Segura (julio 2022 – octubre 2025):</strong> 12 sitios corporativos y 2 sistemas internos
+			entregados en 3 años, con puntajes de 90+ en los cuatro indicadores de Google PageSpeed.
+		</li>
+		<li>
+			<strong>Freelance (enero 2021 – julio 2022):</strong> sitio corporativo de AUDISERVICIOS S.A.S en React y
+			Tailwind CSS, desde el diseño de las 7 páginas hasta el despliegue.
+		</li>
 	</ul>
+	<h2>Formación e idiomas</h2>
+	<p>
+		<strong>{degree}</strong> en la {institution} ({period}, {location}); título de Ingeniero de sistemas obtenido en
+		{' '}{graduated}. Idiomas: <strong>español nativo</strong> e <strong>inglés A2</strong>, nivel suficiente para
+		leer documentación técnica pero no para llevar reuniones de trabajo en inglés.
+	</p>
 	<p>
 		Puedes ver el detalle de proyectos y tecnologías en la <a href="/">página principal</a>, revisar el resumen legible
 		para máquinas en <a href="/llms.txt">llms.txt</a> o descargar mi <a href="/cv.yaml">CV en formato YAML</a>. Para

@@ -14,7 +14,7 @@ cv:
 
   sections:
     perfil_profesional:
-      - 'Desarrollador Frontend con 5 años y 8 meses de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. Especializado en ecommerce: he lanzado tiendas a producción con catálogo, checkout, pasarelas de pago (Wompi, Stripe) y paneles internos de gestión, apoyándome en Supabase y PostgreSQL para datos, autenticación y control de acceso. Trabajo con foco en rendimiento, SEO técnico y accesibilidad, con 12 sitios corporativos entregados en puntajes de 90+ en Google PageSpeed. Modalidad remota, con clientes en Colombia y Canadá.'
+      - 'Desarrollador Frontend con 5 años y 8 meses de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. Especializado en ecommerce: he lanzado tiendas a producción con catálogo, checkout, pasarelas de pago (Wompi, Stripe) y paneles internos de gestión, apoyándome en Supabase y PostgreSQL para datos, autenticación y control de acceso. Trabajo con foco en rendimiento, SEO técnico y accesibilidad, con 12 sitios corporativos entregados en puntajes de 90+ en Google PageSpeed. Modalidad remota.'
 
     experiencia:
       - company: 'Freelance'
@@ -143,7 +143,6 @@ cv:
           - 'Reemplacé la carta impresa del cliente por una aplicación SSR bilingüe (ES/EN) con categorías y productos administrables desde Supabase.'
           - 'Entregué al cliente autonomía sobre el contenido con un panel administrativo con autenticación y carga segura de imágenes.'
           - 'Elevé la navegación con animaciones en GSAP y modo oscuro.'
-        repository: 'https://github.com/Mooenz/Patio-la-Boca-Restaurant'
         demo: 'https://patio-la-boca.vercel.app/'
 
       - name: 'IngeSoftNet — Web corporativa de SysCafé'
@@ -154,7 +153,6 @@ cv:
           - 'JavaScript'
         highlights:
           - 'Desarrollé el sitio corporativo de servicios y licencias, responsive, orientado a la conversión de visitantes en solicitudes de licencia.'
-        repository: 'https://github.com/Mooenz/IngeSoftNet'
         demo: 'https://ingesoftnet.com/'
 
       - name: 'Task Board — Gestor de tareas fullstack'

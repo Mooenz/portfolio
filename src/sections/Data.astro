@@ -15,13 +15,13 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 			<Image src={avatar} alt={`Foto de ${personal.name}, desarrollador frontend`} width="127" height="127" title={`Avatar de ${personal.name}`} class="rounded-full w-30" />
 
 			<div
-				class="pointer-events-none absolute z-100 -translate-y-1/2 top-1/2 left-[calc(100%+12px)] lg:top-[70%] lg:translate-0 lg:left-[calc(100%-14px)] flex items-center bg-accent text-[11px] whitespace-nowrap px-2 rounded-full h-4 lg:w-4 lg:group-hover:w-38 lg:group-focus-within:w-38 transition-all duration-300 ease-in-out lg:group-hover:left-[calc(100%-7px)] lg:group-focus-within:left-[calc(100%-7px)] lg:after:absolute lg:after:-z-1 lg:after:inset-0 lg:after:rounded-[15px] lg:after:bg-accent lg:after:animate-ping lg:after:animate-duration-[3s] lg:group-hover:after:hidden lg:group-focus-within:after:hidden"
+				class="pointer-events-none absolute z-100 -translate-y-1/2 top-1/2 left-[calc(100%+12px)] lg:top-[70%] lg:translate-0 lg:left-[calc(100%-14px)] flex items-center bg-available/10 text-[11px] whitespace-nowrap px-2 rounded-full h-4 lg:w-4 lg:bg-available lg:group-hover:w-38 lg:group-hover:bg-available/10 lg:group-focus-within:w-38 lg:group-focus-within:bg-available/10 transition-all duration-300 ease-in-out lg:group-hover:left-[calc(100%-7px)] lg:group-focus-within:left-[calc(100%-7px)] lg:after:absolute lg:after:-z-1 lg:after:inset-0 lg:after:rounded-[15px] lg:after:bg-available lg:after:animate-ping lg:after:animate-duration-[3s] lg:group-hover:after:hidden lg:group-focus-within:after:hidden"
 			>
-				<span class="lg:opacity-0 text-on-accent transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:delay-300 group-focus-within:opacity-100 group-focus-within:delay-300 overflow-hidden">Disponible para trabajar</span>
+				<span class="lg:opacity-0 text-available-ink dark:text-available-dark transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:delay-300 group-focus-within:opacity-100 group-focus-within:delay-300 overflow-hidden">Disponible para trabajar</span>
 			</div>
 		</figure>
 		<h1 class="title text-2xl font-bold text-text dark:text-text-dark transition-colors duration-300 ease-in-out">{personal.name}</h1>
-		<p class="text-lg mb-1 text-text dark:text-text-secondary-dark transition-colors duration-300 ease-in-out">{personal.role}</p>
+		<p class="text-lg text-text dark:text-text-secondary-dark transition-colors duration-300 ease-in-out">{personal.role}</p>
 
 		<!-- How i am? -->
 		<h2 id="about-heading" class="sr-only">Sobre {personal.name} (Mooenz)</h2>
@@ -52,7 +52,7 @@ import LogoGithub from '@/assets/icons/LogoGitHub.astro';
 
 						<p class="text-pretty">
 							<span
-								class={`relative before:absolute before:-left-8 before:top-1/2 before:size-4 before:-translate-y-1/2 before:rounded-full before:border-4 before:border-primary dark:before:border-primary-dark before:bg-text dark:before:bg-text-dark first:before:bg-accent first:before:outline-1 first:before:outline-accent before:animate-blurred-fade-in before:animate-delay-[${(index + 6) * 100}ms] text-text-secondary dark:text-text-secondary-dark transition-colors duration-100 ease-in-out before:transition-all before:duration-300 before:ease-in-out mb-2 block`}
+								class={`relative before:absolute before:-left-8 before:top-1/2 before:size-4 before:-translate-y-1/2 before:rounded-full before:border-4 before:border-primary dark:before:border-primary-dark before:bg-text dark:before:bg-text-dark ${index === 0 ? 'before:bg-accent! before:outline-1 before:outline-accent' : ''} before:animate-blurred-fade-in before:animate-delay-[${(index + 6) * 100}ms] text-text-secondary dark:text-text-secondary-dark transition-colors duration-100 ease-in-out before:transition-all before:duration-300 before:ease-in-out mb-2 block`}
 							>
 								{company}, {period}
 							</span>

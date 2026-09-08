@@ -1,6 +1,6 @@
 # Mooenz Portfolio
 
-**Mooenz Portfolio** es el portafolio personal de **José Manuel Montaño Saenz** (alias **Mooenz**), desarrollador frontend.
+**Mooenz Portfolio** es el portafolio personal de **José Manuel Montaño Saenz** (alias **Mooenz**), Desarrollador Frontend especializado en ecommerce (React · Next.js · TypeScript).
 Sitio en producción: <https://www.mooenz.me>
 
 Desarrollado con **Astro**, **TailwindCSS**, **TypeScript**, **JavaScript** y **GSAP**.  
@@ -22,14 +22,23 @@ Crear un espacio claro, atractivo y bien estructurado donde presentar:
 
 ## 📌 Contenido del Portafolio
 
-El portafolio actualmente cuenta con una única página (`index`), que incluye:
+La portada (`index`) incluye:
 
 - **Quién soy:** breve presentación.
 - **Cargo o rol profesional.**
 - **Enlaces sociales:** GitHub y LinkedIn.
 - **Experiencia laboral.**
-- **Proyectos desarrollados.**
+- **Proyectos destacados.**
 - **Currículum vitae descargable.**
+
+Además hay páginas de apoyo (`/about`, `/contact`, `/privacy`, `404`) y dos
+representaciones legibles por máquinas generadas en tiempo de build: `/llms.txt`
+y `/index.md` (esta última también servida en `/` vía `Accept: text/markdown`).
+
+Toda la información personal del sitio sale de **una única fuente**: el CV en
+`CV.md` / `public/cv.yaml`, volcado a las constantes de `src/constants/`. Si
+cambia el CV, hay que actualizar esas constantes; nada del contenido de la
+portada, del JSON-LD o de `llms.txt` se escribe a mano dos veces.
 
 ---
 
@@ -66,9 +75,11 @@ pnpm run build
 
 ```md
 /
+├── CV.md
 ├── cv-for-rendercv.yml
 ├── public/
-│ └── llms.txt
+│ ├── cv.yaml
+│ └── documents/
 ├── src/
 │ ├── components/
 │ ├── constants/
@@ -77,23 +88,28 @@ pnpm run build
 │ ├── sections/
 │ ├── styles/
 │ └── utilities/
+├── test/
+├── middleware.ts
 ├── package.json
 ├── astro.config.mjs
+├── vercel.json
 └── tsconfig.json
 ```
 
-- `public/`: Archivos estáticos como imágenes y fuentes.
+- `public/`: Archivos estáticos como imágenes, fuentes, el CV en PDF y `cv.yaml`.
 - `src/components/`: Componentes reutilizables de la interfaz.
-- `src/constants/`: Constantes utilizadas en el proyecto (datos del portafolio).
-- `src/layouts/`: Plantillas de diseño para las páginas.
-- `src/pages/`: Páginas del portafolio (actualmente solo `index.astro`).
+- `src/constants/`: Datos del portafolio (`personal-info`, `experience`, `projects`, `skills`, `seo`). Fuente única de la información personal, tomada del CV.
+- `src/layouts/`: Plantillas de diseño y datos estructurados JSON-LD.
+- `src/pages/`: Páginas del portafolio (`index`, `about`, `contact`, `privacy`, `404`) y las rutas generadas `llms.txt.ts` e `index.md.ts`.
 - `src/sections/`: Secciones específicas de la página principal.
 - `src/styles/`: Archivos de estilos globales y configuraciones de TailwindCSS.
-- `src/utilities/`: Funciones y utilidades auxiliares.
-- `cv-for-rendercv.yml`: Fuente del CV preparada para renderizado.
-- `public/llms.txt`: Resumen del portafolio en formato legible para LLMs.
+- `src/utilities/`: Funciones auxiliares, incluidos los generadores de `/llms.txt` y `/index.md`.
+- `test/`: Pruebas de preparación para agentes de IA sobre la salida de `astro build` (`pnpm test`).
+- `middleware.ts`: Negociación de contenido (`Accept: text/markdown`) y 404 en Markdown.
+- `CV.md`, `cv-for-rendercv.yml`, `public/cv.yaml`: Fuente del CV en tres formatos (lectura, renderizado y datos).
 - `package.json`: Dependencias y scripts del proyecto.
 - `astro.config.mjs`: Configuración de Astro.
+- `vercel.json`: Cabeceras, redirecciones y control de indexación en Vercel.
 - `tsconfig.json`: Configuración de TypeScript.
 
 ---
