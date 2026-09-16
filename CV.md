@@ -4,7 +4,7 @@
 
 Ibagué, Tolima, Colombia · Modalidad remota
 
-[joss92821@hotmail.com](mailto:joss92821@hotmail.com) · [+57 302 271 3706](tel:+573022713706) · [www.mooenz.me](https://www.mooenz.me) · [LinkedIn](https://www.linkedin.com/in/mooenz) · [GitHub](https://github.com/Mooenz)
+[joss92821@hotmail.com](mailto:joss92821@hotmail.com) · [+57 302 271 6706](tel:+573022713706) · [www.mooenz.me](https://www.mooenz.me) · [LinkedIn](https://www.linkedin.com/in/mooenz) · [GitHub](https://github.com/Mooenz)
 
 ---
 
@@ -17,7 +17,8 @@ Desarrollador Frontend con 5 años y 8 meses de experiencia (desde enero de 2021
 ## Experiencia
 
 ### Desarrollador Frontend — Freelance
-*Octubre 2025 – Presente · Remoto · Clientes en Colombia y Canadá*
+
+_Octubre 2025 – Presente · Remoto · Clientes en Colombia y Canadá_
 
 Desarrollo de tiendas ecommerce y sitios corporativos para clientes en Colombia y Canadá, en modalidad remota y como desarrollador único: análisis de requerimientos, implementación del frontend, integración de backend como servicio y puesta en producción.
 
@@ -29,7 +30,8 @@ Desarrollo de tiendas ecommerce y sitios corporativos para clientes en Colombia 
 - Entregué a cada cliente autonomía sobre su contenido mediante paneles administrativos e interfaces multilingües (ES/EN/FR).
 
 ### Desarrollador Web — Estrategia Segura
-*Julio 2022 – Octubre 2025*
+
+_Julio 2022 – Octubre 2025_
 
 Desarrollo y mantenimiento de sitios web corporativos y sistemas internos para los clientes de la agencia, con responsabilidad sobre el análisis de requerimientos, la maquetación responsive, el rendimiento, la accesibilidad y el SEO técnico de cada entrega.
 
@@ -43,7 +45,8 @@ Desarrollo y mantenimiento de sitios web corporativos y sistemas internos para l
 - Coordiné la entrega de proyectos bajo metodología Scrum, con dailies diarios, reunión semanal de avances y gestión en Jira.
 
 ### Desarrollador Frontend — Freelance
-*Enero 2021 – Julio 2022*
+
+_Enero 2021 – Julio 2022_
 
 Desarrollo del sitio web corporativo de un cliente directo, con React como base del frontend y despliegue del build estático en hosting compartido.
 
@@ -52,7 +55,8 @@ Desarrollo del sitio web corporativo de un cliente directo, con React como base 
 - Desarrollé y puse en producción el sitio corporativo de AUDISERVICIOS S.A.S como desarrollador único: 7 páginas en React y Tailwind CSS —inicio, nosotros, personal, preguntas frecuentes, contacto, política de datos y quejas y apelaciones— con formulario de contacto y despliegue del build estático en Hostinger.
 
 ### Asesor de Cobranza y Asistente Administrativo — Comdata · AUDISERVICIOS S.A.S
-*Noviembre 2018 – Mayo 2020 · Ibagué, Colombia*
+
+_Noviembre 2018 – Mayo 2020 · Ibagué, Colombia_
 
 - Atendí y negocié directamente con clientes en procesos de cobranza y gestión administrativa, base sobre la que hoy apoyo el levantamiento de requerimientos y la comunicación con clientes freelance.
 
@@ -61,6 +65,7 @@ Desarrollo del sitio web corporativo de un cliente directo, con React como base 
 ## Proyectos
 
 ### GRIZZLY — Ecommerce DTC de calzado
+
 Tienda ecommerce DTC de una marca colombiana de calzado, desarrollada y lanzada a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de gestión de pedidos.
 
 - Lancé la tienda completa a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de pedidos.
@@ -73,6 +78,7 @@ Tienda ecommerce DTC de una marca colombiana de calzado, desarrollada y lanzada 
 **Demo:** https://www.grizzlycol.com/
 
 ### Poesía Mestiza Coffee — Café de especialidad
+
 Tienda ecommerce de café de especialidad para el mercado canadiense, con catálogo multirregional, cuentas de cliente, suscripciones recurrentes y soporte en tres idiomas.
 
 - Habilité la venta internacional con catálogo multirregional sobre Medusa, con precios y disponibilidad por región.
@@ -83,6 +89,7 @@ Tienda ecommerce de café de especialidad para el mercado canadiense, con catál
 **Demo:** https://www.poesiamestizacoffee.ca/
 
 ### Patio La Boca — Carta digital bilingüe
+
 Carta digital bilingüe (ES/EN) para restaurante, servida por SSR, con categorías y productos administrables por el propio cliente.
 
 - Reemplacé la carta impresa del cliente por una aplicación SSR bilingüe (ES/EN) con categorías y productos administrables desde Supabase.
@@ -93,6 +100,7 @@ Carta digital bilingüe (ES/EN) para restaurante, servida por SSR, con categorí
 **Demo:** https://patio-la-boca.vercel.app/
 
 ### IngeSoftNet — Web corporativa de SysCafé
+
 Sitio corporativo de servicios y licencias del software SysCafé, responsive y orientado a la conversión de visitantes en solicitudes de licencia.
 
 - Desarrollé el sitio corporativo de servicios y licencias, responsive, orientado a la conversión de visitantes en solicitudes de licencia.
@@ -101,6 +109,7 @@ Sitio corporativo de servicios y licencias del software SysCafé, responsive y o
 **Demo:** https://ingesoftnet.com/
 
 ### Task Board — Gestor de tareas fullstack
+
 Proyecto personal: gestor de tareas fullstack con tablero editable, CRUD completo y API REST propia.
 
 - Diseñé un gestor de tareas fullstack con tablero editable y CRUD completo, exponiendo una API REST en Express con validación de esquemas mediante Zod y sesión anónima por cookie HTTP-only.
@@ -109,6 +118,7 @@ Proyecto personal: gestor de tareas fullstack con tablero editable, CRUD complet
 **Repositorio:** https://github.com/Mooenz/task-board
 
 ### WorldRanks | Country Page
+
 Aplicación web para explorar información de países con filtros por texto, región y estado, ordenamiento de resultados y vista de detalle con países vecinos.
 
 **Stack:** React · TypeScript · Tailwind CSS · Zustand
@@ -116,6 +126,7 @@ Aplicación web para explorar información de países con filtros por texto, reg
 **Demo:** https://mooenz.github.io/react-countries-page/
 
 ### Rock Paper Scissors Game
+
 Juego interactivo de Piedra, Papel, Tijeras con modos clásico y bonus (incluyendo Lagartija y Spock), persistencia de puntuación y diseño responsive.
 
 **Stack:** React · TypeScript · Tailwind CSS · Zustand
@@ -147,6 +158,7 @@ Juego interactivo de Piedra, Papel, Tijeras con modos clásico y bonus (incluyen
 ## Educación
 
 ### Ingeniería de sistemas — Universidad Cooperativa de Colombia
-*2010 – 2014 · Ibagué, Tolima, Colombia*
+
+_2010 – 2014 · Ibagué, Tolima, Colombia_
 
 Título de Ingeniero de sistemas (2017).

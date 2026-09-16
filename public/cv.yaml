@@ -3,7 +3,7 @@ cv:
   title: 'Desarrollador Frontend | React · Next.js · TypeScript | Ecommerce'
   location: 'Ibagué, Tolima, Colombia (modalidad remota)'
   email: 'joss92821@hotmail.com'
-  phone: '+57 302 271 3706'
+  phone: '+57 302 271 6706'
   website: 'https://www.mooenz.me'
 
   social_networks:
@@ -232,15 +232,15 @@ cv:
         location: Ibagué, Tolima, Colombia
 
 meta:
-  actualizado: "2026-09"
-  nivel_real: "mid / semi-senior bajo"
+  actualizado: '2026-09'
+  nivel_real: 'mid / semi-senior bajo'
   no_afirmar:
-    - "testing automatizado (Jest, Vitest, Playwright, Cypress, TDD)"
-    - "Git Flow, CI/CD o code reviews como práctica habitual"
-    - "inglés por encima de A2"
-    - "seniority senior"
-    - "backend propio: el backend es BaaS (Supabase), no infraestructura propia"
+    - 'testing automatizado (Jest, Vitest, Playwright, Cypress, TDD)'
+    - 'Git Flow, CI/CD o code reviews como práctica habitual'
+    - 'inglés por encima de A2'
+    - 'seniority senior'
+    - 'backend propio: el backend es BaaS (Supabase), no infraestructura propia'
   brechas_abiertas:
-    - "inglés A2 cierra el remoto internacional"
-    - "sin testing automatizado: baja la banda salarial un nivel"
-    - "pendiente confirmar si el 90+ de PageSpeed fue en móvil o escritorio"
+    - 'inglés A2 cierra el remoto internacional'
+    - 'sin testing automatizado: baja la banda salarial un nivel'
+    - 'pendiente confirmar si el 90+ de PageSpeed fue en móvil o escritorio'

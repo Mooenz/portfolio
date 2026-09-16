@@ -21,10 +21,9 @@ const personal: PersonalInfo = {
 	name: 'José Manuel Montaño Saenz',
 	role: 'Desarrollador Frontend',
 	email: 'joss92821@hotmail.com',
-	phone: '+57 302 271 3706',
+	phone: '+57 302 271 6706',
 	phoneE164: '+573022713706',
-	expertise:
-		'Desarrollador Frontend con más de 5 años de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. He lanzado tiendas a producción con catálogo, checkout, pasarelas de pago y paneles internos de gestión, apoyándome en Supabase y PostgreSQL. Ingeniero de sistemas, con foco en rendimiento, SEO técnico y accesibilidad.',
+	expertise: 'Desarrollador Frontend con más de 5 años de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. He lanzado tiendas a producción con catálogo, checkout, pasarelas de pago y paneles internos de gestión, apoyándome en Supabase y PostgreSQL. Ingeniero de sistemas, con foco en rendimiento, SEO técnico y accesibilidad.',
 	github: 'https://github.com/Mooenz',
 	linkedIn: 'https://www.linkedin.com/in/mooenz/',
 	languages: [
