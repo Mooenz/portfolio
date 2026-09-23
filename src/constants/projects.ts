@@ -8,7 +8,7 @@ import imgRockPaperScissors from '@/assets/images/rock-paper-scissors.webp';
 import imgPoesiaMestiza from '@/assets/images/store-poesiaMestiza.webp';
 import imgTaskBoard from '@/assets/images/task-board.webp';
 import imgMultiStepForm from '@/assets/images/multiStepForm.webp';
-import imgGrizzly from '@/assets/images/store-grizzly.webp';
+// import imgGrizzly from '@/assets/images/store-grizzly.webp';
 
 interface Project {
 	readonly id: number;
@@ -34,24 +34,24 @@ interface Project {
 
 /** Orden y contenido alineados con la sección «Proyectos» del CV. */
 const projects: Project[] = [
-	{
-		id: 0,
-		name: 'Tienda online GRIZZLY Chanclas',
-		description:
-			'Desarrollé la tienda ecommerce DTC de GRIZZLY, marca colombiana de chanclas premium fabricadas en Ibagué, con catálogo por colecciones, checkout de invitado sin registro y seguimiento por token, pagos con Wompi y contraentrega por WhatsApp, reserva de stock con expiración automática, cotización y guías de envío nacional, correos transaccionales y panel interno de gestión de pedidos, utilizando Next.js, React, TypeScript, Supabase y Tailwind CSS sobre una arquitectura server-first con RLS, Server Actions y máquina de estados en base de datos.',
-		technologies: [
-			{ name: 'React', icon: 'react', styles: 'text-react-ink bg-react/10 dark:text-react dark:bg-react/10' },
-			{ name: 'TypeScript', icon: 'typescript', styles: 'text-typescript-ink bg-typescript/10 dark:text-typescript-dark dark:bg-typescript/10' },
-			{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss-ink bg-tailwindcss/10 dark:text-tailwindcss dark:bg-tailwindcss/10' },
-			{ name: 'Supabase', icon: 'supabase', styles: 'text-supabase-ink bg-supabase/10 dark:text-supabase dark:bg-supabase/10' },
-			{ name: 'Next.js', icon: 'next', styles: 'text-text bg-text/10 dark:text-text-dark dark:bg-text-dark/10' },
-			{ name: 'Vercel', icon: 'vercel', styles: 'text-vercel bg-vercel/10 dark:text-vercel-dark dark:bg-vercel-dark/10' },
-		],
-		stack: ['Next.js (App Router)', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Wompi', 'Vercel'],
-		repository: '',
-		demo: 'https://www.grizzlycol.com/',
-		image: imgGrizzly,
-	},
+	// {
+	// 	id: 0,
+	// 	name: 'Tienda online GRIZZLY Chanclas',
+	// 	description:
+	// 		'Desarrollé la tienda ecommerce DTC de GRIZZLY, marca colombiana de chanclas premium fabricadas en Ibagué, con catálogo por colecciones, checkout de invitado sin registro y seguimiento por token, pagos con Wompi y contraentrega por WhatsApp, reserva de stock con expiración automática, cotización y guías de envío nacional, correos transaccionales y panel interno de gestión de pedidos, utilizando Next.js, React, TypeScript, Supabase y Tailwind CSS sobre una arquitectura server-first con RLS, Server Actions y máquina de estados en base de datos.',
+	// 	technologies: [
+	// 		{ name: 'React', icon: 'react', styles: 'text-react-ink bg-react/10 dark:text-react dark:bg-react/10' },
+	// 		{ name: 'TypeScript', icon: 'typescript', styles: 'text-typescript-ink bg-typescript/10 dark:text-typescript-dark dark:bg-typescript/10' },
+	// 		{ name: 'Tailwind CSS', icon: 'tailwind', styles: 'text-tailwindcss-ink bg-tailwindcss/10 dark:text-tailwindcss dark:bg-tailwindcss/10' },
+	// 		{ name: 'Supabase', icon: 'supabase', styles: 'text-supabase-ink bg-supabase/10 dark:text-supabase dark:bg-supabase/10' },
+	// 		{ name: 'Next.js', icon: 'next', styles: 'text-text bg-text/10 dark:text-text-dark dark:bg-text-dark/10' },
+	// 		{ name: 'Vercel', icon: 'vercel', styles: 'text-vercel bg-vercel/10 dark:text-vercel-dark dark:bg-vercel-dark/10' },
+	// 	],
+	// 	stack: ['Next.js (App Router)', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Wompi', 'Vercel'],
+	// 	repository: '',
+	// 	demo: 'https://www.grizzlycol.com/',
+	// 	image: imgGrizzly,
+	// },
 	{
 		id: 1,
 		name: 'Tienda online Poesía Mestiza Coffee',
