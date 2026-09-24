@@ -2,14 +2,6 @@
 @import 'tailwind-animations';
 
 @theme {
-	/* ============================================================
-	   RAMPAS DE MARCA
-	   Únicas fuentes de color del proyecto. Fuera de este bloque no
-	   debe existir ningún color «tradicional»: ni la paleta por
-	   defecto de Tailwind, ni negro/blanco puros, ni literales
-	   sueltos. Todo se deriva de estas dos rampas.
-	   ============================================================ */
-
 	/* Neutro */
 	--aztec-50: #ecf2f2;
 	--aztec-100: #d2dddd;
@@ -34,17 +26,10 @@
 	--salem-300: #0b9b55;
 	--salem-500: #0a6b3c;
 
-	/* ============================================================
-	   60 · SUPERFICIE DOMINANTE
-	   El lienzo de la página. Ocupa la mayor parte del área.
-	   ============================================================ */
+
 	--color-primary: var(--aztec-50);
 	--color-primary-dark: var(--aztec-900);
 
-	/* ============================================================
-	   30 · SOPORTE (superficies elevadas, texto y separadores)
-	   Estructura la jerarquía sin competir con el acento.
-	   ============================================================ */
 	--color-secondary: var(--aztec-100);
 	--color-tertiary: var(--aztec-200);
 	--color-secondary-dark: var(--aztec-800);
@@ -65,13 +50,8 @@
 	--color-line-lateral-dark: var(--aztec-600);
 	--color-border-lateral: var(--aztec-200);
 	--color-border-lateral-dark: var(--aztec-800);
-
-	/* ============================================================
-	   10 · ACENTO
-	   Solo CTA principal, enlaces y foco. Nunca como color de fondo
-	   extenso. El indicador de disponibilidad se sale del acento
-	   (ver «estado») para no competir con el CTA.
-	   ============================================================ */
+	
+	/*Accent*/
 	--color-accent: var(--amaranth-300); /* superficie: 3.29:1 sobre primary — OK para UI no textual */
 	--color-accent-hover: var(--amaranth-500);
 	--color-on-accent: var(--amaranth-700); /*  5.09:1 sobre accent         AA  */

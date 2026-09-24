@@ -1,21 +1,7 @@
 ---
-import { BRAND, SITE_URL, SITE_DOMAIN } from '@/constants/seo';
+import { BRAND } from '@/constants/seo';
 
 const year = new Date().getFullYear();
-
-const links = [
-	{ href: '/', label: 'Inicio' },
-	{ href: '/about', label: 'Sobre mí' },
-	{ href: '/contact', label: 'Contacto' },
-	{ href: '/privacy', label: 'Privacidad' },
-	{ href: '/llms.txt', label: 'llms.txt' },
-	{ href: '/documents/Cv-José-M-Montaño.pdf', label: 'CV (PDF)' },
-];
-
-// NAP canónico (Name, Address, Phone-equivalent). Debe coincidir palabra por
-// palabra con el JSON-LD (`Organization`/`Person`) para reforzar que esta marca
-// y este dominio son la misma entidad ante buscadores y motores de IA.
-const location = `${BRAND.locality}, ${BRAND.region}, ${BRAND.country}`;
 ---
 
 <footer class="bg-primary dark:bg-primary-dark border-t border-border-lateral dark:border-border-lateral-dark transition-[background-color,border-color] duration-300 ease-in-out">
