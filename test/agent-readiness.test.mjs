@@ -1,3 +1,4 @@
+// @ts-check
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
@@ -5,8 +6,54 @@ import { fileURLToPath } from 'node:url';
 import { prefersMarkdown, parseAccept } from '../src/utilities/accept-negotiation.mjs';
 import { buildNotFoundMarkdown, NOT_FOUND_MARKDOWN, RECOVERY_LINKS } from '../src/utilities/markdown-404.mjs';
 
+/** @param {string} p */
 const root = (p) => fileURLToPath(new URL(`../${p}`, import.meta.url));
+/** @param {string} p */
 const readRoot = (p) => readFileSync(root(p), 'utf8');
+
+/**
+ * Nodo del grafo JSON-LD. Solo se declaran los campos que verifican los tests.
+ * @typedef {{
+ *   '@type'?: string,
+ *   '@id'?: string,
+ *   name?: string,
+ *   legalName?: string,
+ *   alternateName?: string | string[],
+ *   sameAs?: string[],
+ *   contactPoint?: { '@type'?: string, email?: string, telephone?: string, contactType?: string },
+ *   address?: { '@type'?: string, addressCountry?: string, addressLocality?: string },
+ *   publisher?: { '@id'?: string },
+ * }} JsonLdNode
+ */
+
+/**
+ * Subconjunto de vercel.json que se verifica.
+ * @typedef {object} VercelConfig
+ * @property {{ source: string, headers: { key: string, value: string }[] }[]} [headers]
+ * @property {{ source: string, destination: string, permanent?: boolean }[]} [redirects]
+ * @property {{ source: string, destination: string }[]} [rewrites]
+ */
+
+/**
+ * Normaliza un valor JSON-LD que puede ser escalar o lista.
+ * @param {string | string[] | undefined} value
+ * @returns {string[]}
+ */
+const asArray = (value) => (value === undefined ? [] : Array.isArray(value) ? value : [value]);
+
+/**
+ * Extrae el grafo JSON-LD de una página. Si el bloque no usa `@graph`, el
+ * propio objeto raíz se trata como único nodo.
+ * @param {string} html
+ * @returns {JsonLdNode[]}
+ */
+const jsonLdGraph = (html) => {
+	const raw = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+	assert.ok(raw, 'La página debe emitir datos estructurados JSON-LD');
+	/** @type {JsonLdNode & { '@graph'?: JsonLdNode[] }} */
+	const data = JSON.parse(raw[1]);
+	return data['@graph'] ?? [data];
+};
 
 /**
  * Verificación de la preparación del sitio para agentes de IA.
@@ -17,8 +64,11 @@ const readRoot = (p) => readFileSync(root(p), 'utf8');
 
 // Con el adapter de Vercel, los archivos estáticos se generan en `dist/client/`.
 const distRoot = existsSync(root('dist/client')) ? 'dist/client' : 'dist';
+/** @param {string} p */
 const dist = (p) => fileURLToPath(new URL(`../${distRoot}/${p}`, import.meta.url));
+/** @param {string} p */
 const read = (p) => readFileSync(dist(p), 'utf8');
+/** @param {string} html */
 const visibleText = (html) =>
 	html
 		.replace(/<!--[\s\S]*?-->/g, ' ')
@@ -71,11 +121,8 @@ for (const [page, robots] of Object.entries(TRUST_ANCHORS)) {
 	});
 }
 
-const graphTypes = (html) => {
-	const raw = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-	assert.ok(raw, 'La página debe emitir datos estructurados JSON-LD');
-	return JSON.parse(raw[1])['@graph'].map((node) => node['@type']);
-};
+/** @param {string} html */
+const graphTypes = (html) => jsonLdGraph(html).map((node) => node['@type']);
 
 test('JSON-LD: las entidades se repiten, los nodos de la portada no', () => {
 	const home = graphTypes(read('index.html'));
@@ -127,10 +174,7 @@ test('home: contenido sin JavaScript con jerarquía de encabezados', () => {
 
 test('home: JSON-LD con Organization completo (contactPoint + address)', () => {
 	const html = read('index.html');
-	const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-	assert.ok(m, 'Falta el bloque JSON-LD');
-	const data = JSON.parse(m[1]);
-	const graph = data['@graph'] ?? [data];
+	const graph = jsonLdGraph(html);
 	const org = graph.find((n) => n['@type'] === 'Organization');
 	assert.ok(org, 'Falta el nodo Organization');
 	assert.ok(org.contactPoint, 'Organization debe incluir contactPoint');
@@ -144,9 +188,10 @@ test('home: JSON-LD con Organization completo (contactPoint + address)', () => {
 
 test('home: perfiles sameAs consistentes para descubrimiento de marca', () => {
 	const html = read('index.html');
-	const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-	const graph = (JSON.parse(m[1])['@graph']) ?? [];
-	const withSameAs = graph.filter((n) => Array.isArray(n.sameAs));
+	const graph = jsonLdGraph(html);
+	const withSameAs = graph.filter(
+		/** @returns {n is JsonLdNode & { sameAs: string[] }} */ (n) => Array.isArray(n.sameAs),
+	);
 	assert.ok(withSameAs.length >= 2, 'Person y Organization deben declarar sameAs');
 	for (const node of withSameAs) {
 		for (const url of node.sameAs) {
@@ -160,7 +205,7 @@ test('home: perfiles sameAs consistentes para descubrimiento de marca', () => {
 	assert.ok(!html.includes('https://github.com/mooenz"'), 'No debe quedar la variante en minúsculas de GitHub');
 
 	const website = graph.find((n) => n['@type'] === 'WebSite');
-	const alt = [].concat(website?.alternateName ?? []);
+	const alt = asArray(website?.alternateName);
 	assert.ok(alt.includes('Mooenz'), 'WebSite debe declarar "Mooenz" como alternateName');
 });
 
@@ -181,42 +226,43 @@ const NAP = {
 	domain: 'www.mooenz.me',
 };
 
-// El footer es deliberadamente mínimo: marca + año + autor, sin bloque <address>.
-// El NAP completo (ubicación, correo, dominio) vive en el JSON-LD y en
-// llms.txt/index.md, que es donde lo leen buscadores y agentes; repetirlo en cada
-// pie de página no añadía señal y ensuciaba el diseño. Lo que sí se verifica aquí
-// es que la marca y el autor aparezcan igual en las cinco páginas.
+// El footer es deliberadamente mínimo: marca + año, sin autor ni bloque <address>.
+// El NAP completo (nombre legal, ubicación, correo, dominio) vive en el JSON-LD y
+// en llms.txt/index.md, que es donde lo leen buscadores y agentes; repetirlo en
+// cada pie de página no añadía señal y ensuciaba el diseño. Lo que sí se verifica
+// aquí es que la marca y el año aparezcan igual en las cinco páginas.
+/** @param {string} html */
 const footerBlock = (html) => (html.match(/<footer[\s\S]*?<\/footer>/) ?? [null])[0];
+const footerLine = `${NAP.brand} © ${new Date().getFullYear()}, todos los derechos reservados.`;
 
 for (const page of ['index.html', 'about/index.html', 'contact/index.html', 'privacy/index.html', '404.html']) {
-	test(`marca: ${page} cierra con un footer que nombra a "${NAP.brand}" y a su autor`, () => {
+	test(`marca: ${page} cierra con un footer que nombra a "${NAP.brand}"`, () => {
 		const block = footerBlock(read(page));
 		assert.ok(block, `${page} debe incluir un <footer>`);
-		const text = visibleText(block);
-		for (const needle of [NAP.brand, NAP.legalName]) {
-			assert.ok(text.includes(needle), `El footer de ${page} debe contener "${needle}" (marca consistente)`);
-		}
+		assert.ok(visibleText(block).includes(footerLine), `El footer de ${page} debe decir "${footerLine}" (marca consistente)`);
 	});
 }
 
 test('marca: nombres de entidad JSON-LD coherentes con la búsqueda "Mooenz Portfolio"', () => {
 	const html = read('index.html');
-	const m = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
-	const graph = JSON.parse(m[1])['@graph'] ?? [];
+	const graph = jsonLdGraph(html);
 
 	const org = graph.find((n) => n['@type'] === 'Organization');
+	assert.ok(org, 'Falta el nodo Organization');
 	assert.equal(org.name, NAP.brand, 'Organization.name debe ser la marca corta "Mooenz"');
-	assert.ok([].concat(org.alternateName).includes(NAP.brandLong), 'Organization.alternateName debe incluir "Mooenz Portfolio"');
+	assert.ok(asArray(org.alternateName).includes(NAP.brandLong), 'Organization.alternateName debe incluir "Mooenz Portfolio"');
 	assert.equal(org.legalName, NAP.legalName, 'Organization.legalName debe ser el nombre real');
-	assert.equal(org.address.addressLocality, 'Ibagué', 'Organization.address debe coincidir con el NAP visible');
+	assert.equal(org.address?.addressLocality, 'Ibagué', 'Organization.address debe coincidir con el NAP visible');
 
 	const website = graph.find((n) => n['@type'] === 'WebSite');
+	assert.ok(website, 'Falta el nodo WebSite');
 	assert.equal(website.name, NAP.brandLong, 'WebSite.name debe ser "Mooenz Portfolio" (frase exacta de búsqueda)');
-	assert.ok([].concat(website.alternateName).includes(NAP.brand), 'WebSite.alternateName debe incluir "Mooenz"');
+	assert.ok(asArray(website.alternateName).includes(NAP.brand), 'WebSite.alternateName debe incluir "Mooenz"');
 	assert.equal(website.publisher?.['@id'], 'https://www.mooenz.me/#organization', 'WebSite.publisher debe apuntar a la Organization');
 
 	const person = graph.find((n) => n['@type'] === 'Person');
-	assert.ok([].concat(person.alternateName).includes(NAP.brand), 'Person.alternateName debe incluir "Mooenz"');
+	assert.ok(person, 'Falta el nodo Person');
+	assert.ok(asArray(person.alternateName).includes(NAP.brand), 'Person.alternateName debe incluir "Mooenz"');
 
 	assert.match(html, /<meta property="og:site_name" content="Mooenz Portfolio">/, 'og:site_name debe ser "Mooenz Portfolio"');
 });
@@ -262,10 +308,13 @@ test('sitemap: anuncia las páginas indexables con su URL canónica', () => {
 });
 
 test('vercel.json: cabeceras, indexación y redirecciones de rutas heredadas', () => {
+	/** @type {VercelConfig} */
 	const cfg = JSON.parse(readRoot('vercel.json'));
+	const headers = cfg.headers ?? [];
 
+	/** @param {string} source */
 	const hasVaryAccept = (source) => {
-		const entry = (cfg.headers ?? []).find((h) => h.source === source);
+		const entry = headers.find((h) => h.source === source);
 		assert.ok(entry, `Falta la entrada de headers para ${source}`);
 		const vary = entry.headers.find((h) => h.key.toLowerCase() === 'vary');
 		assert.ok(vary && /\bAccept\b/i.test(vary.value), `${source} debe enviar "Vary: Accept"`);
@@ -273,7 +322,8 @@ test('vercel.json: cabeceras, indexación y redirecciones de rutas heredadas', (
 	hasVaryAccept('/');
 	hasVaryAccept('/index.md');
 
-	const mdEntry = cfg.headers.find((h) => h.source === '/index.md');
+	const mdEntry = headers.find((h) => h.source === '/index.md');
+	assert.ok(mdEntry, 'Falta la entrada de headers para /index.md');
 	const ct = mdEntry.headers.find((h) => h.key.toLowerCase() === 'content-type');
 	assert.ok(ct && /text\/markdown/.test(ct.value), '/index.md debe servirse como text/markdown');
 
@@ -284,7 +334,7 @@ test('vercel.json: cabeceras, indexación y redirecciones de rutas heredadas', (
 	// respete la cabecera, incluidos los de los motores de IA, que son justo el
 	// público de estos archivos.
 	for (const source of ['/index.md', '/llms.txt', '/cv.yaml']) {
-		const entry = cfg.headers.find((h) => h.source === source);
+		const entry = headers.find((h) => h.source === source);
 		assert.ok(entry, `Falta la entrada de headers para ${source}`);
 		const robots = entry.headers.find((h) => h.key.toLowerCase() === 'x-robots-tag');
 		assert.ok(robots, `${source} debe enviar X-Robots-Tag`);
@@ -324,6 +374,7 @@ test('middleware.ts: negociación de Markdown en la misma URL para "/"', () => {
 	assert.match(src, /status:\s*404/, 'Debe responder 404 con cuerpo Markdown en rutas inexistentes');
 	assert.match(src, /export const config/, 'Debe declarar un matcher para acotar su alcance');
 
+	/** @type {{ dependencies?: Record<string, string>, devDependencies?: Record<string, string> }} */
 	const pkg = JSON.parse(readRoot('package.json'));
 	const deps = { ...pkg.dependencies, ...pkg.devDependencies };
 	assert.ok(deps['@vercel/functions'], '@vercel/functions debe estar declarado como dependencia');
