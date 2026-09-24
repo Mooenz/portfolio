@@ -13,11 +13,8 @@ export const SITE_DOMAIN = 'www.mooenz.me';
  * ("Mooenz" / "Mooenz Portfolio") resuelva a este dominio.
  */
 export const BRAND = {
-	/** Nombre de marca corto y distintivo. */
 	name: 'Mooenz',
-	/** Nombre de marca largo, tal y como aparece en `og:site_name`. */
 	fullName: 'Mooenz Portfolio',
-	/** Persona tras la marca. */
 	legalName: 'José Manuel Montaño Saenz',
 	locality: 'Ibagué',
 	region: 'Tolima',
@@ -42,10 +39,8 @@ interface seo {
 
 const seo = {
 	title: 'Desarrollador Frontend | José Manuel Montaño Saenz (Mooenz)',
-	description:
-		'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 5 años de experiencia en React, Next.js, TypeScript y Astro. Especializado en ecommerce.',
+	description: 'Portafolio de José Manuel Montaño Saenz, Desarrollador Frontend con más de 5 años de experiencia en React, Next.js, TypeScript y Astro. Especializado en ecommerce.',
 	canonical: `${SITE_URL}/`,
-	// App ID de Meta for Developers: https://developers.facebook.com/apps/
 	fbAppId: '2135374490721492',
 	og: {
 		url: `${SITE_URL}/`,

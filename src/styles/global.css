@@ -125,9 +125,6 @@
 	--color-line-lateral: var(--color-line-lateral-dark);
 }
 
-/* La UI nativa (scrollbars, controles de formulario, selección) hereda
-   los colores del sistema si no se declara nada: se fijan a la paleta
-   para que tampoco ahí quede rastro de los colores por defecto. */
 :root {
 	color-scheme: light;
 	accent-color: var(--color-accent);
