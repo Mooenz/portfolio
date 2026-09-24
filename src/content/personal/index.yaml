@@ -1,8 +1,13 @@
-name: José Manuel Montaño Saenz
+name: José Manuel Montaño
 role: Desarrollador Frontend
 headline: Ecommerce DTC y sitios web con React, Next.js, TypeScript y Astro
-expertise: Desarrollador Frontend con más de 5 años de experiencia (desde enero de 2021) construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro. He lanzado tiendas a producción con catálogo, checkout, pasarelas de pago y paneles internos de gestión, apoyándome en Supabase y PostgreSQL. Ingeniero de sistemas, con foco en rendimiento, SEO técnico y accesibilidad.
-avatar: ../../assets/images/personal/jose-manuel-montaño-saenz.webp
+expertise: >-
+  Desarrollador Frontend con más de 5 años de experiencia (desde enero de 2021)
+  construyendo sitios y aplicaciones web con React, Next.js, TypeScript y Astro.
+  He lanzado tiendas a producción con catálogo, checkout, pasarelas de pago y
+  paneles internos de gestión, apoyándome en Supabase y PostgreSQL. Ingeniero de
+  sistemas, con foco en rendimiento, SEO técnico y accesibilidad.
+avatar: ../../assets/images/personal/avatar.webp
 email: joss92821@hotmail.com
 phone: +57 302 271 6706
 github: https://github.com/Mooenz
@@ -17,4 +22,4 @@ education:
   institution: Universidad Cooperativa de Colombia
   location: Ibagué, Tolima, Colombia
   period: 2010 – 2014
-  graduated: "2017"
+  graduated: '2017'
