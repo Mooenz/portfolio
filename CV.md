@@ -4,7 +4,7 @@
 
 Ibagué, Tolima, Colombia · Modalidad remota
 
-[joss92821@hotmail.com](mailto:joss92821@hotmail.com) · [+57 302 271 6706](tel:+573022713706) · [www.mooenz.me](https://www.mooenz.me) · [LinkedIn](https://www.linkedin.com/in/mooenz) · [GitHub](https://github.com/Mooenz)
+[joss92821@hotmail.com](mailto:joss92821@hotmail.com) · [+57 302 271 6706](tel:+573022716706) · [www.mooenz.me](https://www.mooenz.me) · [LinkedIn](https://www.linkedin.com/in/mooenz) · [GitHub](https://github.com/Mooenz)
 
 ---
 
