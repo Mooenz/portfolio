@@ -1,11 +1,11 @@
-import personal from '@/constants/personal-info';
-import experience from '@/constants/experience';
-import projects from '@/constants/projects';
+import { getPersonal, getExperience, getPublishedProjects } from '@/utilities/content';
 import skills from '@/constants/skills';
 import seo, { SITE_URL, SITE_DOMAIN, BRAND } from '@/constants/seo';
-import { buildWhenToUseSection, languagesLine } from '@/utilities/build-markdown-content';
+import { buildWhenToUseSection, buildLanguagesLine } from '@/utilities/build-markdown-content';
 
-export function buildLlmsContent(): string {
+export async function buildLlmsContent(): Promise<string> {
+	const [personal, experience, projects] = await Promise.all([getPersonal(), getExperience(), getPublishedProjects()]);
+
 	// El agregado se queda con el nombre base de cada tecnología: sin esto,
 	// «Next.js (App Router)» y «Next.js» cuentan como dos entradas distintas.
 	const techStack = [...new Set(projects.flatMap((project) => project.stack.map((tech) => tech.replace(/\s*\(.*\)$/, ''))))].sort().join(', ');
@@ -42,13 +42,13 @@ export function buildLlmsContent(): string {
 - **LinkedIn:** ${personal.linkedIn}
 - **Ubicación:** ${BRAND.locality}, ${BRAND.region}, ${BRAND.country}
 - **Modalidad:** remota, con clientes en Colombia y Canadá
-- **Idiomas:** ${languagesLine}
+- **Idiomas:** ${buildLanguagesLine(personal)}
 
 ${personal.expertise}
 
 El sitio web es un portafolio de una sola página construido con Astro. Muestra información personal, experiencia laboral y proyectos destacados. Incluye modo oscuro/claro, animaciones y diseño responsivo.
 
-${buildWhenToUseSection()}
+${buildWhenToUseSection(personal)}
 
 ## Stack tecnológico del sitio
 

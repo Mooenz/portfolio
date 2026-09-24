@@ -1,0 +1,22 @@
+name: Tienda online GRIZZLY Chanclas
+published: false
+order: 0
+description: Desarrollé la tienda ecommerce DTC de GRIZZLY, marca colombiana de chanclas premium fabricadas en Ibagué, con catálogo por colecciones, checkout de invitado sin registro y seguimiento por token, pagos con Wompi y contraentrega por WhatsApp, reserva de stock con expiración automática, cotización y guías de envío nacional, correos transaccionales y panel interno de gestión de pedidos, utilizando Next.js, React, TypeScript, Supabase y Tailwind CSS sobre una arquitectura server-first con RLS, Server Actions y máquina de estados en base de datos.
+image: ../../assets/images/projects/grizzly/store-grizzly.webp
+badges:
+  - react
+  - typescript
+  - tailwind
+  - supabase
+  - next
+  - vercel
+stack:
+  - Next.js (App Router)
+  - React
+  - TypeScript
+  - Supabase
+  - PostgreSQL
+  - Tailwind CSS
+  - Wompi
+  - Vercel
+demo: https://www.grizzlycol.com/

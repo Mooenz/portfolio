@@ -1,0 +1,20 @@
+name: Plataforma web bilingüe de Patio La Boca Restaurant
+published: true
+order: 20
+description: Aplicación web SSR para la carta digital (es/en) de Patio La Boca Restaurant, construida con Astro y TypeScript. Incluye navegación por categorías dinámicas desde Supabase, animaciones con GSAP, modo oscuro, panel administrativo con autenticación, CRUD de secciones/platos y carga segura de imágenes para mantener el menú actualizado en producción.
+image: ../../assets/images/projects/patio-la-boca/carta-patio-la-boca.webp
+badges:
+  - astro
+  - typescript
+  - tailwind
+  - supabase
+  - gsap
+  - vercel
+stack:
+  - Astro (SSR)
+  - TypeScript
+  - Tailwind CSS
+  - Supabase
+  - GSAP
+  - Vercel
+demo: https://patio-la-boca.vercel.app/

@@ -1,10 +1,8 @@
-import personal from '@/constants/personal-info';
-import experience from '@/constants/experience';
-import projects from '@/constants/projects';
+import { getPersonal, getExperience, getPublishedProjects, type Personal } from '@/utilities/content';
 import seo, { SITE_URL, SITE_DOMAIN, BRAND } from '@/constants/seo';
 
 /** Idiomas con su nivel real, tal y como constan en el CV. */
-export const languagesLine = personal.languages.map(({ name, level }) => `${name} (${level})`).join(' · ');
+export const buildLanguagesLine = (personal: Personal) => personal.languages.map(({ name, level }) => `${name} (${level})`).join(' · ');
 
 /**
  * Bloque reutilizable de "cuándo contactar" (when-to-use). Se incluye tanto en
@@ -12,7 +10,7 @@ export const languagesLine = personal.languages.map(({ name, level }) => `${name
  * que un agente sepa para qué trabajos es el indicado este perfil y cómo
  * iniciar el contacto.
  */
-export function buildWhenToUseSection(): string {
+export function buildWhenToUseSection(personal: Personal): string {
 	return `## Cuándo contactar (when to use)
 
 Contacta a ${personal.name} (Mooenz) cuando necesites:
@@ -25,14 +23,16 @@ Contacta a ${personal.name} (Mooenz) cuando necesites:
 
 No es el perfil indicado para: apps móviles nativas, infraestructura DevOps a gran escala, ciencia de datos o diseño de identidad de marca desde cero.
 
-Cómo contactar: escribe a ${personal.email}, llama al ${personal.phone} o usa LinkedIn (${personal.linkedIn}). Respuesta habitual en 1-2 días hábiles. Zona horaria: America/Bogota (UTC-5). Idiomas: ${languagesLine}.`;
+Cómo contactar: escribe a ${personal.email}, llama al ${personal.phone} o usa LinkedIn (${personal.linkedIn}). Respuesta habitual en 1-2 días hábiles. Zona horaria: America/Bogota (UTC-5). Idiomas: ${buildLanguagesLine(personal)}.`;
 }
 
 /**
  * Representación Markdown de la página principal, servida en `/index.md` y vía
  * negociación de contenido (`Accept: text/markdown`) sobre `/`.
  */
-export function buildHomepageMarkdown(): string {
+export async function buildHomepageMarkdown(): Promise<string> {
+	const [personal, experience, projects] = await Promise.all([getPersonal(), getExperience(), getPublishedProjects()]);
+
 	const experienceSection = experience
 		.map(({ position, company, period, description, location, stack }) => `### ${position} — ${company}\n\n_${period} · ${location}_\n\n${description}\n\n**Stack:** ${stack.join(' · ')}`)
 		.join('\n\n');
@@ -59,7 +59,7 @@ export function buildHomepageMarkdown(): string {
 - **LinkedIn:** ${personal.linkedIn}
 - **Ubicación:** ${BRAND.locality}, ${BRAND.region}, ${BRAND.country} (${BRAND.timezone}, UTC-5)
 - **Disponibilidad:** disponible para trabajar, modalidad remota (clientes en Colombia y Canadá)
-- **Idiomas:** ${languagesLine}
+- **Idiomas:** ${buildLanguagesLine(personal)}
 
 ## Sobre mí
 
@@ -67,7 +67,7 @@ ${personal.expertise}
 
 Este sitio es un portafolio de una sola página construido con Astro. Reúne mi presentación profesional, mi experiencia laboral y una selección de proyectos con enlaces a sus demos y repositorios.
 
-${buildWhenToUseSection()}
+${buildWhenToUseSection(personal)}
 
 ## Experiencia laboral
 

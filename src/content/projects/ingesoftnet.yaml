@@ -1,0 +1,14 @@
+name: Página web de IngeSoftNet
+published: true
+order: 30
+description: Desarrollé la web corporativa de IngeSoftNet, que ofrece servicios de instalación, mantenimiento, soporte y venta de licencias del software SysCafé, utilizando Astro, Tailwind CSS y JavaScript, con diseño responsive orientado a convertir visitantes en solicitudes de licencia.
+image: ../../assets/images/projects/ingesoftnet/web-ingeSoftNet.webp
+badges:
+  - javascript
+  - astro
+  - tailwind
+stack:
+  - Astro
+  - Tailwind CSS
+  - JavaScript
+demo: https://ingesoftnet.com/

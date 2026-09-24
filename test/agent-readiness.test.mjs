@@ -15,7 +15,9 @@ const readRoot = (p) => readFileSync(root(p), 'utf8');
  * `pnpm test`, que construye el sitio antes de lanzar el runner.
  */
 
-const dist = (p) => fileURLToPath(new URL(`../dist/${p}`, import.meta.url));
+// Con el adapter de Vercel, los archivos estáticos se generan en `dist/client/`.
+const distRoot = existsSync(root('dist/client')) ? 'dist/client' : 'dist';
+const dist = (p) => fileURLToPath(new URL(`../${distRoot}/${p}`, import.meta.url));
 const read = (p) => readFileSync(dist(p), 'utf8');
 const visibleText = (html) =>
 	html

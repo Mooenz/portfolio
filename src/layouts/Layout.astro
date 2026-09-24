@@ -3,8 +3,7 @@ import '@/styles/global.css';
 import '@/styles/fonts.css';
 
 import seo, { SITE_URL, BRAND } from '@/constants/seo.ts';
-import projects from '@/constants/projects.ts';
-import personal from '@/constants/personal-info.ts';
+import { getPersonal, getPublishedProjects } from '@/utilities/content';
 import ButtonTop from '@/components/ButtonTop.astro';
 import Footer from '@/components/Footer.astro';
 
@@ -23,6 +22,9 @@ const {
 	pageDescription = seo.description,
 	canonicalPath,
 } = Astro.props;
+
+const personal = await getPersonal();
+const projects = await getPublishedProjects();
 
 const { fbAppId, og } = seo;
 const canonical = canonicalPath ? new URL(canonicalPath, SITE_URL).href : seo.canonical;

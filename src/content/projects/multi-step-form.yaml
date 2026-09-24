@@ -1,0 +1,18 @@
+name: Multi-step Form
+published: true
+order: 70
+description: Formulario de suscripción en cuatro pasos con validación, selección de plan, complementos y resumen final. Implementado con React, TypeScript, Vite, Tailwind CSS y Zod para una experiencia responsive en escritorio y móvil.
+image: ../../assets/images/projects/multi-step-form/multiStepForm.webp
+badges:
+  - react
+  - typescript
+  - tailwind
+  - zod
+stack:
+  - React
+  - TypeScript
+  - Vite
+  - Tailwind CSS
+  - Zod
+demo: https://mooenz.github.io/multi-step-form/
+repository: https://github.com/Mooenz/multi-step-form

@@ -1,0 +1,23 @@
+name: Tienda online Poesía Mestiza Coffee
+published: true
+order: 10
+description: Desarrollé la tienda ecommerce DTC de Poesía Mestiza Coffee, marca de café colombiano de especialidad en Canadá, con catálogo multirregional, checkout con Stripe, cuentas de cliente, suscripciones recurrentes, journal y soporte multilingüe (EN/ES/FR), utilizando Next.js, React, TypeScript, Supabase, Medusa y Tailwind CSS para una experiencia moderna, trazable y orientada a conversión.
+image: ../../assets/images/projects/poesia-mestiza/store-poesiaMestiza.webp
+badges:
+  - react
+  - typescript
+  - tailwind
+  - supabase
+  - next
+  - medusa
+  - vercel
+stack:
+  - Next.js
+  - React
+  - TypeScript
+  - Medusa
+  - Supabase
+  - Stripe
+  - Tailwind CSS
+  - Vercel
+demo: https://www.poesiamestizacoffee.ca/

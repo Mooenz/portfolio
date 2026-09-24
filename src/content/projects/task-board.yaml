@@ -1,0 +1,22 @@
+name: Task Board
+published: true
+order: 40
+description: Desarrollé una aplicación fullstack de gestión de tareas inspirada en el challenge de devChallenges, con tablero editable y CRUD completo de tareas (crear, actualizar estado/contenido y eliminar). El frontend usa React con TanStack Query y Zustand, y el backend expone una API REST en Express con validación Zod y sesión anónima mediante cookie HTTP-only.
+image: ../../assets/images/projects/task-board/task-board.webp
+badges:
+  - react
+  - typescript
+  - tailwind
+  - zustand
+  - zod
+stack:
+  - React
+  - TypeScript
+  - TanStack Query
+  - Zustand
+  - Node.js
+  - Express
+  - Zod
+  - Tailwind CSS
+demo: https://mooenz.github.io/task-board
+repository: https://github.com/Mooenz/task-board

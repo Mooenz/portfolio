@@ -1,6 +1,8 @@
 ---
-import projects from '@/constants/projects.ts';
+import { getPublishedProjects } from '@/utilities/content';
 import Project from '@/components/Project.astro';
+
+const projects = await getPublishedProjects();
 ---
 
 <section class="lg:mt-9 animate-blurred-fade-in animate-duration-500" aria-labelledby="projects-heading">

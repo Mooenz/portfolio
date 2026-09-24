@@ -1,0 +1,17 @@
+name: WorldRanks | Country Page
+published: true
+order: 50
+description: Desarrollé WorldRanks, una aplicación web para explorar información de países del mundo, con filtros por texto, región y estado, ordenamiento de resultados y vista de detalle con países vecinos, usando React, TypeScript, Tailwind CSS y Zustand.
+image: ../../assets/images/projects/worldranks/worldranks.webp
+badges:
+  - react
+  - typescript
+  - tailwind
+  - zustand
+stack:
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - Zustand
+demo: https://mooenz.github.io/react-countries-page/
+repository: https://github.com/Mooenz/react-countries-page

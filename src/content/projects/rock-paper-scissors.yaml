@@ -1,0 +1,17 @@
+name: Rock Paper Scissors Game
+published: true
+order: 60
+description: Desarrollé un juego interactivo de Piedra, Papel, Tijeras con modos de juego clásico y bonus (incluyendo Lagartija y Spock). La aplicación mantiene el estado de puntuación en localStorage y cuenta con un diseño totalmente responsive.
+image: ../../assets/images/projects/rock-paper-scissors/rock-paper-scissors.webp
+badges:
+  - react
+  - typescript
+  - tailwind
+  - zustand
+stack:
+  - React
+  - TypeScript
+  - Tailwind CSS
+  - Zustand
+demo: https://mooenz.github.io/rock-paper-scissors/
+repository: https://github.com/Mooenz/rock-paper-scissors

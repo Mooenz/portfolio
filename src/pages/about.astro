@@ -1,8 +1,12 @@
 ---
 import PageLayout from '@/layouts/PageLayout.astro';
-import personal from '@/constants/personal-info';
+import { getPersonal } from '@/utilities/content';
+
+const personal = await getPersonal();
 
 const { degree, institution, location, period, graduated } = personal.education;
+
+// experiencia editable en Keystatic; al cambiar un puesto hay que revisarla.
 ---
 
 <PageLayout
