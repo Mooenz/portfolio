@@ -11,13 +11,16 @@ import IconArrowUp from '@/assets/icons/IconArrowUp.astro';
 </button>
 
 <script>
+	import { lenis } from '@/utilities/smooth-scroll.ts';
+
 	const backToTopButton = document.querySelector('#volver-arriba');
 	const menuPrincipal = document.querySelector('#menu-principal');
 	const topPage = document.documentElement;
 
 	if (backToTopButton && menuPrincipal) {
 		backToTopButton.addEventListener('click', () => {
-			topPage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			if (lenis) lenis.scrollTo(0);
+			else topPage.scrollIntoView({ behavior: 'smooth', block: 'start' });
 		});
 
 		new IntersectionObserver(([entry]) => backToTopButton.classList.toggle('activo', !entry.isIntersecting), { threshold: 0.2 }).observe(menuPrincipal);

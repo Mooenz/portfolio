@@ -181,6 +181,13 @@ body {
 	color: var(--color-text);
 }
 
+/* Con Lenis activo el suavizado lo hace JS: el `smooth` nativo competiría
+   con él y el scroll iría a saltos. Sin JS se conserva el nativo. */
+html.lenis,
+html.lenis body {
+	scroll-behavior: auto;
+}
+
 html.dark,
 html.dark body {
 	background-color: var(--color-primary-dark);
