@@ -94,24 +94,24 @@ cv:
           - 'Atendí y negocié directamente con clientes en procesos de cobranza y gestión administrativa, base sobre la que hoy apoyo el levantamiento de requerimientos y la comunicación con clientes freelance.'
 
     proyectos:
-      - name: 'GRIZZLY — Ecommerce DTC de calzado'
-        summary: 'Tienda ecommerce DTC de una marca colombiana de calzado, desarrollada y lanzada a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de gestión de pedidos.'
-        stack:
-          - 'Next.js (App Router)'
-          - 'React'
-          - 'TypeScript'
-          - 'Supabase'
-          - 'PostgreSQL'
-          - 'Tailwind CSS'
-          - 'Wompi'
-          - 'Vercel'
-        highlights:
-          - 'Lancé la tienda completa a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de pedidos.'
-          - 'Eliminé la sobreventa de inventario implementando reserva de stock con expiración por TTL y control de concurrencia sobre PostgreSQL.'
-          - 'Reduje la fricción de compra construyendo un checkout de invitado con seguimiento de pedido por token.'
-          - 'Habilité el cobro en línea y contra entrega integrando Wompi, cotización de envíos y correos transaccionales.'
-          - 'Aseguré el acceso a datos de clientes y pedidos aplicando Row Level Security (RLS), autenticación y Server Actions validadas en Supabase.'
-        demo: 'https://www.grizzlycol.com/'
+#       - name: 'GRIZZLY — Ecommerce DTC de calzado'
+#         summary: 'Tienda ecommerce DTC de una marca colombiana de calzado, desarrollada y lanzada a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de gestión de pedidos.'
+#         stack:
+#           - 'Next.js (App Router)'
+#           - 'React'
+#           - 'TypeScript'
+#           - 'Supabase'
+#           - 'PostgreSQL'
+#           - 'Tailwind CSS'
+#           - 'Wompi'
+#           - 'Vercel'
+#         highlights:
+#           - 'Lancé la tienda completa a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de pedidos.'
+#           - 'Eliminé la sobreventa de inventario implementando reserva de stock con expiración por TTL y control de concurrencia sobre PostgreSQL.'
+#           - 'Reduje la fricción de compra construyendo un checkout de invitado con seguimiento de pedido por token.'
+#           - 'Habilité el cobro en línea y contra entrega integrando Wompi, cotización de envíos y correos transaccionales.'
+#           - 'Aseguré el acceso a datos de clientes y pedidos aplicando Row Level Security (RLS), autenticación y Server Actions validadas en Supabase.'
+#         demo: 'https://www.grizzlycol.com/'
 
       - name: 'Poesía Mestiza Coffee — Café de especialidad'
         summary: 'Tienda ecommerce de café de especialidad para el mercado canadiense, con catálogo multirregional, cuentas de cliente, suscripciones recurrentes y soporte en tres idiomas.'

@@ -64,6 +64,7 @@ _Noviembre 2018 – Mayo 2020 · Ibagué, Colombia_
 
 ## Proyectos
 
+<!--
 ### GRIZZLY — Ecommerce DTC de calzado
 
 Tienda ecommerce DTC de una marca colombiana de calzado, desarrollada y lanzada a producción como desarrollador único: catálogo por colecciones, checkout, pasarela de pagos y panel interno de gestión de pedidos.
@@ -76,6 +77,8 @@ Tienda ecommerce DTC de una marca colombiana de calzado, desarrollada y lanzada 
 
 **Stack:** Next.js (App Router) · React · TypeScript · Supabase · PostgreSQL · Tailwind CSS · Wompi · Vercel
 **Demo:** https://www.grizzlycol.com/
+
+-->
 
 ### Poesía Mestiza Coffee — Café de especialidad
 
